@@ -1,0 +1,145 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#main{
+    max-height: 1300px;
+    font-family: "Google Sans Text", Arial, Helvetica, sans-serif;
+}
+#header{
+    width: 100%;
+    min-height: auto;
+    background-color: black;
+    float: left;
+}
+#header .header-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+    color: whitesmoke;
+}
+#header .header-content h2{
+    font-size: 2rem;
+    padding: 20px;
+}
+#header .header-content button{
+    background: none;
+    border: none;
+    color: whitesmoke;
+    text-decoration: none;
+    margin: 5px;
+    cursor: pointer;
+}
+#header .header-content i{
+    font-size: 1.5rem;
+    color: whitesmoke;
+    opacity: .8;
+    border-radius: 10px;
+    padding: 15px;
+    background: none;
+    background-color: #333333;
+}
+#nav-bar{
+    width: 20%;
+    min-height: 900px;
+    float: left;
+    background-color: #333333;
+}
+#nav-bar .bar-content {
+    width: 95%;
+    margin: 20px auto;
+    
+}
+/* #nav-bar .bar-content .avatar img{
+    width: 50px;
+    height: 50px;
+} */
+#nav-bar .bar-content .avatar{
+    width: 40%;
+    margin: 0 auto;
+}
+#nav-bar .bar-content .avatar i{
+    color: whitesmoke;
+    font-size: 3rem;
+    margin: 10px;
+}
+#nav-bar .bar-content .avatar p{
+    color: whitesmoke;
+    padding: 0;
+    margin: 5px 0;
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+#nav-bar .bar-content .list-edit a{
+    text-decoration: none;
+    color: whitesmoke;
+    display: block;
+    padding: 15px;
+    border-radius: 10px;
+}
+#nav-bar .bar-content .list-edit a.active{
+    background-color: whitesmoke;
+    color: black;
+}
+#nav-bar .bar-content .list-edit a:hover{
+    background-color: whitesmoke;
+    color: black;
+}
+#nav-bar .bar-content .list-edit li{
+    list-style: none;
+    border-bottom: 1px black solid;
+}
+#container{
+    width: 80%;
+    height: 100%;
+    background-color: #c6c6c6;
+    float: left;
+}
+#container .content{
+    padding: 30px;
+    width: 90%;
+    margin: 0 auto;
+}
+#container .content .edit{
+    display: inline;
+    width: 30%;
+    margin: 0 auto;
+}
+#container .content table{
+    border-collapse: collapse;
+}
+#container .content table button{
+    border: none;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 10px 15px;
+    background-color: #333333;
+    color: whitesmoke;
+}
+#container .content th{
+    background-color: black;
+    color: whitesmoke;
+}
+#container .content th, td{
+    border: 1px  black solid;
+    padding: 10px 20px;
+}
+
+#container .button-add{
+    width: 90%;
+    margin: 20px 0;
+    cursor: pointer;
+}
+#container .button-add button{
+    padding: 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    color: whitesmoke;
+}
+

@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: auto;
+    width: 100%;
+    background-color: #a7734986;
+    font-family: "Google Sans Text", Arial, Helvetica, sans-serif;
+}
+#header{
+    position: relative;
+    font-family: 'Roboto script=vietnamese rev=1', sans-serif;
+    width: 100%;
+    min-height: 10vh;
+    background-color: #a77349bd;
+}
+#header a{  
+    text-decoration: none;
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+#header .menu{
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+#header .menu .menu-content{
+    width: 70%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+#header .menu li{
+    width: 180px;
+    margin: 0 auto;
+    list-style: none;
+}
+#header .menu a{
+    display: block;
+    padding: 15px;
+    border-radius: 20px;
+}
+#header .menu .menu-content a:not(.logo):hover{
+    transform: scale(1.1);
+    text-decoration: underline ;
+    color: bisque;
+}
+#header img{
+    width: 80px;
+    height: 100px;
+    padding: 1rem;
+}
+
+#header .tool-box{
+    position: fixed;
+    left: 5px;
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #a77349bd;
+    z-index: 1;
+}
+#header .tool-box button{
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 8px;
+    border-radius: 15px;
+    cursor: pointer;
+}#header .tool-box button:hover{
+    background-color: #d49f73;
+    transform: scale(1.2);
+}
+#slideshow{
+    width: 100%;
+    padding: 50px;
+    position: relative;
+}
+#slideshow .slideshow-img{
+    width: 90%;
+    margin: 0 auto;
+}
+#slideshow .bottom-slideshow{
+    position: absolute;
+    bottom: 50px;
+    left: 725px;
+}
+#slideshow .dot{
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    cursor: pointer;
+}
+#slideshow .bottom-slideshow .dot.active {
+    background-color: #717171;
+  }
+#slideshow img{
+    width: 100%;
+    height: 600px;
+    border-radius: 5px;
+}
+#navagation{
+    width: 100%;
+    padding: 20px 0;
+}
+#navagation a{
+    color: black;
+    text-decoration: none;
+}
+#navagation a:hover{
+    text-decoration: underline;
+    color: bisque;
+}
+#navagation .best-seller{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    flex-direction: column;
+    padding:50px;
+}
+#navagation .new-product{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    flex-direction: column;
+    padding:50px;
+}
+#navagation  .product-row{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+}
+#navagation  .product-row .product{
+    width: 40%;
+}
+#navagation .product-row .product .product-select{
+    position: relative;
+    display: flex;
+}
+#navagation .product-row .product .product-select .button-menu{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    bottom: 2px;
+    transition: .3s ease-in;
+    opacity: 0;
+}
+#navagation .product-row .product .product-select .button-menu button{
+    width: 79px;
+    margin: 0px 60px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff80;
+    cursor: pointer;
+}
+#navagation .product-row .product .product-select .button-menu button:hover{
+    background-color: #ffffffd0;
+}
+#navagation .product-row .product .product-select .button-menu.active{
+    opacity: 1;
+}
+#navagation  .product-row img{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+#navagation h4{
+    margin: auto;
+    background-color: #a77349bd;
+    width: 90%;
+    font-size: 24px;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#navagation h5{
+    font-size: larger;
+    padding: 5px;
+}
+#navagation p{
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+}
+#navagation .collection{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    flex-direction: column;
+    padding:50px;
+}
+#footer{
+    height: 300px;
+    width: 100%;
+    margin: auto;
+    background-color: #a77349bd;
+}
+#footer .footer-content{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+#footer .footer-content h4{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    float: left;
+}
+#footer .footer-content .logo{
+    width: 300px;
+    height: 300px;
+    padding: 50px 0;
+}
+#footer .footer-content .logo img{
+    width: 15%;
+    height: 50px;
+    padding: 0 5px 5px 0;
+    float: left;
+}
+#footer .footer-content .logo p{
+    height: 150px;
+}
+#footer .footer-content .follow{
+    width: 300px;
+    height: 300px;
+    padding: 50px 0;
+}
+#footer .footer-content .follow .content{
+    float: left;
+}
+#footer .footer-content .follow i{
+    color: black;
+    padding: 20px 20px;
+    font-size: 1.5rem;
+}
+#footer .footer-content .follow i:hover{
+    transform: scale(1.2);
+    color: bisque;
+}
+#footer .footer-content .contact{
+    width: 300px;
+    height: 300px;
+    padding: 50px 0;
+}
+#footer .footer-content .contact .content{
+    padding: 10px 0;
+    line-height: 30px;
+    font-weight: bolder;
+}

@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #18435f;
+    opacity: .6;
+}
+#form-admin{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+#form-admin form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-height: 80%;
+    width: 60%;
+    margin: 0 auto;
+    border: #b8b8b8 1px solid;
+    border-radius: 10px;
+    background-color: #b8b8b8;
+    text-align: center;
+}
+#form-admin form input[type=text], form input[type=password]{
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    width: 80%;
+}
+#form-admin form button{
+    padding: 10px;
+    margin: 5px;
+    width: 20%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#form-user{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+#form-user form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-height: 80%;
+    width: 40%;
+    margin: 0 auto;
+    border: #b8b8b8 1px solid;
+    border-radius: 10px;
+    background-color: #4ed6ff;
+    color: black;
+    text-align: center;
+}
+#form-user form input[type=text], form input[type=password]{
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    width: 80%;
+}
+#form-user form button{
+    padding: 10px;
+    background-color: whitesmoke;
+    margin: 5px;
+    width: 140px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
