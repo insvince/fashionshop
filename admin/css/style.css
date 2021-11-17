@@ -61,7 +61,6 @@ body{
 #nav-bar .bar-content .avatar{
     width: 40%;
     margin: 0 auto;
-    text-align: center;
 }
 #nav-bar .bar-content .avatar i{
     color: whitesmoke;
@@ -130,6 +129,10 @@ body{
     padding: 10px 20px;
 }
 
+#container .content td:last-child{
+    height: 50px !important;
+    max-height: 120px !important;
+}
 #container .button-add{
     width: 90%;
     margin: 20px 0;
@@ -143,4 +146,3 @@ body{
     background-color: black;
     color: whitesmoke;
 }
-/* button admin */
