@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "../../php/config.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -10,9 +11,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bộ Sưu Tập - H Store</title>
+    <title>Tin Tức - H Store</title>
     <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/primary.css">        
+    <link rel="stylesheet" href="../../css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 
@@ -76,91 +77,47 @@
     </div>
     
     <div id="main">
-        <div class="main-collection">
-            <h4>Bộ Sưu Tập Nam Nổi Bật</h4>
-            <?php 
-                $sql = "SELECT * FROM tb_product WHERE `category_id` = '2' " ;
-                $rs = mysqli_query($conn, $sql);
-                while($row = mysqli_fetch_array($rs)){
-                   if($row['id'] == 1){
-            ?>
-            <div class="grid-item">
-                <div class="item">
-                    <p><?=$row['description'];?></p>
-                </div>
-                <div class="item">
-                    <img src="../../img/<?=$row['img'] ?>" alt="item-collection">
-                </div>
-                <div class="item">
-                    <img src="../../img/<?=$row['img']; ?>" alt="item-collection">
-                </div>
-                <div class="item">
-                    <p><?=$row['description'];?></p>
-                </div>
-                <div class="item">
-                    <p><?=$row['description'];?></p>
-                </div>
-                <div class="item">
-                    <img src="../../img/<?=$row['img']; ?>" alt="item-collection">
-                </div>
-                <div class="item">
-                    <img src="../../img/<?=$row['img']; ?>" alt="item-collection">
-                </div>
-                <div class="item">
-                    <p><?=$row['description'];?></p>
-                </div>
-                <div class="item">
-                    <p><?=$row['description'];?></p>
-                </div>
-                <div class="item">
-                    <img src="../../img/<?=$row['img']; ?>" alt="item-collection">
-                </div>
+        <div class="main-news">
+            <h4>Tin Tức Nổi Bật Tuần Qua</h4>
+            <div class="list-news">
+                <ul>
+                <?php 
+                    $sql = "SELECT * FROM tb_users RIGHT JOIN tb_post ON `tb_users`.id = `tb_post`.user_id ORDER BY `tb_post`.create_at DESC" ;
+                    $rs = mysqli_query($conn, $sql);
+
+                    while($row = mysqli_fetch_array($rs)){
+                        $date = $row['create_at'];
+                        $formatDate = date('d/m/Y',strtotime($date));
+                        $formatTime = date('H:i:s',strtotime($date));
+                ?>
+                    <li class="news">
+                        <div class="left-news">
+                            <a href="./detail-news/detail-news.html">
+                                <img src="../../img/<?= (($row['type'])=="Sale" ? "thumnail-sale.jpg" : "thumnail-trend.jpg") ?>" alt="">
+                            </a>
+                        </div>
+                        <div class="right-news">
+                            <h3>
+                                <a href="./detail-news/detail-news.html"><?=$row['title']; ?></a>
+                            </h3>
+                            <div class="short-detail">
+                                <?=substr($row['content'], 0, 120)."..."; ?>
+                            </div>
+                            <div class="date">
+                                <p class="author"><?= $row['fullname']; ?></p>
+                                <p class="type-news"> <?= (($row['type'])=="Sale" ? "Khuyến mãi" : "Mới") ?> </p>
+                                <p class="day"><?= $formatDate ?></p>
+                                <p class="time"><?= $formatTime ?></p>
+                            </div>
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul>
             </div>
-            <?php }else if($row['id'] == 2){ ?>
-            <h4>Bộ Sưu Tập Nữ Nổi Bật</h4>
-            <div class="grid-item2">
-                <div class="item2">
-                    <img src="../../img/<?=$row['img'];?>" alt="item-collection">
-                </div>
-                <div class="item2">
-                    <p><?=$row['description'];?></p>
-                </div>
-                <div class="item2">
-                    <p><?=$row['description'];?></p>
-                </div>
-                <div class="item2">
-                    <img src="../../img/<?=$row['img'];?>" alt="item-collection">
-                </div>
-                <div class="item2">
-                    <img src="../../img/<?=$row['img'];?>" alt="item-collection">
-                </div>
-                <div class="item2">
-                    <p><?=$row['description'];?></p>
-                </div>
-                <div class="item2">
-                    <p><?=$row['description'];?></p>
-                </div>
-                <div class="item2">
-                    <img src="../../img/<?=$row['img'];?>" alt="item-collection">
-                </div>
-                <div class="item2">
-                    <img src="../../img/<?=$row['img'];?>" alt="item-collection">
-                </div>
-                <div class="item2">
-                    <p><?=$row['description'];?></p>
-                </div>
-            </div>
-            <?php }} ?>
-        </div>       
-        <!-- <div class="page-number">
-            <div class="number-box">
-                <a href="">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
-                <a href="">4</a>
-                <a href=""><i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div> -->
+        </div>
+        <div class="btn-next">
+            <button>Xem Thêm</button>
+        </div>
     </div>
         
     <div id="footer">
@@ -168,7 +125,10 @@
         <div class="footer-content">
             <div class="logo">
                 <img src="../../img/Layer1.png" alt="">
-                <p>H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus. 
+                Asperiores, perspiciatis. 
+                Officia debitis provident est quis esse reiciendis voluptatem omnis sed eaque culpa! Modi fugiat maiores quis?</p>
             </div>
     
             <div class="follow">
