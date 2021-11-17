@@ -1,13 +1,6 @@
-<?php 
+<?php
+    session_start();
     include "../../php/config.php";
-
-    $sql = "SELECT `img`, `description` FROM `tb_product`";
-    $rs = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($rs)) {
-        echo ("<pre>");
-        echo $row;
-        echo ("</pre>");
-    }
 ?>
 
 <!DOCTYPE html>
@@ -82,28 +75,21 @@
     <div id="main">
         <div class="main-collection">
             <h4>Bộ Sưu Tập Nam Nổi Bật</h4>
-            
+            <?php 
+                $sql = "SELECT * FROM tb_product WHERE `category_id` = '2' " ;
+                $rs = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($rs);
+                
+            ?>
             <div class="grid-item">
                 <div class="item">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, exercitationem aspernatur debitis beatae facilis maiores doloribus illo fuga soluta blanditiis.</p>
                 </div>
                 <div class="item">
-                    <img src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg" alt="item-collection">
+                    <img src="../../img/<?php ?>" alt="item-collection">
                 </div>
                 <div class="item">
-                    <img src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg" alt="item-collection">
-                </div>
-                <div class="item">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, exercitationem aspernatur debitis beatae facilis maiores doloribus illo fuga soluta blanditiis.</p>
-                </div>
-                <div class="item">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, exercitationem aspernatur debitis beatae facilis maiores doloribus illo fuga soluta blanditiis.</p>
-                </div>
-                <div class="item">
-                    <img src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg" alt="item-collection">
-                </div>
-                <div class="item">
-                    <img src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg" alt="item-collection">
+                    <img src="../../img/<?=$row['img']; ?>" alt="item-collection">
                 </div>
                 <div class="item">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, exercitationem aspernatur debitis beatae facilis maiores doloribus illo fuga soluta blanditiis.</p>
@@ -112,7 +98,19 @@
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, exercitationem aspernatur debitis beatae facilis maiores doloribus illo fuga soluta blanditiis.</p>
                 </div>
                 <div class="item">
-                    <img src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg" alt="item-collection">
+                    <img src="../../img/<?=$row['img']; ?>" alt="item-collection">
+                </div>
+                <div class="item">
+                    <img src="../../img/<?=$row['img']; ?>" alt="item-collection">
+                </div>
+                <div class="item">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, exercitationem aspernatur debitis beatae facilis maiores doloribus illo fuga soluta blanditiis.</p>
+                </div>
+                <div class="item">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, exercitationem aspernatur debitis beatae facilis maiores doloribus illo fuga soluta blanditiis.</p>
+                </div>
+                <div class="item">
+                    <img src="../../img/<?=$row['img']; ?>" alt="item-collection">
                 </div>
             </div>
             <h4>Bộ Sưu Tập Nữ Nổi Bật</h4>

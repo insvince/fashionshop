@@ -1,6 +1,11 @@
 <?php
+
     session_start();
     include '../../php/config.php';
+    
+    if(isset($_SESSION['user_mail'])){
+        header("location: ../../index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,31 +35,14 @@
     
     <?php
         if(isset($_POST['login'])){
-
-            $mail = $_POST['umail'];
-            $psw = $_POST['upsw'];
-            
-            $sql = "SELECT * FROM tb_users WHERE email = '$mail' AND password = '$psw' ";
-            $rs = mysqli_query($conn, $sql);
-            $row = mysqli_num_rows($rs);
-            $row = mysqli_fetch_array($rs);
-
-            if($row > 0){
-                if($row['role'] == "User"){
-                    header("location: ../../index.html");
-                }
-            }else{
-                if(empty($mail) || empty($psw)){
-                    header("location: log-page.php?error=Không được để trống!");
-                }else{
-                    header("location: log-page.php?error=Tài khoản mật khẩu sai hoặc không tồn tại!");
-                }
-            }
+           include "./login.php";
         }
     ?>
     <div id="form-user">
         <form id="form-login" action="log-page.php?" method="post" >
             <h2>Đăng Nhập</h2>
+            <?php if(isset($_GET['error'])){  echo "<p style= 'color: red; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightblue; width: 70%;'>". $_GET['error'] . "</p>"; } ?>
+            <?php if(isset($_GET['success'])){  echo "<p style= 'color: green; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightgreen; width: 70%;'>". $_GET['success'] . "</p>"; } ?>
             <input class="username" name="umail" type="email" placeholder="Nhập email">
             <input class="psw" name="upsw" type="password" placeholder="Nhập mật khẩu">
             <div class="btn-form">
@@ -67,33 +55,12 @@
                 <button>
                     <a href="../../index.html">Quay Lại Trang Chủ</a>
                 </button>
-                <?php if(isset($_GET['error'])){  echo "<p style= 'color: red; font-weight: 600; font-size: 16px;'>". $_GET['error'] . "</p>"; } ?>
-                <?php if(isset($_GET['success'])){  echo "<p style= 'color: green; font-weight: 600; font-size: 16px;'>". $_GET['success'] . "</p>"; } ?>
             </div>
         </form>
         
         <?php 
             if(isset($_POST['create'])){
-
-                $name = $_POST['urname'];
-                $mail = $_POST['urmail'];
-                $password = $_POST['urpsw'];
-                $phone = $_POST['phone'];
-                date_default_timezone_set("Asia/Ho_Chi_Minh");
-                $create = date("Y-m-d H:i:s");
-                
-                $sql = "INSERT INTO `tb_users`(`fullname`, `email`, `password`, `number_phone`, `create_at`, `role`) VALUES ('$name', '$mail', '$password', '$phone', '$create', 'User')";
-                
-                $sql_2 = "SELECT `email` FROM `tb_users` WHERE email = '$mail' ";
-                $check = mysqli_query($conn, $sql_2);
-                $row = mysqli_num_rows($check);
-    
-                if($row > 1){
-                    header("location: log-page.php?error=Tài khoản đã tồn tại!");
-                }else{
-                    mysqli_query($conn, $sql);
-                    header("location: log-page.php?success=Đăng ký thành công!");
-                }
+               include "./register.php";
             }
         ?>
         <form id="form-register" action="log-page.php?register" method="post">

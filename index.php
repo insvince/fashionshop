@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include "./php/config.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,29 +23,34 @@
             <div class="menu-content">
                 <li title="Bộ Sưu Tập"><a href="./p/collection/collection.html">Bộ sưu tập</a></li>
                 <li title="Sản Phẩm"><a href="./p/product/product.php">Sản Phẩm</a></li>
-                <li title="Trang Chủ"><a class="logo" href="./index.html"><img src="./img/Layer1.png" alt=""></a></li>
+                <li title="Trang Chủ"><a class="logo" href="./index.php"><img src="./img/Layer1.png" alt=""></a></li>
                 <li title="Tin Tức"><a href="./p/news/news.html">Tin Tức</a></li>
                 <li title="Giới Thiệu"><a href="./p/about/about.html">Giới Thiệu</a></li>
             </div>
         </ul>
 
         <ul class="tool-box">
-            <a href="./p/profile-user/info.html">
-                <button type="button">
-                    <i class="fas fa-user-circle"></i>
-                </button>
-            </a>
-            <a href="./p/log-page/#">
-                <button type="submit" name="dangxuat">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
-            </a>
+            <?php if(isset($_SESSION['user_mail'])) { ?>
+                <a href="./p/profile-user/info.html">
+                    <button type="button">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </a>
+                <a href="./p/log-page/logout.php">
+                    <button type="submit" name="dangxuat">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </a>
+            <?php }else{ ?>
             <a href="./p/log-page/log-page.php">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
-                </button></a>
+                </button>
+            </a>
+            <?php } ?>
+
             <a href="./p/cart-page/cart-page.html">
-                <button>
+                <button>                    
                     <i class="fas fa-shopping-cart"></i>
                 </button>
             </a>
