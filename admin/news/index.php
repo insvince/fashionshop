@@ -31,6 +31,15 @@
             height: 80px !important;
             width: 400px;
         }
+        .up{
+            background-color: lightgreen !important;
+            color: black !important;
+        }
+        .down{
+            background-color: lightcoral !important;
+            color: black !important;
+        }
+
     </style>
 </head>
 <body>
@@ -90,8 +99,8 @@
                         <td>13/02/2021</td>
                         <td>13:08:21</td>
                         <td><div class="edit">
-                            <button>Sửa</button>
-                            <button>Xóa</button>
+                            <button class="up">Sửa</button>
+                            <button class="down">Xóa</button>
                         </div></td>
                     </tr>
                     <tr>
@@ -107,8 +116,8 @@
                         <td>13/02/2021</td>
                         <td>13:08:21</td>
                         <td><div class="edit">
-                            <button>Sửa</button>
-                            <button>Xóa</button>
+                            <button class="up">Sửa</button>
+                            <button class="down">Xóa</button>
                         </div></td>
 
                     </tr>
@@ -125,8 +134,8 @@
                         <td>13/02/2021</td>
                         <td>13:08:21</td>
                         <td><div class="edit">
-                            <button>Sửa</button>
-                            <button>Xóa</button>
+                            <button class="up">Sửa</button>
+                            <button class="down">Xóa</button>
                         </div></td>
                     </tr>
                     <tr>
@@ -142,8 +151,8 @@
                         <td>13/02/2021</td>
                         <td>13:08:21</td>
                         <td><div class="edit">
-                            <button>Sửa</button>
-                            <button>Xóa</button>
+                        <button class="up">Sửa</button>
+                            <button class="down">Xóa</button>
                         </div></td>
                     </tr>
                 </table>

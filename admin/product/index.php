@@ -32,6 +32,14 @@
         .button-add button{
             cursor: pointer;
         }
+        .up{
+            background-color: lightgreen !important;
+            color: black !important;
+        }
+        .down{
+            background-color: lightcoral !important;
+            color: black !important;
+        }
     </style>
 </head>
 <body>
@@ -89,8 +97,8 @@
                         <td>Size</td>
                         <td>Mã danh mục</td>
                         <td><div class="edit">
-                            <button>Sửa</button>
-                            <button>Xóa</button>
+                        <button class="up">Sửa</button>
+                            <button class="down">Xóa</button>
                         </div></td>
                     </tr>
                     <tr>
@@ -103,8 +111,8 @@
                         <td>Size</td>
                         <td>Mã danh mục</td>
                         <td><div class="edit">
-                            <button>Sửa</button>
-                            <button>Xóa</button>
+                        <button class="up">Sửa</button>
+                            <button class="down">Xóa</button>
                         </div></td>
 
                     </tr>
@@ -118,8 +126,8 @@
                         <td>Size</td>
                         <td>Mã danh mục</td>
                         <td><div class="edit">
-                            <button>Sửa</button>
-                            <button>Xóa</button>
+                        <button class="up">Sửa</button>
+                            <button class="down">Xóa</button>
                         </div></td>
                     </tr>
                     <tr>
@@ -132,8 +140,8 @@
                         <td>Size</td>
                         <td>Mã danh mục</td>
                         <td><div class="edit">
-                            <button>Sửa</button>
-                            <button>Xóa</button>
+                        <button class="up">Sửa</button>
+                            <button class="down">Xóa</button>
                         </div></td>
                     </tr>
                     <tr>
@@ -146,8 +154,8 @@
                         <td>Size</td>
                         <td>Mã danh mục</td>
                         <td><div class="edit">
-                            <button>Sửa</button>
-                            <button>Xóa</button>
+                        <button class="up">Sửa</button>
+                            <button class="down">Xóa</button>
                         </div></td>
                     </tr>
                 </table>

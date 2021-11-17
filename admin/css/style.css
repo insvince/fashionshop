@@ -61,6 +61,7 @@ body{
 #nav-bar .bar-content .avatar{
     width: 40%;
     margin: 0 auto;
+    text-align: center;
 }
 #nav-bar .bar-content .avatar i{
     color: whitesmoke;
@@ -142,4 +143,4 @@ body{
     background-color: black;
     color: whitesmoke;
 }
-
+/* button admin */

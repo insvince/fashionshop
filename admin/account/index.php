@@ -20,11 +20,11 @@
             width: 90%;
         }
         .up{
-            background-color: #03ff00 !important;
+            background-color: lightgreen !important;
             color: black !important;
         }
         .down{
-            background-color: #ff4040 !important;
+            background-color: lightcoral !important;
             color: black !important;
         }
         .button-add button{
@@ -87,8 +87,8 @@
                         <td>21/09/2021</td>
                         <td>Admin</td>
                         <td><div class="edit">
-                            <button class="up">Thăng</button>
-                            <button class="down">Giáng</button>
+                            <button class="up">Promote</button>
+                            <button class="down">Demote</button>
                         </div></td>
                     </tr>
                     <tr>
@@ -101,8 +101,8 @@
                         <td>21/09/2021</td>
                         <td>Admin</td>
                         <td><div class="edit">
-                            <button class="up">Thăng</button>
-                            <button class="down">Giáng</button>
+                            <button class="up">Promote</button>
+                            <button class="down">Demote</button>
                         </div></td>
 
                     </tr>
@@ -116,8 +116,8 @@
                         <td>21/09/2021</td>
                         <td>Admin</td>
                         <td><div class="edit">
-                            <button class="up">Thăng</button>
-                            <button class="down">Giáng</button>
+                            <button class="up">Promote</button>
+                            <button class="down">Demote</button>
                         </div></td>
                     </tr>
                     

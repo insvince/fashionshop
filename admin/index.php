@@ -65,11 +65,18 @@
         </div>
         <div id="nav-bar">
             <div class="bar-content">
-                <div class="avatar">
+                <div class="avatar" style="text-align: center;">
                     <!-- <img src="/img/logo.png" alt=""> -->
                     <i class="fas fa-user-tie"></i>
-                    <p>
-                       
+                    <?php
+                        $session = $_SESSION['a_mail'];
+
+                        $sql = "SELECT * FROM tb_users WHERE email = '$session' ";
+                        $rs = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_array($rs);
+                    ?>  
+                    <p style="margin: 10px;">
+                        <?=$row['fullname'];?>
                     </p>
                 </div>
                 <div class="list-edit">
