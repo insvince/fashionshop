@@ -68,7 +68,9 @@
                 <div class="avatar">
                     <!-- <img src="/img/logo.png" alt=""> -->
                     <i class="fas fa-user-tie"></i>
-                    <p >Admin</p>
+                    <p>
+                       
+                    </p>
                 </div>
                 <div class="list-edit">
                     <li><a class="active">Thống Kê</a></li>
