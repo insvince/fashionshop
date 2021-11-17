@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include "../../php/config.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,21 +28,24 @@
             </div>
         </ul>
         <ul class="tool-box">
-            <a href="../profile-user/info.html">
-            <button type="button">
-                <i class="fas fa-user-circle"></i>
-            </button>
-            </a>
-            <a href="../log-page/#">
-                <button type="submit" name="dangxuat">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
-            </a>
-            <a href="../log-page/log-page.php">
-                <button type="button">
-                    <i class="fas fa-user-circle"></i>
-                </button>
-            </a>
+            <?php if(isset($_SESSION['user_mail'])){ ?>
+                <a href="../profile-user/info.html">
+                    <button type="button">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </a>
+                <a href="../log-page/logout.php">
+                    <button type="submit" name="dangxuat">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </a>
+            <?php }else{ ?>
+                <a href="../log-page/log-page.php">
+                    <button type="button">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </a>
+            <?php } ?>
             <a href="../cart-page/cart-page.html">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
@@ -69,73 +76,37 @@
     
     <div id="main">
         <div class="main-product">
-            <div class="list-type">
-                <p style="font-size: 2rem;">Menu</p>
-                <div class="tab">
-                    <button class="tab-link" onclick="openType(event, 'nam')" id="defaultOpen">Đồ Nam</a></button>
-                    <button class="tab-link" onclick="openType(event, 'nu')">
-                        <a href="./">Đồ Nữ</a>
-                    </button>
+            <ul class="type-select">
+                <div class="tab-content" id="nam">
+                    <h4>Đồ Nam</h4>
+                    
+                    <div class="item-div">
+                        <div class="product">
+                            <div class="product-select">
+                                <a href="../product/detail-product/detail-product.html">
+                                    <img
+                                    src="../../img/aothunnam.jpg" alt="product">
+                                </a>
+                                    
+                                <div  class="button-menu"  >
+                                    <button type="button" name="addcart" onclick="addCart()">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                    <button type="button" name="addfavourite">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <h5>
+                                Tên
+                            </h5>
+                            <p>
+                                100000 <u>đ</u>
+                            </p> 
+                        </div>
+                    </div>
                 </div>
-                <ul class="type-select">
-                    <div class="tab-content" id="nam">
-                        <h4>Đồ Nam</h4>
-                      
-                        <div class="item-div">
-                            <div class="product">
-                                <div class="product-select">
-                                    <a href="../product/detail-product/detail-product.html">
-                                        <img
-                                        src="../../img/aothunnam.jpg" alt="product">
-                                    </a>
-                                        
-                                    <div  class="button-menu"  >
-                                        <button type="button" name="addcart" onclick="addCart()">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </button>
-                                        <button type="button" name="addfavourite">
-                                            <i class="far fa-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <h5>
-                                    Tên
-                                </h5>
-                                <p>
-                                    100000 <u>đ</u>
-                                </p> 
-                            </div>
-                        </div>
-                    </div>
-                </ul>
-                <ul class="type-select">
-                    <div class="tab-content" id="nu">
-                        <h4>Đồ Nữ</h4>
-                        <div class="item-div">
-                            <div class="product">
-                                <div class="product-select">
-                                    <a href="../product/detail-product/detail-product.html"><img
-                                        src="../../img/aothunnu.jpg"
-                                        alt="product"></a>
-                                    <div  class="button-menu"  >
-                                        <button type="submit" name="addcart" onclick="addcart()">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </button>
-                                        <button type="button" name="addfavourite">
-                                            <i class="far fa-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <h5>
-                                    Tên
-                                </h5>
-                                <p>
-                                    100000 <u>đ</u>
-                                </p> 
-                            </div>
-                        </div>
-                    </div>
-                </ul>
+            </ul>
             </div>
             <div class="btn-next" >
                 <button>Xem Thêm</button>

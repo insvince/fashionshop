@@ -9,8 +9,8 @@
     $row = mysqli_fetch_array($rs);
 
     if($row > 0){
-        $_SESSION['user_mail'] = $mail;
         if($row['role'] == "User"){
+            $_SESSION['user_mail'] = $mail;
             header("location: .../../index.php");
         }
     }else{

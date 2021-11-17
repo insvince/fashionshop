@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    include "../php/config.php";
+    if(!isset($_SESSION['a_mail'])){
+        header("location: ./login/login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

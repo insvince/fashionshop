@@ -31,22 +31,22 @@
         </ul>
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])){ ?>
-            <a href="../profile-user/info.html">
-                <button type="button">
-                    <i class="fas fa-user-circle"></i>
-                </button>
-            </a>
-            <a href="../log-page/#">
-                <button type="submit" name="dangxuat">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
-            </a>
+                <a href="../profile-user/info.html">
+                    <button type="button">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </a>
+                <a href="../log-page/logout.php">
+                    <button type="submit" name="dangxuat">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </a>
             <?php }else{ ?>
-            <a href="../log-page/log-page.php">
-                <button type="button">
-                    <i class="fas fa-user-circle"></i>
-                </button>
-            </a>
+                <a href="../log-page/log-page.php">
+                    <button type="button">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </a>
             <?php } ?>
             <a href="../cart-page/cart-page.html">
                 <button>
