@@ -129,10 +129,6 @@ body{
     padding: 10px 20px;
 }
 
-#container .content td:last-child{
-    height: 50px !important;
-    max-height: 120px !important;
-}
 #container .button-add{
     width: 90%;
     margin: 20px 0;
@@ -145,4 +141,7 @@ body{
     border-radius: 10px;
     background-color: black;
     color: whitesmoke;
+}
+#container td:last-child{
+    height: 50px;
 }

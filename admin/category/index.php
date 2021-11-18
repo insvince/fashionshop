@@ -49,7 +49,10 @@
             color: black !important;
             font-weight: 600;
         }
-        
+        #container td:last-child{
+            height: 50px;
+            max-height: auto;
+        }
     </style>
 </head>
 <body>
@@ -112,9 +115,8 @@
                     <?php 
                         $sql = "SELECT * FROM tb_category ORDER BY id ASC ";
                         $rs = mysqli_query($conn, $sql);
-                        
-                        
                         while($row = mysqli_fetch_array($rs)){
+                                
                     ?>
                     <tr>
                         <td><?=$row['id'];?></td>
@@ -122,10 +124,10 @@
                         <td><?= ( ($row['name'] == "Bộ Sưu Tập" || $row['name'] == "Mới") ? "Nổi Bật" : "Đang Bán") ?></td>
                         <td>
                             <div class="edit">
-                                <a class="up" href="">
+                                <a class="up" href="./edit.php?this_id=<?=$row['id']?>">
                                     Sửa
                                 </a>
-                                <a class="down" href="">
+                                <a class="down" href="./delete.php?this_id=<?=$row['id']?>">
                                     Xóa
                                 </a>
                             </div>
