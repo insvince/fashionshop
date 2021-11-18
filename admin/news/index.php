@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include_once "../../php/config.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +44,10 @@
             background-color: lightcoral !important;
             color: black !important;
         }
-
+        button, a{
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -86,75 +94,32 @@
                         <th>Giờ</th>
                         <th>Tùy Chỉnh</th>
                     </tr>
+                    <?php 
+                        $sql = "SELECT * FROM `tb_post` ORDER BY id ASC ";
+                        $rs = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_array($rs)){
+                        $create = $row['create_at'];
+                        $formatDate = date('d/m/Y',strtotime($create));
+                        $formatTime = date('H:i:s',strtotime($create));
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>News</td>
-                        <td>Thời Trang</td>
-                        <td >
-                            <p class="scroll">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ex exercitationem consequuntur reiciendis laborum dolor quasi delectus nulla ipsam voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aperiam repudiandae ex voluptas inventore id assumenda numquam qui, laborum eum?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe eveniet culpa libero consequatur harum! Eius perferendis, sed necessitatibus adipisci eos eveniet, modi amet atque sapiente nihil aut itaque alias quod!
-                            </p>
-                        </td>
-                        <td>Admin</td>
-                        <td>13/02/2021</td>
-                        <td>13:08:21</td>
+                        <td><?=$row['id']?></td>
+                        <td><?=$row['title']?></td>
+                        <td><?=$row['type']?></td>
+                        <td><?=$row['content']?></td>
+                        <td><?=$row['user_id']?></td>
+                        <td><?=$formatDate?></td>
+                        <td><?=$formatTime?></td>
                         <td><div class="edit">
-                            <button class="up">Sửa</button>
-                            <button class="down">Xóa</button>
+                            <a href="./edit.php?this_id=<?=$this_id?>">
+                                <button class="up">Sửa</button>
+                            </a>
+                            <a href="./delete.php?this_id=<?=$this_id?>">
+                                <button class="down">Xóa</button>
+                            </a>
                         </div></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>News</td>
-                        <td>Thời Trang</td>
-                        <td >
-                            <p class="scroll">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ex exercitationem consequuntur reiciendis laborum dolor quasi delectus nulla ipsam voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aperiam repudiandae ex voluptas inventore id assumenda numquam qui, laborum eum?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe eveniet culpa libero consequatur harum! Eius perferendis, sed necessitatibus adipisci eos eveniet, modi amet atque sapiente nihil aut itaque alias quod!
-                            </p>
-                        </td>
-                        <td>Admin</td>
-                        <td>13/02/2021</td>
-                        <td>13:08:21</td>
-                        <td><div class="edit">
-                            <button class="up">Sửa</button>
-                            <button class="down">Xóa</button>
-                        </div></td>
-
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>News</td>
-                        <td>Thời Trang</td>
-                        <td >
-                            <p class="scroll">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ex exercitationem consequuntur reiciendis laborum dolor quasi delectus nulla ipsam voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aperiam repudiandae ex voluptas inventore id assumenda numquam qui, laborum eum?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe eveniet culpa libero consequatur harum! Eius perferendis, sed necessitatibus adipisci eos eveniet, modi amet atque sapiente nihil aut itaque alias quod!
-                            </p>
-                        </td>
-                        <td>Admin</td>
-                        <td>13/02/2021</td>
-                        <td>13:08:21</td>
-                        <td><div class="edit">
-                            <button class="up">Sửa</button>
-                            <button class="down">Xóa</button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>News</td>
-                        <td>Thời Trang</td>
-                        <td >
-                            <p class="scroll">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ex exercitationem consequuntur reiciendis laborum dolor quasi delectus nulla ipsam voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aperiam repudiandae ex voluptas inventore id assumenda numquam qui, laborum eum?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe eveniet culpa libero consequatur harum! Eius perferendis, sed necessitatibus adipisci eos eveniet, modi amet atque sapiente nihil aut itaque alias quod!
-                            </p>
-                        </td>
-                        <td>Admin</td>
-                        <td>13/02/2021</td>
-                        <td>13:08:21</td>
-                        <td><div class="edit">
-                        <button class="up">Sửa</button>
-                            <button class="down">Xóa</button>
-                        </div></td>
-                    </tr>
+                    <?php } ?>
                 </table>
                 <div class="button-add">
                     <button>Thêm</button>

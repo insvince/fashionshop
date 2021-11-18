@@ -53,6 +53,9 @@
             height: 50px;
             max-height: auto;
         }
+        th,td  {
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>

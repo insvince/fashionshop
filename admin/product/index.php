@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    include_once "../../php/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +28,7 @@
             margin: 50px auto !important;
             min-height: 600px;
             background-color: whitesmoke;
+            overflow-x: scroll;
         }
         .button-add {
             width: 90%;
@@ -39,6 +44,17 @@
         .down{
             background-color: lightcoral !important;
             color: black !important;
+        }   
+        table{
+            text-align: center;
+        }
+        #container th,td, td:last-child {
+            height: 50px;
+            white-space: nowrap;
+        }
+        button,a{
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -73,6 +89,8 @@
         </div>
         <div id="container">
             <div class="content">
+                <?php if(isset($_GET['error'])){  echo "<p style= 'margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;'>". $_GET['error'] . "</p>"; } 
+                if(isset($_GET['success'])){  echo "<p style= 'margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;'>". $_GET['success'] . "</p>"; } ?>
                 <table>
                     <!-- row -->
                     <tr>
@@ -83,84 +101,38 @@
                         <th>Hình Ảnh</th>
                         <th>Mô Tả</th>
                         <th>Giá</th>
-                        <th>Kích Thước</th>
                         <th>Mã Danh Mục</th>
                         <th>Tùy Chỉnh</th>
                     </tr>
+                    <?php 
+                        $sql = "SELECT * FROM `tb_product` ORDER BY id ASC ";
+                        $rs = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_array($rs)){
+                                
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>Áo Nam</td>
-                        <td>99</td>
-                        <td><img src="../../img/aothunnam.jpg" alt="logo"></td>
-                        <td>Mô tả</td>
-                        <td>Giá</td>
-                        <td>Size</td>
-                        <td>Mã danh mục</td>
+                        <td><?= $row['id'] ?></td>
+                        <td><?= $row['name'] ?></td>
+                        <td><?= $row['stock'] ?></td>
+                        <td><img src="../../img/<?= $row['img'] ?>" alt="product"></td>
+                        <td><?= $row['description'] ?></td>
+                        <td><?= $row['price'] ?></td>
+                        <td><?= $row['category_id'] ?></td>
                         <td><div class="edit">
-                        <button class="up">Sửa</button>
-                            <button class="down">Xóa</button>
+                            <a href="./edit.php?this_id=<?=$row['id']; ?>">
+                                <button class="up">Sửa</button>
+                            </a>
+                            <a href="./delete.php?this_id=<?=$row['id']; ?>">
+                                <button class="down">Xóa</button>
+                            </a>
                         </div></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Áo Nam</td>
-                        <td>99</td>
-                        <td><img src="../../img/aothunnam.jpg" alt="logo"></td>
-                        <td>Mô tả</td>
-                        <td>Giá</td>
-                        <td>Size</td>
-                        <td>Mã danh mục</td>
-                        <td><div class="edit">
-                        <button class="up">Sửa</button>
-                            <button class="down">Xóa</button>
-                        </div></td>
-
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Áo Nam</td>
-                        <td>99</td>
-                        <td><img src="../../img/aothunnam.jpg" alt="logo"></td>
-                        <td>Mô tả</td>
-                        <td>Giá</td>
-                        <td>Size</td>
-                        <td>Mã danh mục</td>
-                        <td><div class="edit">
-                        <button class="up">Sửa</button>
-                            <button class="down">Xóa</button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Áo Nam</td>
-                        <td>99</td>
-                        <td><img src="../../img/aothunnam.jpg" alt="logo"></td>
-                        <td>Mô tả</td>
-                        <td>Giá</td>
-                        <td>Size</td>
-                        <td>Mã danh mục</td>
-                        <td><div class="edit">
-                        <button class="up">Sửa</button>
-                            <button class="down">Xóa</button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Áo Nam</td>
-                        <td>99</td>
-                        <td><img src="../../img/aothunnam.jpg" alt="logo"></td>
-                        <td>Mô tả</td>
-                        <td>Giá</td>
-                        <td>Size</td>
-                        <td>Mã danh mục</td>
-                        <td><div class="edit">
-                        <button class="up">Sửa</button>
-                            <button class="down">Xóa</button>
-                        </div></td>
-                    </tr>
+                    <?php } ?>
                 </table>
                 <div class="button-add">
-                    <button>Thêm</button>
+                    <a href="./add.php">
+                        <button>Thêm</button>
+                    </a>
                 </div>
             </div>
         </div>
