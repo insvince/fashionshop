@@ -24,16 +24,34 @@
             border-radius: 15px;
             width: 90%;
         }
-        .up{
-            background-color: lightgreen !important;
-            color: black !important;
-        }
-        .down{
-            background-color: lightcoral !important;
-            color: black !important;
-        }
         .button-add button{
             cursor: pointer;
+        }
+        a{
+            text-decoration: none;
+        }
+       
+        .up{
+            border: 1px solid;
+            border-radius: 5px;
+            padding: 10px 10px;
+            margin: 10px;
+            background-color: lightgreen !important;
+            color: black !important;
+            font-weight: 600;
+        }
+        .down{
+            border: 1px solid;
+            border-radius: 5px;
+            padding: 10px 10px;
+            margin: 10px;
+            background-color: lightcoral !important;
+            color: black !important;
+            font-weight: 600;
+        }
+        #container td:last-child{
+            height: 50px;
+            max-height: auto;
         }
     </style>
 </head>
@@ -94,7 +112,7 @@
                         <th>Tùy Chỉnh</th>
                     </tr>
                     <?php 
-                        $sql = "SELECT * FROM `tb_users` ORDER BY `id` ASC ";
+                        $sql = "SELECT * FROM `tb_users` ORDER BY `role` ASC, `id` ASC ";
                         $rs = mysqli_query($conn, $sql);
                         while( $row = mysqli_fetch_array($rs) ){
                             $date = $row['create_at'];
@@ -112,14 +130,20 @@
                         <td><?= $formatDate  ?></td>
                         <td><?= $row['role'] ?></td>
                         <td><div class="edit">
-                            <button class="up">Promote</button>
-                            <button class="down">Demote</button>
+                            <a href="./promote.php?this_id=<?=$row['id'] ?>">
+                                <button class="up">Promote</button>
+                            </a>
+                            <a href="./demote.php?this_id=<?=$row['id'] ?>">
+                                <button class="down">Demote</button>
+                            </a>
                         </div></td>
                     </tr>
                     <?php } ?>
                 </table>
                 <div class="button-add">
-                    <button>Thêm</button>
+                    <a href="./add.php">
+                        <button>Thêm</button>
+                    </a>
                 </div>
             </div>
            
