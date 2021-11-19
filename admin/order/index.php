@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    include_once "../../php/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +21,17 @@
             border-radius: 15px;
             margin: 50px auto !important;
         }
-        button.accept{
-            background-color: #03ff00 !important;
+        .accept{
+            background-color: lightgreen !important;
             color: black !important;
         }
-        button.cancel{
-            background-color: #ff4040 !important;
+        .cancel{
+            background-color: lightcoral !important;
             color: black !important;
+        }
+        button, a{
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -43,7 +51,16 @@
                 <div class="avatar">
                     <!-- <img src="/img/logo.png" alt=""> -->
                     <i class="fas fa-user-tie"></i>
-                    <p >Admin</p>
+                    <?php
+                        $session = $_SESSION['a_mail'];
+
+                        $sql = "SELECT * FROM tb_users WHERE email = '$session' ";
+                        $rs = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_array($rs);
+                    ?>  
+                    <p style="margin: 10px;">
+                        <?=$row['fullname'];?>
+                    </p>
                 </div>
                 <div class="list-edit">
                     <li><a href="../index.php" href="">Thống Kê</a></li>
@@ -68,44 +85,44 @@
                         <th>Số Lượng</th>
                         <th>Ngày Đặt</th>
                         <th>Giờ Đặt</th>
+                        <th>Trạng Thái</th>
                         <th>Tùy Chỉnh</th>
                     </tr>
+                    <?php 
+                        $sql = "SELECT * FROM `tb_billing`
+                        INNER JOIN `tb_users` ON `tb_users`.id = `tb_billing`.user_id
+                        INNER JOIN `tb_product` ON `tb_product`.id = `tb_billing`.product_id
+                        ORDER BY `tb_billing`.id_bill ASC " ;
+                        $rs = mysqli_query($conn, $sql);
+
+                        while($row = mysqli_fetch_array($rs)){
+                            $create = $row['create_at'];
+                            $formatDate = date('d/m/Y',strtotime($create));
+                            $formatTime = date('H:i:s',strtotime($create));
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>10/11/2021</td>
-                        <td>21:32:22</td>
+                        <td><?= $row['id_bill'] ?></td>
+                        <td><?= `tb_users`.$row['email'] ?></td>
+                        <td><?= `tb_product`.$row['name'] ?></td>
+                        <td><?= `tb_billing`.$row['amout'] ?></td>
+                        <td><?= $formatDate ?></td>
+                        <td><?= $formatTime ?></td>
+                        <td><?= $row['status'] ?></td>
                         <td><div class="edit">
-                            <button class="accept">Nhận</button>
-                            <button class="cancel">Hủy</button>
+                            <?php if($row['status'] != ""){
+                                echo "<p style= 'text-align: center'>Đã ".$row['status']. "</p>";                                
+                            ?>
+                            <?php }else{ ?>
+                                <a href="./accept.php?this_id=<?=$row['id_bill']?>">
+                                <button class="accept">Nhận</button>
+                                </a>
+                                <a href="./cancel.php?this_id=<?=$row['id_bill']?>">
+                                    <button class="cancel">Hủy</button>
+                                </a>
+                            <?php } ?>
                         </div></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>10/11/2021</td>
-                        <td>21:32:22</td>
-                        <td><div class="edit">
-                            <button class="accept">Nhận</button>
-                            <button class="cancel">Hủy</button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>10/11/2021</td>
-                        <td>21:32:22</td>
-                        <td><div class="edit">
-                            <button class="accept">Nhận</button>
-                            <button class="cancel">Hủy</button>
-                        </div></td>
-                    </tr>
+                 <?php } ?>
                 </table>
             </div>
             

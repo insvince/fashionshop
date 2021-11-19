@@ -40,6 +40,7 @@
                 if($row > 0){
                     if($row2['role'] == "Admin"){
                         $_SESSION['a_mail'] = $a_mail;
+                        $_SESSION['a_fullname'] = $row2['fullname'];
                         header("location: ../index.php");
                     }
                 }else{

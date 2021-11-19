@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once "../../php/config.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +67,16 @@
                 <div class="avatar">
                     <!-- <img src="/img/logo.png" alt=""> -->
                     <i class="fas fa-user-tie"></i>
-                    <p >Admin</p>
+                    <?php
+                        $session = $_SESSION['a_mail'];
+
+                        $sql = "SELECT * FROM tb_users WHERE email = '$session' ";
+                        $rs = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_array($rs);
+                    ?>  
+                    <p style="margin: 10px;">
+                        <?=$row['fullname'];?>
+                    </p>
                 </div>
                 <div class="list-edit">
                     <li><a href="../index.php" href="">Thống Kê</a></li>
@@ -81,6 +91,9 @@
         </div>
         <div id="container">
             <div class="content">
+                <?php if(isset($_GET['error'])){  echo "<p style= 'margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;'>". $_GET['error'] . "</p>"; } 
+                 if(isset($_GET['success'])){  echo "<p style= 'margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;'>". $_GET['success'] . "</p>"; } ?>
+                <table style= "max-width: 50%; margin: 0 auto">
                 <table>
                     <!-- row -->
                     <tr>
@@ -95,8 +108,10 @@
                         <th>Tùy Chỉnh</th>
                     </tr>
                     <?php 
-                        $sql = "SELECT * FROM `tb_post` ORDER BY id ASC ";
+
+                        $sql = "SELECT * FROM `tb_users` RIGHT JOIN tb_post ON `tb_users`.id = `tb_post`.user_id ORDER BY `tb_post`.id ASC" ;
                         $rs = mysqli_query($conn, $sql);
+
                         while($row = mysqli_fetch_array($rs)){
                         $create = $row['create_at'];
                         $formatDate = date('d/m/Y',strtotime($create));
@@ -107,14 +122,14 @@
                         <td><?=$row['title']?></td>
                         <td><?=$row['type']?></td>
                         <td><?=$row['content']?></td>
-                        <td><?=$row['user_id']?></td>
+                        <td><?=$row['fullname']?></td>
                         <td><?=$formatDate?></td>
                         <td><?=$formatTime?></td>
                         <td><div class="edit">
-                            <a href="./edit.php?this_id=<?=$this_id?>">
+                            <a href="./edit.php?this_id=<?=$row['id']?>">
                                 <button class="up">Sửa</button>
                             </a>
-                            <a href="./delete.php?this_id=<?=$this_id?>">
+                            <a href="./delete.php?this_id=<?=$row['id']?>">
                                 <button class="down">Xóa</button>
                             </a>
                         </div></td>
@@ -122,7 +137,9 @@
                     <?php } ?>
                 </table>
                 <div class="button-add">
-                    <button>Thêm</button>
+                    <a href="./add.php">
+                        <button>Thêm</button>
+                    </a>
                 </div>
             </div>
         </div>

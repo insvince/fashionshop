@@ -32,22 +32,18 @@
         }
        
         .up{
-            border: 1px solid;
             border-radius: 5px;
             padding: 10px 10px;
             margin: 10px;
             background-color: lightgreen !important;
             color: black !important;
-            font-weight: 600;
         }
         .down{
-            border: 1px solid;
             border-radius: 5px;
             padding: 10px 10px;
             margin: 10px;
             background-color: lightcoral !important;
             color: black !important;
-            font-weight: 600;
         }
         #container td:last-child{
             height: 50px;
