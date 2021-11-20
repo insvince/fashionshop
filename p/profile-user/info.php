@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    include_once "../../php/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,112 +20,124 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li title="Bộ Sưu Tập"><a href="../collection/collection.html">Bộ sưu tập</a></li>
-                <li title="Sản Phẩm"><a href="../product/product.php">Sản Phẩm</a></li>
-                <li title="Trang Chủ"><a class="logo" href="../../index.html"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li title="Tin Tức"><a href="../news/news.html">Tin Tức</a></li>
-                <li title="Giới Thiệu"><a href="../about/about.html">Giới Thiệu</a></li>
+                <li title="Bộ Sưu Tập"><a href="../collection/collection.php">Bộ sưu tập</a></li>
+                <li title="Sản Phẩm"><a href="..../product/product.php">Sản Phẩm</a></li>
+                <li title="Trang Chủ"><a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a></li>
+                <li title="Tin Tức"><a href="../news/news.php">Tin Tức</a></li>
+                <li title="Giới Thiệu"><a href="../about/about.php">Giới Thiệu</a></li>
             </div>
         </ul>
         <ul class="tool-box">
-            <a href="../profile-user/info.html">
+            <?php if(isset($_SESSION['user_mail'])){ ?>
+            <a href="../profile-user/info.php">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
                 </button>
             </a>
-            <a href="../log-page/#">
+            <a href="../log-page/logout.php">
                 <button type="submit" name="dangxuat">
                     <i class="fas fa-sign-out-alt"></i>
                 </button>
             </a>
+            <?php }else{ ?>
             <a href="../log-page/log-page.php">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
-                </button></a>
-            <a href="../cart-page/cart-page.html">
+                </button>
+            </a>
+            <?php } ?>
+            <a href="../cart-page/cart-page.php">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
                 </button>
             </a>
-            <button><i class="fas fa-search"></i>
-                <div class="modal-search">
-                    
-                </div>
+            <button type="button" onclick="openSearch()">
+                <i class="fas fa-search"></i>
             </button>
-        </ul>
-    </div>
+            <div style="display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;" id="modal-search">
+                
+                <form action="../search/search_item.php" method="get" style="display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px ">
+                    <input name="name_search" type="text" style="width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px">
+                    <input type="submit" name="search" value="Tìm kiếm" style="padding: 10px 5px; margin: 0 10px; border-radius: 5px">
+                </form>
 
+            </div>
+                
+        </ul>
+        <div id="overlay" style="display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;" onclick="closeSearch()"></div>
+    </div>
+        
     <div id="main">
         <div class="info-content">
             <h4>Hồ Sơ Của Bạn</h4>
+            <?php if(isset($_GET['error'])){  echo "<p style= 'margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightblue; width: 40%;'>". $_GET['error'] . "</p>"; } ?>
+            <?php if(isset($_GET['success'])){  echo "<p style= 'margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightgreen; width: 40%;'>". $_GET['success'] . "</p>"; } ?>
            <div class="form-content">
-            <form action="">
+               <?php 
+                    $mail = $_SESSION['user_mail'];
+                    $sql = "SELECT * FROM `tb_users` WHERE `email` = '$mail' ";
+                    $rs = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_array($rs);
+               ?>
+            <form action="./edit.php?action" method="post">
                 <div class="contain">
                     <div class="left">
                         <label for="">Tên</label>
                     </div>
                     <div class="right">
-                        Phước Huy
+                        <?=$row['fullname']?>
                     </div>
-                    <button>Sửa</button>
                 </div>
                 <div class="contain">
                     <div class="left">
                         <label for="">Mật Khẩu</label>
                     </div>
                     <div class="right">
-                        ********
+                        <input type="password"  value="<?= strlen($row['password']) < 8 ? "****************" : "****************" ?>" disabled style="background: none; border: none; font-size: 24px; color: black;">
                     </div>
-                    <button>Sửa</button>
                 </div>
                 <div class="contain">
                     <div class="left">
                         <label for="">Ngày Sinh</label>
                     </div>
                     <div class="right">
-                        24/06/2000
+                        <?=$row['dob'] == NULL ? "Chưa nhập" : $row['dob'] ?>
                     </div>
-                    <button>Sửa</button>
                 </div>
                 <div class="contain">
                     <div class="left">
                         <label for="">Địa Chỉ</label>
                     </div>
                     <div class="right">
-                        Nguyễn Tri Phương, P.12, Quận 10.
+                        <?=$row['address'] == NULL ? "Chưa nhập" : $row['address'] ?>
                     </div>
-                    <button>Sửa</button>
                 </div>
                 <div class="contain">
                     <div class="left">
                         <label for="">Email</label>
                     </div>
                     <div class="right">
-                        phuochuy1xxx@gmail.com
+                        <?=$row['email']?>
                     </div>
-                    <button>Sửa</button>
                 </div>
                 <div class="contain">
                     <div class="left">
                         <label for="">Số Điện Thoại</label>
                     </div>
                     <div class="right">
-                        0354449xxx
+                        <?=$row['number_phone']?>
                     </div>
-                    <button>Sửa</button>
                 </div>
                 <div class="contain">
                     <div class="left">
                         <label for="">Ngày tạo </label>
                     </div>
                     <div class="right">
-                        28/10/2021
+                        <?= $formatDate = date('d/m/Y',strtotime($row['create_at']));?>
                     </div>
-                    <button>Sửa</button>
                 </div>
                 <div class="contain">
-                    
-                    <button class="save">Lưu</button>
+                    <button class="edit" name="edit">Sửa</button>
                 </div>
             </form>
            </div>
@@ -160,7 +176,7 @@
             </div>
         </div>
     </div>
-
+      
 </body>
-
+<script src="../../js/search.js"></script>
 </html>

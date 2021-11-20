@@ -124,42 +124,21 @@ body{
     text-decoration: underline;
     color: bisque;
 }
-#navagation .best-seller{
-    display: flex;
-    justify-content: space-evenly;
-    text-align: center;
-    flex-direction: column;
-    padding:50px;
-}
-#navagation .new-product{
-    display: flex;
-    justify-content: space-evenly;
-    text-align: center;
-    flex-direction: column;
-    padding:50px;
-}
-#navagation  .product-row{
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-    margin: 0 auto;
-}
-#navagation  .product-row .product{
-    width: 40%;
-}
-#navagation .product-row .product .product-select{
+
+
+#navagation  .product .product-select{
     position: relative;
-    display: flex;
 }
-#navagation .product-row .product .product-select .button-menu{
+#navagation  .product .product-select .button-menu{
     width: 100%;
     position: absolute;
     display: flex;
-    bottom: 2px;
+    bottom: 5px;
     transition: .3s ease-in;
     opacity: 0;
+    justify-content: center;
 }
-#navagation .product-row .product .product-select .button-menu button{
+#navagation  .product .product-select .button-menu button{
     width: 79px;
     margin: 0px 60px;
     padding: 20px;
@@ -168,13 +147,13 @@ body{
     background-color: #ffffff80;
     cursor: pointer;
 }
-#navagation .product-row .product .product-select .button-menu button:hover{
+#navagation  .product .product-select .button-menu button:hover{
     background-color: #ffffffd0;
 }
-#navagation .product-row .product .product-select .button-menu.active{
+#navagation  .product .product-select .button-menu.active{
     opacity: 1;
 }
-#navagation  .product-row img{
+#navagation   img{
     width: 100%;
     height: 100%;
     cursor: pointer;
@@ -221,6 +200,9 @@ body{
     font-size: 1.5rem;
     margin-bottom: 10px;
     float: left;
+    padding: 0;
+    background: none;
+    text-align: center;
 }
 #footer .footer-content .logo{
     width: 300px;
@@ -243,6 +225,9 @@ body{
 }
 #footer .footer-content .follow .content{
     float: left;
+}
+#footer .footer-content p{
+    text-align: left ;
 }
 #footer .footer-content .follow i{
     color: black;

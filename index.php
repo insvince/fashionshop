@@ -21,17 +21,17 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li title="Bộ Sưu Tập"><a href="./p/collection/collection.html">Bộ sưu tập</a></li>
+                <li title="Bộ Sưu Tập"><a href="./p/collection/collection.php">Bộ sưu tập</a></li>
                 <li title="Sản Phẩm"><a href="./p/product/product.php">Sản Phẩm</a></li>
                 <li title="Trang Chủ"><a class="logo" href="./index.php"><img src="./img/Layer1.png" alt=""></a></li>
-                <li title="Tin Tức"><a href="./p/news/news.html">Tin Tức</a></li>
-                <li title="Giới Thiệu"><a href="./p/about/about.html">Giới Thiệu</a></li>
+                <li title="Tin Tức"><a href="./p/news/news.php">Tin Tức</a></li>
+                <li title="Giới Thiệu"><a href="./p/about/about.php">Giới Thiệu</a></li>
             </div>
         </ul>
 
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])) { ?>
-                <a href="./p/profile-user/info.html">
+                <a href="./p/profile-user/info.php">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
@@ -49,16 +49,24 @@
             </a>
             <?php } ?>
 
-            <a href="./p/cart-page/cart-page.html">
+            <a href="./p/cart-page/cart-page.php">
                 <button>                    
                     <i class="fas fa-shopping-cart"></i>
                 </button>
             </a>
-            <button><i class="fas fa-search"></i>
-                <div class="modal-search">
-                    
-                </div>
+            <button type="button" onclick="openSearch()">
+                <i class="fas fa-search"></i>
             </button>
+            <div style="display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;" id="modal-search">
+                
+                <form action="../search/search_item.php" method="get" style="display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px;">
+                    <input name="name_search" type="text" style="width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px">
+                    <input type="submit" name="search" value="Tìm kiếm" style="padding: 10px 5px; margin: 0 10px; border-radius: 5px">
+                </form>
+
+            </div>
+                
+        <div id="overlay" style="display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;" onclick="closeSearch()"></div>
         </ul>
     </div>
 
@@ -78,155 +86,64 @@
 
     <div id="navagation">
         <h4>Best Seller</h4>
-        <div class="best-seller">
-            <div class="product-row">
-                <div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu"  >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
+        <div class="best-seller" style="max-width: 1200px; margin: 50px auto; min-height: 700px;" >
+            <?php
+                $sql = "SELECT * FROM `tb_product` ";
+                $rs = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_array($rs)) {
+            ?>
+            <div class="product" style="width: 33%; display: inline-flex; justify-content: center; flex-direction: column; text-align: center">
+                <div class="product-select">
+                    <a href="./p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>"><img
+                        src="./img/<?=$row['img']?>" alt="product" style="width: 300px">
+                    </a>
+                    <div class="button-menu"  >
+                        <a href="./p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
+                            <button>
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </a>
                     </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
                 </div>
-
-                <div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu" >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
-                    </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
-                </div>
+                <h5>
+                    <?=$row['name']?>
+                </h5>
+                <p>
+                    <?=$row['price']?> <b>đ</b>
+                </p>
             </div>
-
-            <div class="product-row">
-                <div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu" >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
-                    </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
-                </div>
-                <div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu" >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
-                    </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
-                </div>                
-            </div>
-
-            <div class="product-row">
-                <div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu" >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
-                    </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
-                </div><div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu" >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
-                    </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
-                </div>
-            </div>
+            <?php } ?>
         </div>
-
+        
         <h4>Sản Phẩm Mới</h4>
-        <div class="new-product">
-            <div class="product-row">
-                <div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu" >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
+        <div class="new-product" style="max-width: 1200px; margin: 50px auto; min-height: 700px;">
+            <?php
+                $sql = "SELECT * FROM `tb_product` ";
+                $rs = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_array($rs)) {
+            ?>
+            <div class="product" style="width: 33%; display: inline-flex; justify-content: center; flex-direction: column; text-align: center">
+                <div class="product-select">
+                    <a href="./p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>"><img
+                        src="./img/<?=$row['img']?>" alt="product" style="width: 300px">
+                    </a>
+                    <div  class="button-menu"  >
+                        <a href="./p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
+                            <button>
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </a>
                     </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
-                </div><div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu"  >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
-                    </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
                 </div>
+                <h5>
+                    <?=$row['name']?>
+                </h5>
+                <p>
+                    <?=$row['price']?> <b>đ</b>
+                </p>
             </div>
-
-            <div class="product-row">
-                <div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu" >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
-                    </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
-                </div>
-                <div class="product">
-                    <div class="product-select">
-                        <a href="./p/product/detail-product/detail-product.html"><img
-                            src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg"
-                            alt="product"></a>
-                        <div  class="button-menu"  >
-                            <button><i class="fas fa-cart-plus"></i></button>
-                            <button><i class="far fa-heart"></i></button>
-                        </div>
-                    </div>
-                    <h5>Tên sản phẩm</h5>
-                    <p>100.000 <b>đ</b></p>
-                </div>
-            </div>
+            <?php } ?>
         </div>
-
     </div>
 
     <div id="footer">
@@ -263,6 +180,8 @@
     </div>
     <script src="./js/showhide.js"></script>
     <script src="./js/slideshow.js"></script>
+    <script src="./js/search.js"></script>
+   
 </body>
 
 </html>

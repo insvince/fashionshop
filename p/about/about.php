@@ -21,14 +21,14 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li><a href="../collection/collection.html">Bộ sưu tập</a></li>
+                <li><a href="../collection/collection.php">Bộ sưu tập</a></li>
                 <li><a href="../product/product.php">Sản Phẩm</a></li>
-                <li><a class="logo" href="../../index.html"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li><a href="../news/news.html">Tin Tức</a></li>
-                <li><a href="../about/about.html">Giới Thiệu</a></li>
+                <li><a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a></li>
+                <li><a href="../news/news.php">Tin Tức</a></li>
+                <li><a href="../about/about.php">Giới Thiệu</a></li>
             </div>
         </ul>
-        <ul class="tool-box">
+        <!-- <ul class="tool-box">
          <?php if(isset($_SESSION['user_mail'])){ ?>
                 <a href="../profile-user/info.html">
                     <button type="button">
@@ -58,7 +58,7 @@
                     
                 </div>
             </button>
-        </ul>
+        </ul> -->
     </div>
 
     <div id="main">

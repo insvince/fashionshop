@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include_once "../../../php/config.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +60,7 @@
             background-color: black !important;
             color: whitesmoke;
         }
-        .multi-bottom button.addcart{
+        .multi-bottom button.add_to_cart{
             background-color: black !important;
             color: whitesmoke !important;
         }
@@ -100,19 +105,31 @@
             </button>
         </ul>
     </div>
-   
+    
     <div id="main">
+        <div style="max-width: 100%; margin: 0 auto; ">
+        <?php if(isset($_GET['error'])){  echo "<p style= 'margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;'>". $_GET['error'] . "</p>"; } ?>
+
         <h4>Thông Tin Chi Tiết Sản Phẩm</h4>
+        
         <div class="main-detail">
+                
+            <?php 
+                $this_id = $_GET['this_id'];
+                $sql = "SELECT * FROM `tb_product` WHERE `id` = '$this_id' ";
+                $rs = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_array($rs);
+
+            ?>
             <div class="detail-left">
-                <img src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg" alt="">
+                <img src="../../../img/<?=$row['img']?>" alt="">
             </div>
             <div class="detail-right">
                 <h5 class="title">
-                    Chi tiết sản phẩm
+                    <?= $row['name']?>
                 </h5>
                 <div class="bottom">
-                    <p class="price">100.000 <u>đ</u></p>
+                    <p class="price"><?= $row['price']?> <u>đ</u></p>
                     <p>
                         Phí vận chuyển: 30.000 <u>đ</u>
                     </p>
@@ -128,7 +145,9 @@
                             <input type="number" value="1">
                             <button class="number-btn">+</button>
                         </p>
-                        <button class="addcart">Thêm Vào Giỏ Hàng</button>
+                        <a href="./add_to_cart.php?this_id=<?=$row['id']?>">
+                            <button class="add_to_cart">Thêm Vào Giỏ Hàng</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -136,24 +155,20 @@
         <div class="bottom">
             <h3>Sản phẩm liên quan</h3>
             <div class="div bottom">
+                <?php
+                    $sql_related = "SELECT * FROM `tb_product`
+                    LIMIT 3; ";
+                    $rs_related = mysqli_query($conn, $sql_related);
+                    while($row_related = mysqli_fetch_array($rs_related)){
+                        
+                ?>
                 <div class="item">
-                    <a href="../../product/detail-product/detail-product.html">
-                        <img src="../../../img/aothunnam.jpg" alt="">
+                    <a href="../../product/detail-product/detail-product.php?this_id=<?=$row_related['id']?>">
+                        <img src="../../../img/<?=$row_related['img']?>" alt="">
                     </a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p><?=$row_related['name']?></p>
                 </div>
-                <div class="item">
-                    <a href="../../product/detail-product/detail-product.html">
-                        <img src="../../../img/aothunnam.jpg" alt="">
-                    </a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="item">
-                    <a href="../../product/detail-product/detail-product.html">
-                        <img src="../../../img/aothunnam.jpg" alt="">
-                    </a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -162,7 +177,7 @@
 
         <div class="footer-content">
             <div class="logo">
-                <img src="../../../img/Layer 1.png" alt="">
+                <img src="../../../img/Layer1.png" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus. 
                 Asperiores, perspiciatis. 
@@ -189,8 +204,5 @@
             </div>
         </div>
     </div>
-<script src="../js/showhide.js"></script>
-<script src="../js/slideshow.js"></script>
-<script src="../js/tabview.js"></script>
 </body>
 </html>

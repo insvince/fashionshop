@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    include_once "../../php/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,83 +30,56 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li title="Bộ Sưu Tập"><a href="../collection/collection.html">Bộ sưu tập</a></li>
+                <li title="Bộ Sưu Tập"><a href="../collection/collection.php">Bộ sưu tập</a></li>
                 <li title="Sản Phẩm"><a href="../product/product.php">Sản Phẩm</a></li>
-                <li title="Trang Chủ"><a class="logo" href="../../index.html"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li title="Tin Tức"><a href="../news/news.html">Tin Tức</a></li>
-                <li title="Giới Thiệu"><a href="../about/about.html">Giới Thiệu</a></li>
+                <li title="Trang Chủ"><a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a></li>
+                <li title="Tin Tức"><a href="../news/news.php">Tin Tức</a></li>
+                <li title="Giới Thiệu"><a href="../about/about.php">Giới Thiệu</a></li>
             </div>
         </ul>
 
     </div>
 
     <div id="main">
-        <div class="main-cart">
+        <div class="main-cart" style="min-height: 300px">
             <h4>Giỏ Hàng Của Bạn</h4>
+            <?php if(isset($_SESSION['cart'])){?>
+                    <?php foreach($_SESSION['cart'] as $key => $value){ 
+            ?>
             <div class="main-detail">
                 <div class="detail-left">
-                    <img src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg" alt="">
+                    <img src="../../img/<?=$value['img']?>" alt="cart">
                 </div>
                 <div class="detail-right">
                     <h5 class="title">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        <?=$value['name']?>
                     </h5>
                     <div class="bottom">
-                        <p class="price">100.000 <u>đ</u></p>
+                        <input type="number" class="price" value="<?=$value['price']?>" style="background: none;font-weight: bolder; border: none; width: 150px; margin: 10px 0" disabled>
                         <div class="multi-bottom">
                             <p>Số Lượng 
-                                <button class="number-btn">-</button>
-                                <input type="number" value="1">
-                                <button class="number-btn">+</button>
+                                <input type="number" class="amount" onchange="iTotal()" value="1" min="1" max="10">
                             </p>
                         </div>
                     </div>
+                    <input type="hidden" class="itotal" value="">
+                    <a href="./remove.php?action=remove&this_id=<?=$value['id']?>">
+                        <button>Xóa</button>
+                    </a>
                 </div>
             </div>
-            <div class="main-detail">
-                <div class="detail-left">
-                    <img src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg" alt="">
-                </div>
-                <div class="detail-right">
-                    <h5 class="title">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    </h5>
-                    <div class="bottom">
-                        <p class="price">100.000 <u>đ</u></p>
-                        <div class="multi-bottom">
-                            <p>Số Lượng 
-                                <button class="number-btn">-</button>
-                                <input type="number" value="1">
-                                <button class="number-btn">+</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <?php } ?>
+            <div class="cash" >
+                Tổng cộng: 
+                <h5 id="itotal2" style="background: none;font-weight: bolder; border: none; width: 120px; font-size: 30px" >
+                    <?=$total?>
+                </h5>
+                <button>Thanh Toán</button>
+                <a href="./clearall.php?action=clearall">
+                    <button>Xóa tất cả</button>
+                </a>
             </div>
-            <div class="main-detail">
-                <div class="detail-left">
-                    <img src="https://aothudong.com/upload/product/atd-187/ao-thun-nam-dai-tay-xanh-cuc-chat-0.jpg" alt="">
-                </div>
-                <div class="detail-right">
-                    <h5 class="title">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    </h5>
-                    <div class="bottom">
-                        <p class="price">100.000 <u>đ</u></p>
-                        <div class="multi-bottom">
-                            <p>Số Lượng 
-                                <button class="number-btn">-</button>
-                                <input type="number" value="1">
-                                <button class="number-btn">+</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="cash">
-            <p class="total">Tổng cộng: <u>đ</u></p>
-            <button>Thanh Toán</button>
+            <?php }else{ echo "<p style='font-size: 18px'>Trống</p>";} ?>
         </div>
     </div>
 
@@ -140,5 +117,5 @@
     </div>
 
 </body>
-
+<script src="../../js/total.js"></script>
 </html>

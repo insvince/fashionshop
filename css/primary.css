@@ -443,9 +443,15 @@ body{
 /* file detail news  */
 /* ******************** */
 #main .main-news .news-content{
-    width: 40%;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
     margin: 0 auto;
-    min-height: 1500px;
+    display: flex;
+    min-height: 900px;
+}
+#main .main-news .news-content h4{
+    width: 100%;
 }
 #main .main-news .news-content h5{
     font-size: 1.5rem;
@@ -462,7 +468,7 @@ body{
     font-weight: bolder;
 }
 #main .main-news .news-content p{
-    width: 500px;
+    width: 100%;
     margin: 10px 0;
     padding: 0;
     font-size: 1.2rem;
@@ -470,7 +476,7 @@ body{
     text-align: left;
 }
 #main .main-news .bottom-news{
-    width: 60%;
+    width: 50%;
     background-color: #b2845f;
     margin: 0 auto;
     display: flex;
@@ -559,7 +565,7 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 40%;
+    width: 50%;
     margin: 0 auto;
     text-align: center;
 }
@@ -599,6 +605,7 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: center;
     text-align: center;
+    justify-content: center;
 }
 
 #main .info-content .contain .left{
@@ -620,15 +627,9 @@ input::-webkit-inner-spin-button {
     background-color: #b2845f;
     font-size: 1.2rem;
     cursor: pointer;
+    margin: 10px 20px;
 }
-#main .info-content .contain button.save{
-    width: 150px;
-    padding: 20px 30px;
-    margin: 20px auto 5px;
-    font-size: 1.2rem;
-    text-align: center;
-    cursor: pointer;
-}
+
 
 
 /* ******************** */

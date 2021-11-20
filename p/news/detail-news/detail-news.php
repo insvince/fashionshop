@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include_once "../../../php/config.php";
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +59,7 @@
                 <li><a href="../../about/about.html">Giới Thiệu</a></li>
             </div>
         </ul>
-        <ul class="tool-box">
+        <!-- <ul class="tool-box">
             <a href="../../log-page/log-page.html">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
@@ -80,69 +85,68 @@
                     
                 </div>
             </button>
-        </ul>
+        </ul> -->
     </div>
 
     
     <div id="main">
         <div class="main-news">
-            <h4>Tin Tức</h4>
+            <?php
+                $this_id = $_GET['this_id'];
+                $sql = "SELECT * FROM `tb_post` INNER JOIN `tb_users` ON `tb_users`.id = `tb_post`.user_id
+                WHERE `tb_post`.`id` = '$this_id' ";
+                $rs = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_array($rs);
+            ?>
             <div class="news-content">
-                <h5>Tiêu đề tin tức</h5>
-                <p class="main-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex eaque nobis hic iste exercitationem possimus accusamus facere debitis repellat earum!
-                </p>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBYs9i_4H5zkP1jPBp-O4cE0kIQGBwETBa0g&usqp=CAU" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptatibus cumque, et necessitatibus illum sit inventore facilis cum cupiditate laboriosam veritatis ipsum blanditiis eius accusamus vel numquam, harum iusto, quam illo eos quae minima minus. Distinctio repellat placeat repudiandae odio officiis. </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptatibus cumque, et necessitatibus illum sit inventore facilis cum cupiditate laboriosam veritatis ipsum blanditiis eius accusamus vel numquam, harum iusto, quam illo eos quae minima minus. Distinctio repellat placeat repudiandae odio officiis. </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptatibus cumque, et necessitatibus illum sit inventore facilis cum cupiditate laboriosam veritatis ipsum blanditiis eius accusamus vel numquam, harum iusto, quam illo eos quae minima minus. Distinctio repellat placeat repudiandae odio officiis. </p>
-                
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBYs9i_4H5zkP1jPBp-O4cE0kIQGBwETBa0g&usqp=CAU" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptatibus cumque, et necessitatibus illum sit inventore facilis cum cupiditate laboriosam veritatis ipsum blanditiis eius accusamus vel numquam, harum iusto, quam illo eos quae minima minus. Distinctio repellat placeat repudiandae odio officiis. </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptatibus cumque, et necessitatibus illum sit inventore facilis cum cupiditate laboriosam veritatis ipsum blanditiis eius accusamus vel numquam, harum iusto, quam illo eos quae minima minus. Distinctio repellat placeat repudiandae odio officiis. </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptatibus cumque, et necessitatibus illum sit inventore facilis cum cupiditate laboriosam veritatis ipsum blanditiis eius accusamus vel numquam, harum iusto, quam illo eos quae minima minus. Distinctio repellat placeat repudiandae odio officiis. </p>
+                <h4><?=$row['title']?></h4>
+                <img src="../../../img/<?= (($row['type'])=="Sale" ? "thumnail-sale.jpg" : "thumnail-trend.jpg") ?>" alt="related">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, provident quae ipsa nesciunt at esse necessitatibus expedita dolore sit quas in pariatur harum atque commodi aut explicabo ipsum ducimus porro molestiae. Harum doloremque fugiat veritatis sequi hic eum autem, voluptates laborum sapiente, iure nostrum alias eius tenetur aliquam nobis nisi tempore dignissimos sunt expedita. Voluptatem, ipsam vel dolores, fuga deserunt hic doloremque, debitis ad at non culpa? Temporibus voluptatum sequi qui, delectus debitis libero? Id temporibus distinctio ipsam accusamus iste porro expedita quae voluptatibus, maxime aspernatur sunt, impedit qui numquam nulla! Placeat sequi exercitationem iusto? Ut maiores voluptas fuga! Explicabo totam assumenda laudantium eos. Laudantium qui deserunt tempore, iusto magni nisi maiores vel vero molestiae, dolores delectus mollitia aperiam quidem. Voluptatibus totam voluptatum fuga voluptatem error porro libero tenetur eaque quis cum repellat magnam vitae aliquid praesentium, quia, possimus quas saepe at impedit ab, quos sapiente. Molestiae accusantium ipsum assumenda. Illo, dolor. Cupiditate porro earum mollitia vel. Natus quisquam eveniet assumenda illum nam maxime, quibusdam sint error amet velit saepe dicta distinctio officia placeat eos consectetur, esse cupiditate dignissimos! Optio, veritatis. Aspernatur illo magnam ratione, nam sed ducimus iste. Voluptatem dolores odio, architecto pariatur aliquam modi sint error et quis.<?=$row['content']?></p>
             </div>
             <div class="bottom-news">
                 <div class="auth-news">
-                    <p>Tác giả</p>                    
+                    <p>
+                        <?= `tb_users`.$row['fullname']?>
+                    </p>     
                 </div>
                 <div class="type-news">
-                    <p>Loại Tin</p>
+                    <p>
+                        <?=$row['type']?>
+                    </p>
                 </div>
                 <div class="day">
                     <p>
-                        13/10/2021                        
+                        
+                        <?=  date('d/m/Y',strtotime($row['create'])); ?>                    
                     </p>
                 </div>
                 <div class="time">
-                    <p> 10:53</p>
+                    <p> 
+                        
+                        <?php 
+                            echo date('H:i:s',strtotime($row['create']));
+                         ?>    
+                    </p>
                 </div>
             </div>
         </div>
         <div class="related">
             <h3>Chủ đề liên quan</h3>
             <div class="div item">
+                <?php $sql_related = "SELECT * FROM `tb_post`
+                    LIMIT 3 ";
+                    $rs_related = mysqli_query($conn, $sql_related);
+                    while($row_related = mysqli_fetch_array($rs_related)){
+                ?>
                 <div class="item">
-                    <a href="">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQinmWfHCVicl1Bg4CSM8W9iEuTkm5lAS7QFi5q5XXdJ2ivzls2Km7xJ2IJPXC_QUqLPj0&usqp=CAU" alt="related">
+                    <a href="detail-news.php?this_id=<?=$row_related['id'];?>">
+                        <img src="../../../img/<?= (($row['type'])=="Sale" ? "thumnail-sale.jpg" : "thumnail-trend.jpg") ?>" alt="related">
                     </a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem tempore consequuntur enim</p>
+                    <p ><?=$row_related['title']?></p>
                 </div>
-                <div class="item">
-                    <a href="">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQinmWfHCVicl1Bg4CSM8W9iEuTkm5lAS7QFi5q5XXdJ2ivzls2Km7xJ2IJPXC_QUqLPj0&usqp=CAU" alt="related">
-                    </a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem tempore consequuntur enim</p>
-                </div>
-                <div class="item">
-                    <a href="">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQinmWfHCVicl1Bg4CSM8W9iEuTkm5lAS7QFi5q5XXdJ2ivzls2Km7xJ2IJPXC_QUqLPj0&usqp=CAU" alt="related">
-                    </a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem tempore consequuntur enim</p>
-                </div>
-                
+                <?php } ?>
             </div>
-            </div>
+        </div>
     </div>
         
     <div id="footer">

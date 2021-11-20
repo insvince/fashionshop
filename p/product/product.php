@@ -1,6 +1,8 @@
 <?php
     session_start();
-    include "../../php/config.php";
+    include_once "../../php/config.php";
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +22,16 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li><a href="../collection/collection.html">Bộ sưu tập</a></li>
+                <li><a href="../collection/collection.php">Bộ sưu tập</a></li>
                 <li><a href="../product/product.php">Sản Phẩm</a></li>
-                <li><a class="logo" href="../../index.html"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li><a href="../news/news.html">Tin Tức</a></li>
-                <li><a href="../about/about.html">Giới Thiệu</a></li>
+                <li><a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a></li>
+                <li><a href="../news/news.php">Tin Tức</a></li>
+                <li><a href="../about/about.php">Giới Thiệu</a></li>
             </div>
         </ul>
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])){ ?>
-                <a href="../profile-user/info.html">
+                <a href="../profile-user/info.php">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
@@ -46,18 +48,24 @@
                     </button>
                 </a>
             <?php } ?>
-            <a href="../cart-page/cart-page.html">
+            <a href="../cart-page/cart-page.php">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
                 </button>
             </a>
             
-            <button><i class="fas fa-search"></i>
-                <div class="modal-search">
-                    
-                </div>
-            </button>
+            <button onclick="openSearch()"><i class="fas fa-search"></i>
+            <div style="display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;" id="modal-search">
+                
+                <form action="../search/search_item.php" method="get" style="display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px;">
+                    <input name="name_search" type="text" style="width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px">
+                    <input type="submit" name="search" value="Tìm kiếm" style="padding: 10px 5px; margin: 0 10px; border-radius: 5px">
+                </form>
+
+            </div>
+                
         </ul>
+        <div id="overlay" style="display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;" onclick="closeSearch()"></div>
     </div>
 
     <div id="slideshow">
@@ -76,44 +84,50 @@
     
     <div id="main">
         <div class="main-product">
-            <ul class="type-select">
                 <div class="tab-content" id="nam">
                     <h4>Đồ Nam</h4>
                     
-                    <div class="item-div">
-                        <div class="product">
-                            <div class="product-select">
-                                <a href="../product/detail-product/detail-product.html">
-                                    <img
-                                    src="../../img/aothunnam.jpg" alt="product">
-                                </a>
-                                    
-                                <div  class="button-menu"  >
-                                    <button type="button" name="addcart" onclick="addCart()">
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button>
-                                    <button type="button" name="addfavourite">
-                                        <i class="far fa-heart"></i>
-                                    </button>
+                <table style= "max-width: 50%; margin: 0 auto">
+                        <?php
+                            $sql = "SELECT * FROM `tb_product` ";
+                            $rs = mysqli_query($conn, $sql);
+            
+                            while ($row = mysqli_fetch_array($rs)) {
+                                $price = number_format($row['price'],'0', ',', '.');
+                        ?>
+                        <div class="item-div">
+                            <div class="product">
+                                <div class="product-select">
+                                    <a href="../product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
+                                        <img src="../../img/<?=$row['img']?>" alt="product">
+                                    </a>
+                                        
+                                    <div  class="button-menu"  >
+                                        <a href="./add_to_cart.php?this_id=<?=$row['id']?>">
+                                            <button type="button" name="add_to_cart" value="Add To Cart">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </button>
+                                        </a>
+                                    </div>
                                 </div>
+                                <h5>
+                                    <?=$row['name']?>
+                                </h5>
+                                <p>
+                                    <?=$row['price']?><u>đ</u>
+                                </p> 
                             </div>
-                            <h5>
-                                Tên
-                            </h5>
-                            <p>
-                                100000 <u>đ</u>
-                            </p> 
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
-            </ul>
             </div>
             <div class="btn-next" >
                 <button>Xem Thêm</button>
             </div>
         </div>
     </div>
-        
+    
     <div id="footer">
 
         <div class="footer-content">
@@ -145,14 +159,14 @@
             </div>
         </div>
     </div>
+    <script>
+        if("$_GET['alert']"){
+            alert("<?=$_GET['alert']?>");
+        }
+    </script>
 <script src="../../js/showhide.js"></script>
 <script src="../../js/slideshow.js"></script>
-<script src="../../js/tabview.js"></script>
-<script>
-    function addCart(id){
-        
-    }   
-</script>
+<script src="../../js/search.js"></script>
 </body>
 
 </html>

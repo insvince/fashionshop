@@ -22,16 +22,16 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li><a href="../collection/collection.html">Bộ sưu tập</a></li>
+                <li><a href="../collection/collection.php">Bộ sưu tập</a></li>
                 <li><a href="../product/product.php">Sản Phẩm</a></li>
-                <li><a class="logo" href="../../index.html"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li><a href="../news/news.html">Tin Tức</a></li>
-                <li><a href="../about/about.html">Giới Thiệu</a></li>
+                <li><a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a></li>
+                <li><a href="../news/news.php">Tin Tức</a></li>
+                <li><a href="../about/about.php">Giới Thiệu</a></li>
             </div>
         </ul>
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])){ ?>
-                <a href="../profile-user/info.html">
+                <a href="../profile-user/info.php">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
@@ -48,7 +48,7 @@
                     </button>
                 </a>
             <?php } ?>
-            <a href="../cart-page/cart-page.html">
+            <a href="../cart-page/cart-page.php">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
                 </button>
@@ -82,23 +82,23 @@
             <div class="list-news">
                 <ul>
                 <?php 
-                    $sql = "SELECT * FROM tb_users RIGHT JOIN tb_post ON `tb_users`.id = `tb_post`.user_id ORDER BY `tb_post`.create_at DESC" ;
+                    $sql = "SELECT * FROM `tb_users` RIGHT JOIN `tb_post` ON `tb_users`.id = `tb_post`.user_id ORDER BY `tb_post`.create DESC" ;
                     $rs = mysqli_query($conn, $sql);
 
                     while($row = mysqli_fetch_array($rs)){
-                        $date = $row['create_at'];
+                        $date = $row['create'];
                         $formatDate = date('d/m/Y',strtotime($date));
                         $formatTime = date('H:i:s',strtotime($date));
                 ?>
                     <li class="news">
                         <div class="left-news">
-                            <a href="./detail-news/detail-news.html">
+                            <a href="./detail-news/detail-news.php?this_id=<?=$row['id']?>">
                                 <img src="../../img/<?= (($row['type'])=="Sale" ? "thumnail-sale.jpg" : "thumnail-trend.jpg") ?>" alt="">
                             </a>
                         </div>
                         <div class="right-news">
                             <h3>
-                                <a href="./detail-news/detail-news.html"><?=$row['title']; ?></a>
+                                <a href="./detail-news/detail-news.php?this_id=<?=$row['id']?>"><?=$row['title']; ?></a>
                             </h3>
                             <div class="short-detail">
                                 <?=substr($row['content'], 0, 120)."..."; ?>
