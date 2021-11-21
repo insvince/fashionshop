@@ -43,46 +43,40 @@
     <div id="main">
         <div class="main-cart" style="min-height: 300px">
             <h4>Giỏ Hàng Của Bạn</h4>
-            <?php if(isset($_SESSION['cart'])){?>
-                    <?php foreach($_SESSION['cart'] as $key => $value){ 
-            ?>
-            <div class="main-detail">
-                <div class="detail-left">
-                    <img src="../../img/<?=$value['img']?>" alt="cart">
-                </div>
-                <div class="detail-right">
-                    <h5 class="title">
-                        <?=$value['name']?>
-                    </h5>
-                    <div class="bottom">
-                        <input type="number" class="price" value="<?=$value['price']?>" style="background: none;font-weight: bolder; border: none; width: 150px; margin: 10px 0" disabled>
-                        <div class="multi-bottom">
-                            <p>Số Lượng 
-                                <input type="number" class="amount" onchange="iTotal()" value="1" min="1" max="10">
-                            </p>
+            
+            <?php if(isset($_GET['error'])){  echo "<p style= 'margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;'>". $_GET['error'] . "</p>"; }
+
+            if(isset($_GET['success'])){  echo "<p style= 'margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;'>". $_GET['success'] . "</p>"; }else{
+                echo "<p style='color: red'>Thanh toán khi nhận hàng</p>";
+            } ?>
+            <div style="width: 50%; margin: 0 auto; display: flex; justify-content: center;">
+               
+                <form action="pay.php?action=pay" method="post" style="display: flex; flex-direction: column; " enctype="multipart/form-data">
+                <?php 
+                    if(isset($_SESSION['cart'])){
+                        foreach($_SESSION['cart'] as $key => $value){
+                ?> 
+                    <div style="display: flex; flex-direction: column; margin: 10px; width: 400px;align-items: center; ">
+                        <input type="hidden" name="this_id[]" value="<?=$value['id']?>">
+                        <img style="height: 300px;width: 250px" src="../../img/<?=$value['img']?>" alt="product">
+                        <input class="iamount" name="amount[]"  type="number" value="<?=$value['amount']?>" min="1" max="10" style="text-align: center; margin: 10px 0;padding: 5px 10px">
+                        <p><?=$value['name']?></p>
+                        <p><?=number_format($value['price'])?> đ</p>
+                    </div>
+                <?php } ?>
+                    <div style="width: 400px;display: flex;justify-content: space-around;white-space: nowrap;flex-direction: column">
+                        <p style="font-size: 24px; ">Tổng Cộng: </p>
+                        <div style="display: flex; justify-content: space-around;">
+                            <input type="submit" value="Thanh Toán" style="width: 160px;font-size: 16px; padding:  10px 0 ; background-color: #a7734986;font-weight: bold;margin: 10px 0;border: 1px solid; cursor: pointer">
+                            
+                            <a href="clearall.php?action=clearall" style="width: 160px; padding:  10px; background-color: #a7734986;margin: 10px 0;border: 1px solid; text-decoration: none;font-weight: bold;text-align: center; ">Xóa giỏ hàng</a>
                         </div>
                     </div>
-                    <input type="hidden" class="itotal" value="">
-                    <a href="./remove.php?action=remove&this_id=<?=$value['id']?>">
-                        <button>Xóa</button>
-                    </a>
-                </div>
+                </form>
+                <?php } ?>
             </div>
-            <?php } ?>
-            <div class="cash" >
-                Tổng cộng: 
-                <h5 id="itotal2" style="background: none;font-weight: bolder; border: none; width: 120px; font-size: 30px" >
-                    <?=$total?>
-                </h5>
-                <button>Thanh Toán</button>
-                <a href="./clearall.php?action=clearall">
-                    <button>Xóa tất cả</button>
-                </a>
-            </div>
-            <?php }else{ echo "<p style='font-size: 18px'>Trống</p>";} ?>
         </div>
     </div>
-
     <div id="footer">
 
         <div class="footer-content">
@@ -117,5 +111,5 @@
     </div>
 
 </body>
-<script src="../../js/total.js"></script>
+<!-- <script src="../../js/total.js"></script> -->
 </html>

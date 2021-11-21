@@ -98,7 +98,7 @@
                         src="./img/<?=$row['img']?>" alt="product" style="width: 300px">
                     </a>
                     <div class="button-menu"  >
-                        <a href="./p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
+                        <a href="./p/product/add_to_cart.php?this_id=<?=$row['id']?>">
                             <button>
                                 <i class="fas fa-cart-plus"></i>
                             </button>
@@ -128,7 +128,7 @@
                         src="./img/<?=$row['img']?>" alt="product" style="width: 300px">
                     </a>
                     <div  class="button-menu"  >
-                        <a href="./p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
+                        <a href="./p/product/add_to_cart.php?this_id=<?=$row['id']?>">
                             <button>
                                 <i class="fas fa-cart-plus"></i>
                             </button>

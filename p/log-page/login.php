@@ -11,6 +11,7 @@
     if($row > 0){
         if($row['role'] == "User"){
             $_SESSION['user_mail'] = $mail;
+            $_SESSION['id'] = $row['id'];
             header("location: ../../index.php");
         }
     }else{

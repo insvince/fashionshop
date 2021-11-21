@@ -84,47 +84,40 @@
     
     <div id="main">
         <div class="main-product">
-                <div class="tab-content" id="nam">
-                    <h4>Đồ Nam</h4>
-                    
-                <table style= "max-width: 50%; margin: 0 auto">
-                        <?php
-                            $sql = "SELECT * FROM `tb_product` ";
-                            $rs = mysqli_query($conn, $sql);
-            
-                            while ($row = mysqli_fetch_array($rs)) {
-                                $price = number_format($row['price'],'0', ',', '.');
-                        ?>
-                        <div class="item-div">
-                            <div class="product">
-                                <div class="product-select">
-                                    <a href="../product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
-                                        <img src="../../img/<?=$row['img']?>" alt="product">
+            <h4>Đồ Nam</h4>
+            <div class="tab-content" id="nam">
+              
+                    <?php
+                        $sql = "SELECT * FROM `tb_product` ";
+                        $rs = mysqli_query($conn, $sql);
+        
+                        while ($row = mysqli_fetch_array($rs)) {
+                            $price = number_format($row['price'],'0', ',', '.');
+                    ?>
+                    <div class="item-div">
+                        <div class="product">
+                            <div class="product-select">
+                                <a href="../product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
+                                    <img src="../../img/<?=$row['img']?>" alt="product">
+                                </a>
+                                    
+                                <div  class="button-menu"  >
+                                    <a href="./add_to_cart.php?this_id=<?=$row['id']?>">
+                                        <button type="button" name="add_to_cart" value="Add To Cart">
+                                            <i class="fas fa-cart-plus"></i>
+                                        </button>
                                     </a>
-                                        
-                                    <div  class="button-menu"  >
-                                        <a href="./add_to_cart.php?this_id=<?=$row['id']?>">
-                                            <button type="button" name="add_to_cart" value="Add To Cart">
-                                                <i class="fas fa-cart-plus"></i>
-                                            </button>
-                                        </a>
-                                    </div>
                                 </div>
-                                <h5>
-                                    <?=$row['name']?>
-                                </h5>
-                                <p>
-                                    <?=$row['price']?><u>đ</u>
-                                </p> 
                             </div>
+                            <h5><?=$row['name']?></h5>
+                            <p><?=$row['price']?> <u>đ</u></p> 
                         </div>
-                        <?php } ?>
                     </div>
-                </div>
+                <?php } ?>
             </div>
-            <div class="btn-next" >
-                <button>Xem Thêm</button>
-            </div>
+        </div>
+        <div class="btn-next" >
+            <button>Xem Thêm</button>
         </div>
     </div>
     
@@ -159,11 +152,6 @@
             </div>
         </div>
     </div>
-    <script>
-        if("$_GET['alert']"){
-            alert("<?=$_GET['alert']?>");
-        }
-    </script>
 <script src="../../js/showhide.js"></script>
 <script src="../../js/slideshow.js"></script>
 <script src="../../js/search.js"></script>
