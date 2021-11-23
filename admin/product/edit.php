@@ -14,7 +14,144 @@
     <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
-    <style>
+  
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div class="header-content">
+                <h2>Fashion Admin</h2>
+                <div class="header-tool">
+                    <button>
+                        <i class="fas fa-envelope"></i>
+                    </button>
+                    <button>
+                        <i class="fas fa-bell"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="nav-bar">
+            <div class="bar-content">
+                <div class="avatar">
+                    <i class="fas fa-user-tie"></i>
+                    <?php
+                        $session = $_SESSION['a_mail'];
+
+                        $sql = "SELECT * FROM tb_users WHERE email = '" . $session . "' ";
+
+                        $rs = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_array($rs);
+                    ?>  
+                    <p style="margin: 10px;">
+                        <?=$row['fullname'];?>
+                    </p>
+                </div>
+                <div class="list-edit">
+                    <li>
+                        <a href="../index.php">Thống Kê</a>
+                    </li>
+                    <li>
+                        <a href="../category/index.php" href="">Danh Sách Danh Mục</a>
+                    </li>
+                    <li>
+                        <a class="active" href="./index.php">Danh Sách Sản Phẩm</a>
+                    </li>
+                    <li>
+                        <a href="../news/index.php">Danh Sách Bài Viết</a>
+                    </li>
+                    <li>
+                        <a href="../order/index.php">Danh Sách Đơn Hàng</a>
+                    </li>
+                    <li>
+                        <a href="../account/index.php">Danh Sách Tài Khoản</a>
+                    </li>
+                    <li>
+                        <a href="../logout/logout.php">Đăng Xuất</a>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div id="container">
+            <div class="content" >
+               <form action="edit.php?this_id=<?=$this_id?>" method="post" enctype="multipart/form-data">
+                        <?php 
+
+                        $sql = "SELECT * FROM `tb_product` WHERE `id` = '" . $this_id . "' ";
+
+                        $row = mysqli_fetch_array(mysqli_query($conn, $sql));
+
+                        if(isset($_POST['editbtn'])){
+                            
+                            $name = $_POST['add_name'];
+                            $stock = $_POST['add_stock'];
+                            $img = $_FILES['add_img']['name'];
+                            $description = $_POST['add_description'];
+                            $price = $_POST['add_price'];
+                            $category = $_POST['add_category'];
+                            $img_tmp_name = $_FILES['add_img']['tmp_name'];
+                            $img_check = ($img == "") ? $row['img'] : $img ;
+
+                            $sql_edit = "UPDATE `tb_product` SET `name`='" . $name . "',`stock`='" . $stock . "',`img`='" . $img_check . "',`description`='" . $description . "',`price`='" . $price . "',`category_id`='" . $category . "' WHERE `id` = '" . $this_id . "' ";
+                            
+                            mysqli_query($conn, $sql_edit);
+                            
+                            move_uploaded_file($img_tmp_name, '../../img/'. $img );
+
+                            header("location: index.php?success=Đã thay đổi thành công!");
+                            }
+                        ?>
+
+                        <div class="edit_form" style="">
+                            <label for="add_name" style="">Tên Sản Phẩm</label>
+                            <input type="text" name="add_name" style="" required value="<?=$row['name'];?>">
+                        </div>
+
+                        <div class="edit_form" style="">
+                            <label for="add_stock" style="">Kho</label>
+                            <input class="stock" type="number" name="add_stock" style=""
+                            value="<?=$row['stock'];?>">
+                        </div>
+
+                        <div class="edit_form" style="">
+                            <label for="add_img" style="">Hình Ảnh</label>
+                            <input type="file" name="add_img" style="">
+                            <img src="../../img/<?=$row['img']?>" style="width: 70px; height: 90px; margin: 0 10px;">
+                        </div>
+
+                        <div class="edit_form" style="">
+                            <label for="add_description" style=";">Mô Tả</label>
+                            <textarea type="date" name=""><?= $row['description'] ?></textarea>
+                        </div>
+
+                        <div class="edit_form" style="">
+                            <label for="add_price" style=";">Giá</label>
+                            <input class="price" type="number" name="add_price" style="" value="<?=$row['price']?>">
+                        </div>
+
+                        <div class="edit_form" style=";">
+                            <label for="add_category" style=";">Danh Mục</label>
+                            <select name="add_category" id="" style="">
+                            <?php
+                                $sql_category = "SELECT * FROM `tb_category`";
+                                $rs = mysqli_query($conn, $sql_category);
+                                while ($row = mysqli_fetch_array($rs)) {
+                            ?>
+                                <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+                            <?php } ?>
+                            </select>
+                        </div>
+                         
+                        <div class="button-add" style="text-align: center;" >
+                            <button type="submit" name="editbtn">Sửa</button>
+                        </div>
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</body>
+<style>
         table{
             white-space: nowrap;
         }
@@ -24,6 +161,7 @@
             margin: 50px auto !important;
             border-radius: 15px;
             width: 90%;
+            display: flex; flex-direction: column; justify-content: center; width: 80%; overflow: hidden
         }
         .button-add button{
             cursor: pointer;
@@ -54,123 +192,31 @@
             height: 50px;
             max-height: auto;
         }
+        #container .content form{
+            min-height: 200px; width: 50%; margin: 0 auto ; display: flex; flex-direction: column; justify-content: center;
+        }
+        form .edit_form{
+            width: 80%; margin: 0 auto; display: inline-flex; align-items: center
+        }
+        form .edit_form label{
+            width: 120px; margin: 10px 0
+        }
+        #container .content form .edit_form input[type="text"]{
+            width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;
+        }#container .content form .edit_form input[type="file"]{
+            width: 40%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;
+        }
+        #container .content form .edit_form input[type="number"].stock{
+            width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;
+        }
+        #container .content form .edit_form input[type="number"].price{
+            width: 30%; margin: 10px 0; padding: 5px 0 5px 10px ;border: 1px solid; border-radius: 5px; height: 30px;
+        }
+        #container .content form .edit_form textarea{
+            width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;resize: none; height: 100px;
+        }
+        #container .content form .edit_form select{
+            margin: 10px 0; padding: 10px 0 10px 10px;  border: 1px solid; border-radius: 5px 
+        }
     </style>
-</head>
-<body>
-    <div id="main">
-        <div id="header">
-            <div class="header-content">
-                <h2>Fashion Admin</h2>
-                <div class="header-tool">
-                    <button><i class="fas fa-envelope"></i></button>
-                    <button><i class="fas fa-bell"></i></button>
-                </div>
-            </div>
-        </div>
-        <div id="nav-bar">
-            <div class="bar-content">
-                <div class="avatar">
-                    <!-- <img src="/img/logo.png" alt=""> -->
-                    <i class="fas fa-user-tie"></i>
-                    <?php
-                        $session = $_SESSION['a_mail'];
-
-                        $sql = "SELECT * FROM tb_users WHERE email = '$session' ";
-                        $rs = mysqli_query($conn, $sql);
-                        $row = mysqli_fetch_array($rs);
-                    ?>  
-                    <p style="margin: 10px;">
-                        <?=$row['fullname'];?>
-                    </p>
-                </div>
-                <div class="list-edit">
-                <li><a  href="../index.php">Thống Kê</a></li>
-                    <li><a href="../category/index.php" href="">Danh Sách Danh Mục</a></li>
-                    <li><a class="active" href="./index.php">Danh Sách Sản Phẩm</a></li>
-                    <li><a href="../news/index.php">Danh Sách Bài Viết</a></li>
-                    <li><a href="../order/index.php">Danh Sách Đơn Hàng</a></li>
-                    <li><a href="../account/index.php">Danh Sách Tài Khoản</a></li>
-                    <li><a href="../logout/logout.php">Đăng Xuất</a></li>
-                </div>
-            </div>
-        </div>
-        <div id="container">
-            <div class="content" style="display: flex; flex-direction: column; justify-content: center; width: 80%; overflow: hidden">
-
-               
-               <form action="edit.php?this_id=<?=$this_id?>" method="post" style="min-height: 200px; width: 50%; margin: 0 auto ; display: flex; flex-direction: column; justify-content: center;" enctype="multipart/form-data">
-
-                        <?php 
-
-                        $sql = "SELECT * FROM `tb_product` WHERE `id` = '".$this_id."' ";
-                        $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-                        if(isset($_POST['editbtn'])){
-                            
-                            $name = $_POST['add_name'];
-                            $stock = $_POST['add_stock'];
-                            $img = $_FILES['add_img']['name'];
-                            $description = $_POST['add_description'];
-                            $price = $_POST['add_price'];
-                            $category = $_POST['add_category'];
-                            $img_tmp_name = $_FILES['add_img']['tmp_name'];
-
-                            $img_check = ($img == "") ? $row['img'] : $img ;
-
-                                $sql_edit = "UPDATE `tb_product` SET `name`='$name',`stock`='$stock',`img`='$img_check',`description`='$description',`price`='$price',`category_id`='$category' WHERE `id` = '$this_id' ";
-                                
-                                mysqli_query($conn, $sql_edit);
-                                move_uploaded_file($img_tmp_name, '../../img/'.$img);
-                                header("location: index.php?success=Đã thay đổi thành công!");
-                            }
-                        ?>
-
-                        <div style="width: 80%; margin: 0 auto; display: inline-flex; align-items: center">
-                            <label for="add_name" style="width: 120px; margin: 10px 0">Tên Sản Phẩm</label>
-                            <input type="text" name="add_name" style="width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;" required value="<?=$row['name'];?>">
-                        </div>
-
-                        <div style="width: 80%; margin: 0 auto; display: inline-flex; align-items: center">
-                            <label for="add_stock" style="width: 120px; margin: 10px 0">Kho</label>
-                            <input type="number" name="add_stock" style="width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;"
-                            value="<?=$row['stock'];?>">
-                        </div>
-
-                        <div style="width: 80%; margin: 0 auto; display: inline-flex; align-items: center">
-                            <label for="add_img" style="width: 120px; margin: 10px 0">Hình Ảnh</label>
-                            <input type="file" name="add_img" style="width: 40%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;">
-                            <img src="../../img/<?=$row['img']?>" style="width: 70px; height: 90px; margin: 0 10px;">
-                        </div>
-
-                        <div style="width: 80%; margin: 0 auto; display: inline-flex; align-items: center">
-                            <label for="add_description" style="width: 120px; margin: 10px 0;">Mô Tả</label>
-                            <textarea type="date" name="add_description" style="width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;resize: none; height: 100px;"><?= $row['description'] ?></textarea>
-                        </div>
-
-                        <div style="width: 80%; margin: 0 auto; display: inline-flex; align-items: center">
-                            <label for="add_price" style="width: 120px; margin: 10px 0;">Giá</label>
-                            <input type="number" name="add_price" style="width: 30%; margin: 10px 0; padding: 5px 0 5px 10px ;border: 1px solid; border-radius: 5px; height: 30px;" value="<?=$row['price']?>">
-                        </div>
-
-                        <div style="width: 80%; margin: 0 auto; display: inline-flex; align-items: center;">
-                            <label for="add_category" style="width: 120px; margin: 10px 0;">Danh Mục</label>
-                            <select name="add_category" id="" style="margin: 10px 0; padding: 10px 0 10px 10px;  border: 1px solid; border-radius: 5px ">
-                            <?php
-                                $sql_category = "SELECT * FROM `tb_category`";
-                                $rs = mysqli_query($conn, $sql_category);
-                                while ($row = mysqli_fetch_array($rs)) {
-                            ?>
-                                <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
-                            <?php } ?>
-                            </select>
-                        </div>
-                         
-                        <div class="button-add" style="text-align: center;" >
-                            <button type="submit" name="editbtn">Sửa</button>
-                        </div>
-                </form>
-            </div>
-           
-        </div>
-    </div>
-</body>
 </html>
