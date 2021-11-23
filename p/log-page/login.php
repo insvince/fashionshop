@@ -3,7 +3,8 @@
     $mail = $_POST['umail'];
     $psw = $_POST['upsw'];
 
-    $sql = "SELECT * FROM tb_users WHERE `email` = '$mail' AND `password` = '$psw' ";
+    $sql = "SELECT * FROM tb_users WHERE `email` = '" . $mail . "' AND `password` = '" . $psw . "' ";
+    
     $rs = mysqli_query($conn, $sql);
     $row = mysqli_num_rows($rs);
     $row = mysqli_fetch_array($rs);
