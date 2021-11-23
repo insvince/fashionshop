@@ -51,7 +51,7 @@
                             Thống Kê</a>
                     </li>
                     <li>
-                        <a href="../category/index.php" href="">
+                        <a href="../category/index.php" >
                             Danh Sách Danh Mục
                         </a>
                     </li>
