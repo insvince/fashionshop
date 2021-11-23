@@ -1,5 +1,5 @@
 <?php 
-session_start();
+    session_start();
     if(isset($_GET['action'])){
         if(isset($_GET['action']) == "remove"){
             foreach ($_SESSION['cart'] as $key => $value) {

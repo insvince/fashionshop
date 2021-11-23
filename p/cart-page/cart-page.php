@@ -2,6 +2,7 @@
     session_start();
     include_once "../../php/config.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,63 +14,66 @@
     <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
     <link rel="stylesheet" href="../../css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
-    <style>
-        .bottom button{
-            background-color: black !important;
-            color: whitesmoke !important;
-        }
-        .cash button{
-            background-color: black !important;
-            color: whitesmoke !important;
-        }
-    </style>
+    
 </head>
-
 <body>
-
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li title="Bộ Sưu Tập"><a href="../collection/collection.php">Bộ sưu tập</a></li>
-                <li title="Sản Phẩm"><a href="../product/product.php">Sản Phẩm</a></li>
-                <li title="Trang Chủ"><a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li title="Tin Tức"><a href="../news/news.php">Tin Tức</a></li>
-                <li title="Giới Thiệu"><a href="../about/about.php">Giới Thiệu</a></li>
+                <li title="Bộ Sưu Tập">
+                    <a href="../collection/collection.php">Bộ sưu tập</a>
+                </li>
+                <li title="Sản Phẩm">
+                    <a href="../product/product.php">Sản Phẩm</a>
+                </li>
+                <li title="Trang Chủ">
+                    <a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a>
+                </li>
+                <li title="Tin Tức">
+                    <a href="../news/news.php">Tin Tức</a>
+                </li>
+                <li title="Giới Thiệu">
+                    <a href="../about/about.php">Giới Thiệu</a>
+                </li>
             </div>
         </ul>
 
     </div>
 
     <div id="main">
-        <div class="main-cart" style="min-height: 300px">
+        <div class="main-cart" style="">
             <h4>Giỏ Hàng Của Bạn</h4>
-            
-            <?php if(isset($_GET['error'])){  echo "<p style= 'margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;'>". $_GET['error']  . "</p>"; }
+            <?php 
+                if(isset($_GET['error'])){  echo "<p class='error' style= ''>". $_GET['error']  . "</p>"; }
 
-            if(isset($_GET['success'])){  echo "<p style= 'margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;'>". $_GET['success'] . "</p>"; }else{
+                if(isset($_GET['success'])){  echo "<p class='success' style= ''>". $_GET['success'] . "</p>"; }else{
                 echo "<p style='color: red'>Thanh toán khi nhận hàng</p>";
             } ?>
-            <div style="width: 50%; margin: 0 auto; display: flex; justify-content: center;">
+            <div class="cart__form">
                
-                <form action="pay.php?action=pay" method="post" style="display: flex; flex-direction: column; " enctype="multipart/form-data">
+                <form action="pay.php?action=pay" method="post" enctype="multipart/form-data">
                 <?php 
                     if(isset($_SESSION['cart'])){
                         foreach($_SESSION['cart'] as $key => $value){
                 ?> 
-                    <div style="display: flex; flex-direction: column; margin: 10px; width: 400px;align-items: center; ">
+                    <div class="form_number" >
                         <input type="hidden" name="this_id[]" value="<?=$value['id']?>">
-                        <img style="height: 300px;width: 250px" src="../../img/<?=$value['img']?>" alt="product">
-                        <input class="iamount" name="amount[]"  type="number" value="<?=$value['amount']?>" min="1" max="10" style="text-align: center; margin: 10px 0;padding: 5px 10px">
-                        <p><?=$value['name']?></p>
-                        <p><?=number_format($value['price'])?> đ</p>
+                        <input class="iamount" name="amount[]"  type="number" value="<?=$value['amount']?>" min="1" max="10" style="">
+                        <p>
+                            <?=$value['name']?>
+                        </p>
+                        <p>
+                            <?=number_format($value['price'])?> đ
+                        </p>
                     </div>
                 <?php } ?>
-                    <div style="width: 400px;display: flex;justify-content: space-around;white-space: nowrap;flex-direction: column">
-                        <p style="font-size: 24px; ">Tổng Cộng: </p>
-                        <div style="display: flex; justify-content: space-around;">
-                            <input type="submit" value="Thanh Toán" style="width: 160px;font-size: 16px; padding:  10px 0 ; background-color: #a7734986;font-weight: bold;margin: 10px 0;border: 1px solid; cursor: pointer">
-                            
-                            <a href="clearall.php?action=clearall" style="width: 160px; padding:  10px; background-color: #a7734986;margin: 10px 0;border: 1px solid; text-decoration: none;font-weight: bold;text-align: center; ">Xóa giỏ hàng</a>
+                    <div class="form_pay">
+                        <p style="font-size: 24px; ">
+                            Tổng Cộng: 
+                        </p>
+                        <div class="pay_button" style="">
+                            <input type="submit" value="Thanh Toán" style="">
+                            <a href="clearall.php?action=clearall">Xóa giỏ hàng</a>
                         </div>
                     </div>
                 </form>
@@ -77,8 +81,8 @@
             </div>
         </div>
     </div>
-    <div id="footer">
 
+    <div id="footer">
         <div class="footer-content">
             <div class="logo">
                 <img src="../../img/Layer1.png" alt="">
@@ -86,7 +90,8 @@
                     Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus.
                     Asperiores, perspiciatis.
                     Officia debitis provident est quis esse reiciendis voluptatem omnis sed eaque culpa! Modi fugiat
-                    maiores quis?</p>
+                    maiores quis?
+                </p>
             </div>
 
             <div class="follow">
@@ -109,7 +114,51 @@
             </div>
         </div>
     </div>
-
 </body>
-<!-- <script src="../../js/total.js"></script> -->
+    <style>
+        .bottom button{
+            background-color: black !important;
+            color: whitesmoke !important;
+        }
+        .cash button{
+            background-color: black !important;
+            color: whitesmoke !important;
+        }
+        #main .main-cart{
+            min-height: 300px
+        }
+        #main .main-cart p.error{
+            margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
+        }
+        #main .main-cart p.success{
+            margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
+        }
+        #main .main-cart .cart__form{
+            width: 50%; margin: 0 auto; display: flex; justify-content: center;
+        }
+        #main .main-cart form{
+            display: flex; flex-direction: column;
+        }
+        form .form_number{
+            display: flex; flex-direction: column; margin: 10px; width: 400px;align-items: center;
+        }
+        form .form_number img{
+            height: 300px;width: 250px
+        }
+        form .form_number input[type="number"]{
+            text-align: center; margin: 10px 0;padding: 5px 10px
+        }
+        form .form_pay{
+            width: 400px;display: flex;justify-content: space-around;white-space: nowrap;flex-direction: column
+        }
+        form .form_pay .pay_button{
+            display: flex; justify-content: space-around;
+        }
+        form .form_pay .pay_button input{
+            width: 160px;font-size: 16px; padding:  10px 0 ; background-color: #a7734986;font-weight: bold;margin: 10px 0;border: 1px solid; cursor: pointer
+        }
+        form .form_pay .pay_button a{
+            width: 160px; padding:  10px; background-color: #a7734986;margin: 10px 0;border: 1px solid; text-decoration: none;font-weight: bold;text-align: center;
+        }
+    </style>
 </html>
