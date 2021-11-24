@@ -3,21 +3,23 @@
     include_once "../../php/config.php";
 
     $this_id = $_GET['this_id'];
-    $sql = "SELECT * FROM `tb_product` WHERE `id` = '$this_id' ";
-    $rs = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($rs);
     $id = $row['id'];
     $name = $row['name'];
     $img = $row['img'];
     $price = $row['price'];
+
+    $sql = "SELECT * FROM `tb_product` WHERE `id` = '" . $this_id . "' ";
+
+    $rs = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($rs);
     
     if(isset($_SESSION['user_mail'])){
-       
         if(isset($_SESSION['cart'])){
             
             $session_array_id = array_column($_SESSION['cart'], 'id');
     
             if(!in_array($this_id, $session_array_id)){
+
                 $session_array = array(
                     'id' => $id,
                     "name" => $name,
@@ -37,6 +39,7 @@
                        
                     }
                 }
+
                 $session_array = array(
                     'id' => $id,
                     "name" => $name,
@@ -44,6 +47,7 @@
                     "amount" => $_POST['amount'],
                     "img" => $img,
                 );
+
                 $_SESSION['cart'][] = $session_array;
                 header("location: product.php?success=Them thanh cong");
             }
@@ -57,7 +61,7 @@
             );
     
             $_SESSION['cart'][] = $session_array;
-            header("location: product.php?this_id=".$this_id);
+            header("location: product.php?this_id=". $this_id );
         }   
     }else{
         header("location: product.php?error?error=chua dang nhap");

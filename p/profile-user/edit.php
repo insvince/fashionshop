@@ -2,62 +2,39 @@
     session_start();
     include_once "../../php/config.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông Tin Cá Nhân - H Store</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/primary.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
-        
-<div id="header">
+    <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li title="Bộ Sưu Tập"><a href="../collection/collection.html">Bộ sưu tập</a></li>
-                <li title="Sản Phẩm"><a href="../product/product.php">Sản Phẩm</a></li>
-                <li title="Trang Chủ"><a class="logo" href="../../index.html"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li title="Tin Tức"><a href="../news/news.html">Tin Tức</a></li>
-                <li title="Giới Thiệu"><a href="../about/about.html">Giới Thiệu</a></li>
+                <li title="Bộ Sưu Tập">
+                    <a href="http://localhost/Exercise/p/collection/collection.html">Bộ sưu tập</a>
+                </li>
+                <li title="Sản Phẩm">
+                    <a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a>
+                </li>
+                <li title="Trang Chủ">
+                    <a class="logo" href="http://localhost/Exercise/"><img src="../../img/Layer1.png" alt=""></a>
+                </li>
+                <li title="Tin Tức">
+                    <a href="http://localhost/Exercise/p/news/news.html">Tin Tức</a>
+                </li>
+                <li title="Giới Thiệu">
+                    <a href="http://localhost/Exercise/p/about/about.html">Giới Thiệu</a>
+                </li>
             </div>
         </ul>
-        <!-- <ul class="tool-box">
-            <?php if(isset($_SESSION['user_mail'])){ ?>
-            <a href="../profile-user/info.html">
-                <button type="button">
-                    <i class="fas fa-user-circle"></i>
-                </button>
-            </a>
-            <a href="../log-page/#">
-                <button type="submit" name="dangxuat">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
-            </a>
-            <?php }else{ ?>
-            <a href="../log-page/log-page.php">
-                <button type="button">
-                    <i class="fas fa-user-circle"></i>
-                </button>
-            </a>
-            <?php } ?>
-            <a href="../cart-page/cart-page.php">
-                <button>
-                    <i class="fas fa-shopping-cart"></i>
-                </button>
-            </a>
-            <button><i class="fas fa-search"></i>
-                <div class="modal-search">
-                    
-                </div>
-            </button>
-        </ul> -->
     </div>
 
     <div id="main">
@@ -66,12 +43,13 @@
            <div class="form-content">
                <?php 
                     $mail = $_SESSION['user_mail'];
-                    $sql = "SELECT * FROM `tb_users` WHERE `email` = '$mail' ";
+
+                    $sql = "SELECT * FROM `tb_users` WHERE `email` = '" . $mail . "' ";
                     $rs = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($rs);
                     $dob = date('Y-m-d',strtotime($row['dob']));
                ?>
-                <form action="./update.php?account=<?=$row['id']?>" method="post">
+                <form action="http://localhost/Exercise/p/profile-user/update.php?account=<?= $row['id'] ?>" method="post">
                     <div class="contain">
                         <div class="left">
                             <label for="">Tên</label>
@@ -122,10 +100,9 @@
     </div>
 
     <div id="footer">
-
         <div class="footer-content">
             <div class="logo">
-                <img src="../../img/Layer1.png" alt="">
+                <img src="http://localhost/Exercise/img/Layer1.png" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus.
                     Asperiores, perspiciatis.
@@ -153,7 +130,5 @@
             </div>
         </div>
     </div>
-
 </body>
-
 </html>

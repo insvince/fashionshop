@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include_once "../../php/config.php";
+    include_once "http://localhost/Exercise/php/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông Tin Cá Nhân - H Store</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/primary.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 
@@ -20,33 +20,33 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li title="Bộ Sưu Tập"><a href="../collection/collection.html">Bộ sưu tập</a></li>
-                <li title="Sản Phẩm"><a href="../product/product.php">Sản Phẩm</a></li>
-                <li title="Trang Chủ"><a class="logo" href="../../index.html"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li title="Tin Tức"><a href="../news/news.html">Tin Tức</a></li>
-                <li title="Giới Thiệu"><a href="../about/about.html">Giới Thiệu</a></li>
+                <li title="Bộ Sưu Tập"><a href="http://localhost/Exercise/p//collection/collection.html">Bộ sưu tập</a></li>
+                <li title="Sản Phẩm"><a href="http://localhost/Exercise/p//product/product.php">Sản Phẩm</a></li>
+                <li title="Trang Chủ"><a class="logo" href="http://localhost/Exercise/"><img src="http://localhost/Exercise/img/Layer1.png" alt=""></a></li>
+                <li title="Tin Tức"><a href="http://localhost/Exercise/p/news/news.html">Tin Tức</a></li>
+                <li title="Giới Thiệu"><a href="http://localhost/Exercise/p/about/about.html">Giới Thiệu</a></li>
             </div>
         </ul>
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])){ ?>
-            <a href="../profile-user/info.html">
+            <a href="http://localhost/Exercise/p/profile-user/info.html">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
                 </button>
             </a>
-            <a href="../log-page/#">
+            <a href="http://localhost/Exercise/p//log-page/#">
                 <button type="submit" name="dangxuat">
                     <i class="fas fa-sign-out-alt"></i>
                 </button>
             </a>
             <?php }else{ ?>
-            <a href="../log-page/log-page.php">
+            <a href="http://localhost/Exercise/p//log-page/log-page.php">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
                 </button>
             </a>
             <?php } ?>
-            <a href="../cart-page/cart-page.php">
+            <a href="http://localhost/Exercise/p//cart-page/cart-page.php">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
                 </button>
@@ -70,8 +70,8 @@
                     while( $row = mysqli_fetch_array($rs)){
                 ?>  
                 <div style="display: flex; justify-content: center; flex-direction: column;text-align: center; margin: 10px 0">
-                    <a href="../../p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
-                        <img style="width: 250px; height: 300px" src="../../img/<?=$row['img']?>" alt="product">
+                    <a href="http://localhost/Exercise/p//product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
+                        <img style="width: 250px; height: 300px" src="http://localhost/Exercise/img/<?=$row['img']?>" alt="product">
                     </a>
                     <p><?=$row['name']?></p>
                     <p><?=$row['price']?></p>
@@ -85,7 +85,7 @@
 
         <div class="footer-content">
             <div class="logo">
-                <img src="../../img/Layer1.png" alt="">
+                <img src="http://localhost/Exercise/img/Layer1.png" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus.
                     Asperiores, perspiciatis.
@@ -115,5 +115,5 @@
     </div>
       
 </body>
-<script src="../../js/search.js"></script>
+<script src="http://localhost/Exercise/js/search.js"></script>
 </html>

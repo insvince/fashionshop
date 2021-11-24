@@ -20,33 +20,43 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li title="Bộ Sưu Tập"><a href="../collection/collection.php">Bộ sưu tập</a></li>
-                <li title="Sản Phẩm"><a href="..../product/product.php">Sản Phẩm</a></li>
-                <li title="Trang Chủ"><a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li title="Tin Tức"><a href="../news/news.php">Tin Tức</a></li>
-                <li title="Giới Thiệu"><a href="../about/about.php">Giới Thiệu</a></li>
+                <li title="Bộ Sưu Tập">
+                    <a href="http://localhost/Exercise/p/collection/collection.php">Bộ sưu tập</a>
+                </li>
+                <li title="Sản Phẩm">
+                    <a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a>
+                </li>
+                <li title="Trang Chủ">
+                    <a class="logo" href="http://localhost/Exercise/"><img src="http://localhost/Exercise/img/Layer1.png" alt=""></a>
+                </li>
+                <li title="Tin Tức">
+                    <a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a>
+                </li>
+                <li title="Giới Thiệu">
+                    <a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a>
+                </li>
             </div>
         </ul>
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])){ ?>
-            <a href="../profile-user/info.php">
+            <a href="http://localhost/Exercise/p//profile-user/info.php">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
                 </button>
             </a>
-            <a href="../log-page/logout.php">
+            <a href="http://localhost/Exercise/p/log-page/logout.php">
                 <button type="submit" name="dangxuat">
                     <i class="fas fa-sign-out-alt"></i>
                 </button>
             </a>
             <?php }else{ ?>
-            <a href="../log-page/log-page.php">
+            <a href="http://localhost/Exercise/p/log-page/log-page.php">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
                 </button>
             </a>
             <?php } ?>
-            <a href="../cart-page/cart-page.php">
+            <a href="http://localhost/Exercise/p/cart-page/cart-page.php">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
                 </button>
@@ -54,16 +64,15 @@
             <button type="button" onclick="openSearch()">
                 <i class="fas fa-search"></i>
             </button>
+
             <div style="display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;" id="modal-search">
-                
                 <form action="../search/search_item.php" method="get" style="display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px ">
                     <input name="name_search" type="text" style="width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px">
                     <input type="submit" name="search" value="Tìm kiếm" style="padding: 10px 5px; margin: 0 10px; border-radius: 5px">
                 </form>
-
             </div>
-                
         </ul>
+
         <div id="overlay" style="display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;" onclick="closeSearch()"></div>
     </div>
         
@@ -79,63 +88,77 @@
                     $rs = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($rs);
                ?>
-            <form action="./edit.php?action" method="post">
+            <form action="http://localhost/Exercise/p/profile-user/edit.php?action" method="post">
                 <div class="contain">
                     <div class="left">
                         <label for="">Tên</label>
                     </div>
+
                     <div class="right">
                         <?=$row['fullname']?>
                     </div>
                 </div>
+
                 <div class="contain">
                     <div class="left">
                         <label for="">Mật Khẩu</label>
                     </div>
+
                     <div class="right">
                         <input type="password"  value="<?= strlen($row['password']) < 8 ? "****************" : "****************" ?>" disabled style="background: none; border: none; font-size: 24px; color: black;">
                     </div>
                 </div>
+
                 <div class="contain">
                     <div class="left">
                         <label for="">Ngày Sinh</label>
                     </div>
+
                     <div class="right">
                         <?=$row['dob'] == NULL ? "Chưa nhập" : $row['dob'] ?>
                     </div>
                 </div>
+
                 <div class="contain">
                     <div class="left">
                         <label for="">Địa Chỉ</label>
                     </div>
+
                     <div class="right">
                         <?=$row['address'] == NULL ? "Chưa nhập" : $row['address'] ?>
                     </div>
                 </div>
+
                 <div class="contain">
                     <div class="left">
                         <label for="">Email</label>
                     </div>
+
                     <div class="right">
                         <?=$row['email']?>
                     </div>
                 </div>
+
                 <div class="contain">
                     <div class="left">
                         <label for="">Số Điện Thoại</label>
                     </div>
+
                     <div class="right">
                         <?=$row['number_phone']?>
                     </div>
                 </div>
+
                 <div class="contain">
                     <div class="left">
                         <label for="">Ngày tạo </label>
                     </div>
+
                     <div class="right">
                         <?= $formatDate = date('d/m/Y',strtotime($row['create_at']));?>
                     </div>
                 </div>
+
                 <div class="contain">
                     <button class="edit" name="edit">Sửa</button>
                 </div>
@@ -145,10 +168,9 @@
     </div>
 
     <div id="footer">
-
         <div class="footer-content">
             <div class="logo">
-                <img src="../../img/Layer1.png" alt="">
+                <img src="http://localhost/Exercise/img/Layer1.png" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus.
                     Asperiores, perspiciatis.
@@ -178,5 +200,5 @@
     </div>
       
 </body>
-<script src="../../js/search.js"></script>
+<script src="http://localhost/Exercise/js/search.js"></script>
 </html>

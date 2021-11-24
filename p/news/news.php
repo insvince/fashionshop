@@ -6,49 +6,58 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tin Tức - H Store</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/primary.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li><a href="../collection/collection.php">Bộ sưu tập</a></li>
-                <li><a href="../product/product.php">Sản Phẩm</a></li>
-                <li><a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li><a href="../news/news.php">Tin Tức</a></li>
-                <li><a href="../about/about.php">Giới Thiệu</a></li>
+                <li>
+                    <a href="http://localhost/Exercise/p/collection/collection.php">Bộ sưu tập</a>
+                </li>
+                <li>
+                    <a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a>
+                </li>
+                <li>
+                    <a class="logo" href="http://localhost/Exercise/"><img src="http://localhost/Exercise/img/Layer1.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a>
+                </li>
+                <li>
+                    <a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a>
+                </li>
             </div>
         </ul>
         <ul class="tool-box">
+
             <?php if(isset($_SESSION['user_mail'])){ ?>
-                <a href="../profile-user/info.php">
+                <a href="http://localhost/Exercise/p/profile-user/info.php">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
                 </a>
-                <a href="../log-page/logout.php">
+
+                <a href="http://localhost/Exercise/p/log-page/logout.php">
                     <button type="submit" name="dangxuat">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </a>
             <?php }else{ ?>
-                <a href="../log-page/log-page.php">
+                <a href="http://localhost/Exercise/p/log-page/log-page.php">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
                 </a>
             <?php } ?>
-            <a href="../cart-page/cart-page.php">
+            <a href="http://localhost/Exercise/p/cart-page/cart-page.php">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
                 </button>
@@ -83,6 +92,7 @@
                 <ul>
                 <?php 
                     $sql = "SELECT * FROM `tb_users` RIGHT JOIN `tb_post` ON `tb_users`.id = `tb_post`.user_id ORDER BY `tb_post`.create DESC" ;
+                    
                     $rs = mysqli_query($conn, $sql);
 
                     while($row = mysqli_fetch_array($rs)){
@@ -92,19 +102,21 @@
                 ?>
                     <li class="news">
                         <div class="left-news">
-                            <a href="./detail-news/detail-news.php?this_id=<?=$row['id']?>">
-                                <img src="../../img/<?= (($row['type'])=="Sale" ? "thumnail-sale.jpg" : "thumnail-trend.jpg") ?>" alt="">
+                            <a href="./detail-news/detail-news.php?this_id=<?= $row['id'] ?>">
+                                <img src="http://localhost/Exercise/img/<?= (( $row['type'] )=="Sale" ? "thumnail-sale.jpg" : "thumnail-trend.jpg") ?>" alt="">
                             </a>
                         </div>
                         <div class="right-news">
                             <h3>
-                                <a href="./detail-news/detail-news.php?this_id=<?=$row['id']?>"><?=$row['title']; ?></a>
+                                <a href="http://localhost/Exercise/p/product/detail-news/detail-news.php?this_id=<?= $row['id']?>"><?= $row['title'] ?></a>
                             </h3>
+
                             <div class="short-detail">
                                 <?=substr($row['content'], 0, 120)."..."; ?>
                             </div>
+
                             <div class="date">
-                                <p class="author"><?= $row['fullname']; ?></p>
+                                <p class="author"><?= $row['fullname'] ?></p>
                                 <p class="type-news"> <?= (($row['type'])=="Sale" ? "Khuyến mãi" : "Mới") ?> </p>
                                 <p class="day"><?= $formatDate ?></p>
                                 <p class="time"><?= $formatTime ?></p>
@@ -121,10 +133,9 @@
     </div>
         
     <div id="footer">
-
         <div class="footer-content">
             <div class="logo">
-                <img src="../../img/Layer1.png" alt="">
+                <img src="http://localhost/Exercise/img/Layer1.png" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus. 
                 Asperiores, perspiciatis. 
@@ -151,9 +162,7 @@
             </div>
         </div>
     </div>
-    
-<script src="../../js/showhide.js"></script>
-<script src="../../js/slideshow.js"></script>
 </body>
-
+    <script src="http://localhost/Exercise/js/showhide.js"></script>
+    <script src="http://localhost/Exercise/js/slideshow.js"></script>
 </html>
