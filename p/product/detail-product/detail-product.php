@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once "http://localhost/Exercise/php/config.php";
+    include_once "../../../php/config.php";
 ?>
 
 <!DOCTYPE html>
@@ -18,108 +18,112 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li><a href="http://localhost/Exercise/p/collection/collection.html">Bộ sưu tập</a></li>
+                <li><a href="http://localhost/Exercise/p/collection/collection.php">Bộ sưu tập</a></li>
                 <li><a href="http://localhost/Exercise/p//product/product.php">Sản Phẩm</a></li>
                 <li><a class="logo" href="http://localhost/Exercise/"><img src="http://localhost/Exercise/img/Layer1.png" alt=""></a></li>
-                <li><a href="http://localhost/Exercise/p/news/news.html">Tin Tức</a></li>
-                <li><a href="http://localhost/Exercise/p/about/about.html">Giới Thiệu</a></li>
+                <li><a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a></li>
+                <li><a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a></li>
             </div>
         </ul>
         <ul class="tool-box">
+            <?php if(isset($_SESSION['user_mail'])){ ?>
+            <a href="http://localhost/Exercise/p/profile-user/info.php">
+                <button type="button">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            </a>
+            <a href="http://localhost/Exercise/p/log-page/logout.php">
+                <button type="submit" name="dangxuat">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </a>
+            <?php }else{ ?>
             <a href="http://localhost/Exercise/p/log-page/log-page.php">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
                 </button>
             </a>
-            <a href="http://localhost/Exercise/p/log-page/#">
-                <button type="submit" name="dangxuat">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
-            </a>
-            <a href="http://localhost/Exercise/p/profile-user/info.html">
-                <button type="button">
-                    <i class="fas fa-user-circle"></i>
-                </button>
-            </a>
-            <a href="http://localhost/Exercise/p/cart-page/cart-page.html">
+            <?php } ?>
+            <a href="http://localhost/Exercise/p/cart-page/cart-page.php">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
                 </button>
             </a>
-            <button>
+            <button onclick="openSearch()">
                 <i class="fas fa-search"></i>
-                <div class="modal-search">
-                    
-                </div>
             </button>
+            
+            <div class="search" id="modal-search">
+                <form action="http://localhost/Exercise/p/search/search_item.php" method="get" >
+                    <input name="name_search" type="text" >
+                    <input type="submit" name="search" value="Tìm kiếm" >
+                </form>
+            </div>
         </ul>
+        <div id="overlay"  onclick="closeSearch()"></div>
     </div>
     
     <div id="main">
         <div style="max-width: 100%; margin: 0 auto; ">
-        <?php 
-            if(isset($_GET['error'])){  echo "<p class='error' style= ''>". $_GET['error'] . "</p>"; } 
-        ?>
-        <h4>Thông Tin Chi Tiết Sản Phẩm</h4>
-
-        <div class="main-detail">
             <?php 
-                $this_id = $_GET['this_id'];
-
-                $sql = "SELECT * FROM `tb_product` WHERE `id` = '" . $this_id . "' ";
-                $rs = mysqli_query($conn, $sql);
-                $row = mysqli_fetch_array($rs);
+                if(isset($_GET['error'])){  echo "<p class='error' style= ''>". $_GET['error'] . "</p>"; } 
             ?>
-            <div class="detail-left">
-                <img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="">
-            </div>
-            <div class="detail-right">
-                <h5 class="title">
-                    <?= $row['name'] ?>
-                </h5>
+            <h4>Thông Tin Chi Tiết Sản Phẩm</h4>
 
-                <div class="bottom">
-                    <p class="price"><?= $row['price'] ?> <u>đ</u></p>
-                    <p>
-                        Phí vận chuyển: 30.000 <u>đ</u>
-                    </p>
-                    <p style="padding: 0 5px;"> Kích thước </p>
-                    <select >
-                        <option value="volvo">S</option>
-                        <option value="saab">M</option>
-                        <option value="mercedes">L</option>
-                    </select>
+            <div class="main-detail">
+                <?php 
+                    $this_id = $_GET['this_id'];
 
-                    <div class="multi-bottom">
-                        <p>Số Lượng 
-                            <button class="number-btn">-</button>
-                            <input type="number" value="1">
-                            <button class="number-btn">+</button>
+                    $sql = "SELECT * FROM `tb_product` WHERE `id` = '" . $this_id . "' ";
+                    $rs = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_array($rs);
+                ?>
+                <div class="detail-left">
+                    <img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="">
+                </div>
+                <div class="detail-right">
+                    <h5 class="title">
+                        <?= $row['name'] ?>
+                    </h5>
+
+                    <div class="bottom">
+                        <p class="price"><?= $row['price'] ?> <u>đ</u></p>
+                        <p>
+                            Phí vận chuyển: 30.000 <u>đ</u>
                         </p>
-                        <a href="http://localhost/Exercise/p/product/add_to_cart.php?this_id=<?=$row['id']?>">
-                            <button class="add_to_cart">Thêm Vào Giỏ Hàng</button>
-                        </a>
+                        <p style="padding: 0 5px;"> Kích thước </p>
+                        <select >
+                            <option value="volvo">S</option>
+                            <option value="saab">M</option>
+                            <option value="mercedes">L</option>
+                        </select>
+
+                        <div class="multi-bottom">
+                            <a href="http://localhost/Exercise/p/product/add_to_cart.php?this_id=<?=$row['id']?>">
+                                <button class="add_to_cart">Thêm Vào Giỏ Hàng</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bottom">
-            <h3>Sản phẩm liên quan</h3>
-            <div class="div bottom">
-                <?php
-                    $sql_related = "SELECT * FROM `tb_product` LIMIT 3; ";
+            <div class="bottom">
+                <h3>Sản phẩm liên quan</h3>
+                <div class="div bottom">
+                    <?php
+                        $sql_related = "SELECT * FROM `tb_product` LIMIT 3; ";
 
-                    $rs_related = mysqli_query($conn, $sql_related);
+                        $rs_related = mysqli_query($conn, $sql_related);
 
-                    while($row_related = mysqli_fetch_array($rs_related)){
-                ?>
-                <div class="item">
-                    <a href="http://localhost/Exercise/p/product/detail-product/detail-product.php?this_id=<?= $row_related['id'] ?>">
-                        <img src="../../../img/<?= $row_related['img'] ?>" alt="">
-                    </a>
-                    <p><?= $row_related['name'] ?></p>
+                        while($row_related = mysqli_fetch_array($rs_related)){
+                    ?>
+                    <div class="item">
+                        <a href="http://localhost/Exercise/p/product/detail-product/detail-product.php?this_id=<?= $row_related['id'] ?>">
+                            <img src="../../../img/<?= $row_related['img'] ?>" alt="">
+                        </a>
+                        <p><?= $row_related['name'] ?></p>
+                    </div>
+                    <?php } ?>
                 </div>
-                <?php } ?>
             </div>
         </div>
     </div>
@@ -127,11 +131,10 @@
     <div id="footer">
         <div class="footer-content">
             <div class="logo">
-                <img src="http://localhost/Exercise/img/Layer1.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus. 
-                Asperiores, perspiciatis. 
-                Officia debitis provident est quis esse reiciendis voluptatem omnis sed eaque culpa! Modi fugiat maiores quis?</p>
+                <img src="http://localhost/Exercise/img/Layer1.png" alt="logo">
+                <p>
+                    H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.
+                </p>
             </div>
     
             <div class="follow">
@@ -154,6 +157,7 @@
             </div>
         </div>
     </div>
+    <script src="http://localhost/Exercise/js/search.js"></script>
 </body>
 <style>
         .bottom{
@@ -208,6 +212,21 @@
         }
         p.error{
             margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
+        }
+        .search{
+            display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;
+        }
+        .search form{
+            display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px;
+        }
+        .search form input[type="text"]{
+            width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        .search form input[type="submit"]{
+            padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        #overlay{
+            display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;
         }
     </style>
 </html>

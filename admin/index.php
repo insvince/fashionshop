@@ -1,8 +1,8 @@
 <?php 
     session_start();
-    include "../php/config.php";
+    include_once "../php/config.php";
     if(!isset($_SESSION['a_mail'])){
-        header("location: ./login/login.php");
+        header("location: http://localhost/Exercise/admin/login/login.php");
     }
 ?>
 <!DOCTYPE html>
@@ -12,8 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thống Kê</title>
-    <link rel="shortcut icon" href="../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -49,25 +49,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a class="active">Thống Kê</a>
+                        <a href="" class="active">Thống Kê</a>
                     </li>
                     <li>
-                        <a href="./category/index.php" href="">Danh Sách Danh Mục</a>
+                        <a href="http://localhost/Exercise/admin/category">Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a href="./product/index.php">Danh Sách Sản Phẩm</a>
+                        <a href="http://localhost/Exercise/admin/product">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="./news/index.php">Danh Sách Bài Viết</a>
+                        <a href="http://localhost/Exercise/admin/news">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="./order/index.php">Danh Sách Đơn Hàng</a>
+                        <a href="http://localhost/Exercise/admin/order">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="./account/index.php">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/Exercise/admin/account">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="./logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -137,9 +137,6 @@
         .report-block .report p i{
             font-size: 2rem;
             color: #333;
-        }
-        a.active{
-            pointer-events: none;
         }
     </style>
 </html>

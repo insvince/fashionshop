@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Tài Khoản</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
     
 </head>
@@ -48,25 +48,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="../index.php">Thống Kê</a>
+                        <a href="http://localhost/Exercise/admin/">Thống Kê</a>
                     </li>
                     <li>
-                        <a href="../category/index.php" href="">Danh Sách Danh Mục</a>
+                        <a href="http://localhost/Exercise/admin/category/">Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a class="active" href="./index.php">Danh Sách Sản Phẩm</a>
+                        <a class="active" href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="../news/index.php">Danh Sách Bài Viết</a>
+                        <a href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="../order/index.php">Danh Sách Đơn Hàng</a>
+                        <a href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="../account/index.php">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="../logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -84,19 +84,18 @@
                         $category = $_POST['add_category'];
                         $img_tmp_name = $_FILES['add_img']['tmp_name'];
 
-                        $sql_add = "INSERT INTO `tb_product`(`name`, `stock`, `img`, `description`, `price`, `category_id`) VALUES ('" . $name . "', '" . $stock . "', '" . $img . "', '$" . description . "', '" . $price . "', '" . $category . "' )";
+                        $sql_add = "INSERT INTO `tb_product`(`name`, `stock`, `img`, `description`, `price`, `category_id`) VALUES ('" . $name . "', '" . $stock . "', '" . $img . "', '" . $description . "', '" . $price . "', '" . $category . "' )";
 
                         $sql_check = "SELECT * FROM `tb_product` WHERE `name` = '" . $name . "' ";
 
                         $rs_check = mysqli_query($conn, $sql_check);
                         $row_check = mysqli_num_rows($rs_check);
-                        
                         if($row_check > 0){
                             header("location: index.php?error=Sản phẩm đã tồn tại!");
                         }else{
                             mysqli_query($conn, $sql_add);
                             header("location: index.php?success=Đã thêm thành công!");
-                            move_uploaded_file($img_tmp_name, '../../img/'. $img );
+                            move_uploaded_file($img_tmp_name, 'http://localhost/Exercise/img/'. $img );
                         }
                     }
                 ?>
@@ -106,36 +105,36 @@
                     if(isset($_GET['success'])){  echo "<p class='success'>". $_GET['success'] . "</p>"; } 
                 ?>
 
-               <form action="add.php?" method="post" style="" enctype="multipart/form-data">
+               <form action="add.php?" method="post"  enctype="multipart/form-data">
 
-                    <div class="add" style="">
-                        <label for="add_name" style="">Tên Sản Phẩm</label>
-                        <input type="text" name="add_name" style="" required>
+                    <div class="add" >
+                        <label for="add_name" >Tên Sản Phẩm</label>
+                        <input type="text" name="add_name"  required>
                     </div>
 
-                    <div class="add" style="">
-                        <label for="add_stock" style="">Kho</label>
-                        <input type="number" class="stock" name="add_stock" style="">
+                    <div class="add" >
+                        <label for="add_stock" >Kho</label>
+                        <input type="number" class="stock" name="add_stock" >
                     </div>
 
-                    <div class="add" style="">
-                        <label for="add_img" style="">Hình Ảnh</label>
-                        <input type="file" name="add_img" style="" required>
+                    <div class="add" >
+                        <label for="add_img" >Hình Ảnh</label>
+                        <input type="file" name="add_img"  required>
                     </div>
 
-                    <div class="add" style="">
-                        <label for="add_description" style=";">Mô Tả</label>
-                        <textarea name="add_description" style=""></textarea>
+                    <div class="add" >
+                        <label for="add_description" >Mô Tả</label>
+                        <textarea name="add_description" ></textarea>
                     </div>
 
-                    <div class="add" style="">
-                        <label for="add_price" style=";">Giá</label>
-                        <input class="price" type="number" name="add_price" style="">
+                    <div class="add" >
+                        <label for="add_price" >Giá</label>
+                        <input class="price" type="number" name="add_price" >
                     </div>
 
-                    <div class="add" style=";">
-                        <label for="add_category" style=";">Danh Mục</label>
-                        <select name="add_category" id="" style="">
+                    <div class="add" >
+                        <label for="add_category" >Danh Mục</label>
+                        <select name="add_category" id="" >
                         <?php
                             $sql_category = "SELECT * FROM `tb_category`";
                             $rs = mysqli_query($conn, $sql_category);

@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giới Thiệu - H Store</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/about.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/css/about.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -19,11 +19,11 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li><a href="../collection/collection.php">Bộ sưu tập</a></li>
-                <li><a href="../product/product.php">Sản Phẩm</a></li>
-                <li><a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a></li>
-                <li><a href="../news/news.php">Tin Tức</a></li>
-                <li><a href="../about/about.php">Giới Thiệu</a></li>
+                <li><a href="http://localhost/Exercise/p/collection/collection.php">Bộ sưu tập</a></li>
+                <li><a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a></li>
+                <li><a class="logo" href="http://localhost/Exercise/index.php"><img src="http://localhost/Exercise/img/Layer1.png" alt=""></a></li>
+                <li><a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a></li>
+                <li><a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a></li>
             </div>
         </ul>
     </div>

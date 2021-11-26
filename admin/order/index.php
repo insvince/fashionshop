@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Đơn Hàng</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
   
 </head>
@@ -47,25 +47,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="../index.php" href="">Thống Kê</a>
+                        <a href="http://localhost/Exercise/admin/" >Thống Kê</a>
                     </li>
                     <li>
-                        <a href="../category/index.php" href="">Danh Sách Danh Mục</a>
+                        <a href="http://localhost/Exercise/admin/category/" >Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a href="../product/index.php">Danh Sách Sản Phẩm</a>
+                        <a href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="../news/index.php">Danh Sách Bài Viết</a>
+                        <a href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a class="active" href="../order/index.php">Danh Sách Đơn Hàng</a>
+                        <a class="active" href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="../account/index.php">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="../logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -75,9 +75,7 @@
                 <table>
                     <tr>
                         <th>ID</th>
-                        <th>Mã Tài Khoản</th>
-                        <th>Mã Sản Phẩm</th>
-                        <th>Số Lượng</th>
+                        <th>Mã Đơn Hàng</th>
                         <th>Ngày Đặt</th>
                         <th>Giờ Đặt</th>
                         <th>Trạng Thái</th>
@@ -85,8 +83,6 @@
                     </tr>
                     <?php 
                         $sql = "SELECT * FROM `tb_billing`
-                        INNER JOIN `tb_users` ON `tb_users`.id = `tb_billing`.user_id
-                        INNER JOIN `tb_product` ON `tb_product`.id = `tb_billing`.product_id
                         ORDER BY `tb_billing`.id_bill ASC " ;
                         
                         $rs = mysqli_query($conn, $sql);
@@ -98,25 +94,20 @@
                     ?>
                     <tr>
                         <td><?= $row['id_bill'] ?></td>
-                        <td><?= `tb_users`.$row['email'] ?></td>
-                        <td><?= `tb_product`.$row['name'] ?></td>
-                        <td><?= `tb_billing`.$row['amout'] ?></td>
+                        <td><?= `tb_users`.$row['code_cart'] ?></td>
                         <td><?= $formatDate ?></td>
                         <td><?= $formatTime ?></td>
                         <td><?= $row['status'] ?></td>
-                        <td><div class="edit">
-                            <?php if($row['status'] != ""){
-                                echo "<p style= 'text-align: center'>Đã ".$row['status']. "</p>";                       
-                            ?>
-                            <?php }else{ ?>
+                        <td>
+                            <div class="edit">
                                 <a href="./accept.php?this_id=<?=$row['id_bill']?>">
                                     <button class="accept">Nhận</button>
                                 </a>
                                 <a href="./cancel.php?this_id=<?=$row['id_bill']?>">
                                     <button class="cancel">Hủy</button>
                                 </a>
-                            <?php } ?>
-                        </div></td>
+                            </div>
+                        </td>
                     </tr>
                  <?php } ?>
                 </table>
@@ -132,6 +123,7 @@
             background-color: whitesmoke;
             border-radius: 15px;
             margin: 50px auto !important;
+            min-height: 500px;
         }
         .accept{
             background-color: lightgreen !important;
@@ -144,6 +136,12 @@
         button, a{
             text-decoration: none;
             cursor: pointer;
+        }
+         p.error{
+            margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
+        }
+         p.success{
+            margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
         }
     </style>
 </html>

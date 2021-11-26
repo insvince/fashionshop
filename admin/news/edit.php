@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Tài Khoản</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin//css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -48,25 +48,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a  href="../index.php">Thống Kê</a>
+                        <a  href="http://localhost/Exercise/admin/">Thống Kê</a>
                     </li>
                     <li>
-                        <a href="../category/index.php" href="">Danh Sách Danh Mục</a>
+                        <a href="http://localhost/Exercise/admin/category/" >Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a class="active" href="./index.php">Danh Sách Sản Phẩm</a>
+                        <a href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="../news/index.php">Danh Sách Bài Viết</a>
+                        <a class="active" href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="../order/index.php">Danh Sách Đơn Hàng</a>
+                        <a href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="../account/index.php">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="../logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -145,10 +145,15 @@
             margin: 50px auto !important;
             border-radius: 15px;
             width: 90%;
-            display: flex; flex-direction: column; justify-content: center; width: 80%; overflow: hidden
+            display: flex; flex-direction: column; justify-content: center; width: 80%; overflow: hidden;
+            min-height: 500px;
+        }
+        .button-add {
+            text-align: center;
         }
         .button-add button{
             cursor: pointer;text-align: center;
+            
         }
         a{
             text-decoration: none;
@@ -189,7 +194,7 @@
             min-height: 200px; width: 50%; margin: 0 auto ; display: flex; flex-direction: column; justify-content: center;
         }
         form .edit{
-            width: 80%; margin: 0 auto; display: inline-flex; align-items: center
+            width: 80%  !important; margin: 0 auto !important; display: inline-flex !important; align-items: center !important
         }
         form .edit label{
             width: 120px; margin: 10px 0

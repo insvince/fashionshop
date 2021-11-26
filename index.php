@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include "http://localhost/Exercise/php/config.php";
+    include_once "./php/config.php";    
 ?>
 
 <!DOCTYPE html>
@@ -63,8 +63,8 @@
 
             </div>
                 
-        <div id="overlay" style="display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;" onclick="closeSearch()"></div>
         </ul>
+        <div id="overlay" style="display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;" onclick="closeSearch()"></div>
     </div>
 
     <div id="slideshow">
@@ -91,11 +91,11 @@
             ?>
             <div class="product" style="width: 33%; display: inline-flex; justify-content: center; flex-direction: column; text-align: center">
                 <div class="product-select">
-                    <a href="http://localhost/Exercise/p//product/detail-product/detail-product.php?this_id=<?=$row['id']?>"><img
+                    <a href="http://localhost/Exercise/p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>"><img
                         src="http://localhost/Exercise/img/<?=$row['img']?>" alt="product" style="width: 300px">
                     </a>
                     <div class="button-menu"  >
-                        <a href="http://localhost/Exercise/p//product/add_to_cart.php?this_id=<?=$row['id']?>">
+                        <a href="http://localhost/Exercise/p/product/add_to_cart.php?this_id=<?=$row['id']?>">
                             <button>
                                 <i class="fas fa-cart-plus"></i>
                             </button>
@@ -147,11 +147,9 @@
         <div class="footer-content">
             <div class="logo">
                 <img src="http://localhost/Exercise/img/Layer1.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus.
-                    Asperiores, perspiciatis.
-                    Officia debitis provident est quis esse reiciendis voluptatem omnis sed eaque culpa! Modi fugiat
-                    maiores quis?</p>
+                <p>
+                    H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.
+                </p>
             </div>
 
             <div class="follow">

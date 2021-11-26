@@ -1,5 +1,5 @@
 <?php 
-    include_once "http://localhost/Exercise/php/config.php";
+    include_once "../../php/config.php";
 
     $id = $_GET['account'];
     $name = $_POST['name'];

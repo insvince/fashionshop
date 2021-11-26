@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Sản Phẩm</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
    
 </head>
@@ -37,25 +37,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="../index.php">Thống Kê</a>
+                        <a href="http://localhost/Exercise/admin/">Thống Kê</a>
                     </li>
                     <li>
-                        <a href="../category/index.php" href="">Danh Sách Danh Mục</a>
+                        <a href="http://localhost/Exercise/admin/category" >Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a class="active">Danh Sách Sản Phẩm</a>
+                    <a class="active" href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="../news/index.php">Danh Sách Bài Viết</a>
+                        <a href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="../order/index.php">Danh Sách Đơn Hàng</a>
+                        <a href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="../account/index.php">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="../logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -84,16 +84,16 @@
                         <td><?= $row['id'] ?></td>
                         <td><?= $row['name'] ?></td>
                         <td><?= $row['stock'] ?></td>
-                        <td><img src="../../img/<?= $row['img'] ?>" alt="product"></td>
+                        <td><img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="product"></td>
                         <td><?= $row['description'] ?></td>
                         <td><?= $row['price'] ?></td>
                         <td><?= $row['category_id'] ?></td>
                         <td>
                             <div class="edit">
-                                <a href="./edit.php?this_id=<?=$row['id']; ?>">
+                                <a href="http://localhost/Exercise/admin/product/edit.php?this_id=<?=$row['id']; ?>">
                                     <button class="up">Sửa</button>
                                 </a>
-                                <a href="./delete.php?this_id=<?=$row['id']; ?>">
+                                <a href="http://localhost/Exercise/admin/product/delete.php?this_id=<?=$row['id']; ?>">
                                     <button class="down">Xóa</button>
                                 </a>
                             </div>
@@ -102,7 +102,7 @@
                     <?php } ?>
                 </table>
                 <div class="button-add">
-                    <a href="./add.php">
+                    <a href="http://localhost/Exercise/admin/product/add.php">
                         <button>Thêm</button>
                     </a>
                 </div>

@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Tài Khoản</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -47,25 +47,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a  href="../index.php">Thống Kê</a>
+                        <a  href="http://localhost/Exercise/admin/">Thống Kê</a>
                     </li>
                     <li>
-                        <a href="../category/index.php" href="">Danh Sách Danh Mục</a>
+                        <a href="http://localhost/Exercise/admin/category/">Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a class="active" href="./index.php">Danh Sách Sản Phẩm</a>
+                        <a href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="../news/index.php">Danh Sách Bài Viết</a>
+                        <a class="active" href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="../order/index.php">Danh Sách Đơn Hàng</a>
+                        <a href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="../account/index.php">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="../logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -84,13 +84,12 @@
                         
                         $session_fname = $_SESSION['a_fullname'];
 
-                        $sql_add = "INSERT INTO `tb_post`(`title`, `content`, `type`, `create_at`, `user_id`) VALUES ('" . $title . "', '" . $content . "', '" . $type . "', '" . $create . "', '" . $session_fname . "')";
+                        $sql_add = "INSERT INTO `tb_post`(`title`, `content`, `type`, `create`, `user_id`) VALUES ('" . $title . "', '" . $content . "', '" . $type . "', '" . $create . "', '" . $session_fname . "')";
 
                         $sql_check = "SELECT * FROM `tb_post` WHERE `title` = '" . $title . "' ";
 
                         $rs_check = mysqli_query($conn, $sql_check);
                         $row_check = mysqli_num_rows($rs_check);
-                        
                         if($row_check > 0){
                             header("location: index.php?error=Sản phẩm đã tồn tại!");
                         }else{

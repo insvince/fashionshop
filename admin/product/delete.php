@@ -6,5 +6,4 @@
     $sql = "DELETE FROM `tb_product` WHERE `id` = '" . $this_id . "'  ";
 
     mysqli_query($conn, $sql);
-    
     header("location: index.php?success=Đã xóa thành công!");

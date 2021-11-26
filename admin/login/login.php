@@ -2,7 +2,7 @@
     session_start();
     include "../../php/config.php";
     if(isset($_SESSION['a_mail'])){
-        header("location: ../../index.php");
+        header("location: http://localhost/Exercise/admin/");
     }
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập Quyền Quản Trị</title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/admin.css">
 </head>
 <body>
     <div id="form-admin">
@@ -35,7 +35,7 @@
                         $_SESSION['a_mail'] = $a_mail;
                         $_SESSION['a_fullname'] = $row2['fullname'];
 
-                        header("location: ../index.php");
+                        header("location: http://localhost/Exercise/admin/");
                     }
                 }else{
                     header("location: login.php?error=Tài khoản không tồn tại!");

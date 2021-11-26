@@ -1,8 +1,6 @@
 <?php
     session_start();
     include_once "../../php/config.php";
-
-    
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +50,10 @@
                 </button>
             </a>
             
-            <button onclick="openSearch()"><i class="fas fa-search"></i>
+            <button onclick="openSearch()">
+                <i class="fas fa-search"></i>
+            </button>
+            
             <div class="search" style="" id="modal-search">
                 <form action="http://localhost/Exercise/p/search/search_item.php" method="get" style="">
                     <input name="name_search" type="text" style="">
@@ -121,10 +122,9 @@
         <div class="footer-content">
             <div class="logo">
                 <img src="http://localhost/Exercise/img/Layer1.png" alt="logo">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus. 
-                Asperiores, perspiciatis. 
-                Officia debitis provident est quis esse reiciendis voluptatem omnis sed eaque culpa! Modi fugiat maiores quis?</p>
+                <p>
+                    H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.
+                </p>
             </div>
     
             <div class="follow">

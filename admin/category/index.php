@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Danh Mục</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -46,35 +46,37 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a  href="../index.php">
+                        <a  href="http://localhost/Exercise/admin/">
+                            Thống Kê
+                        </a>
                     </li>
                     <li>
-                        <a class="active">
+                        <a class="active" href="http://localhost/Exercise/admin/category/">
                             Danh Sách Danh Mục
                         </a>
                     </li>
                     <li>
-                        <a href="../product/index.php">
+                        <a href="http://localhost/Exercise/admin/product/">
                             Danh Sách Sản Phẩm
                         </a>
                     </li>
                     <li>
-                        <a href="../news/index.php">
+                        <a href="http://localhost/Exercise/admin/news/">
                             Danh Sách Bài Viết
                         </a>
                     </li>
                     <li>
-                        <a href="../order/index.php">
+                        <a href="http://localhost/Exercise/admin/order/">
                             Danh Sách Đơn Hàng
                         </a>
                     </li>
                     <li>
-                        <a href="../account/index.php">
+                        <a href="http://localhost/Exercise/admin/account/">
                             Danh Sách Tài Khoản
                         </a>
                     </li>
                     <li>
-                        <a href="../logout/logout.php">
+                        <a href="http://localhost/Exercise/admin/logout/logout.php">
                             Đăng Xuất
                         </a>
                     </li>
@@ -84,12 +86,10 @@
         <div id="container">
             <div class="content">
                 <div class="add" >
-
                     <form action="add.php" method="post">
                         <input type="text" name="addname" >
                         <button type="submit" name="addbtn" >Thêm</button>
                     </form>
-                    
                 </div>
                 <?php 
                     if(isset($_GET['error'])){  echo "<p class='error'>". $_GET['error'] . "</p>"; } 
@@ -116,10 +116,10 @@
                         <td><?= (($row['name'] == "Bộ Sưu Tập" || $row['name'] == "Mới") ? "Nổi Bật" : "Đang Bán") ?></td>
                         <td>
                             <div class="edit">
-                                <a class="up" href="./edit.php?this_id=<?=$row['id']?>">
+                                <a class="up" href="http://localhost/Exercise/admin/category/edit.php?this_id=<?=$row['id']?>">
                                     Sửa
                                 </a>
-                                <a class="down" href="./delete.php?this_id=<?=$row['id']?>">
+                                <a class="down" href="http://localhost/Exercise/admin/category/delete.php?this_id=<?=$row['id']?>">
                                     Xóa
                                 </a>
                             </div>
@@ -132,9 +132,6 @@
     </div>
 </body>
     <style>
-        a.active{
-            pointer-events: none;
-        }
         #container{
             height: 900px;
         }

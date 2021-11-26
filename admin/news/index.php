@@ -48,25 +48,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="../index.php" href="">Thống Kê</a>
+                        <a href="http://localhost/Exercise/admin/" >Thống Kê</a>
                     </li>
                     <li>
-                        <a href="../category/index.php" href="">Danh Sách Danh Mục</a>
+                        <a href="http://localhost/Exercise/admin/category/">Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a href="../product/index.php">Danh Sách Sản Phẩm</a>
+                        <a href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a class="active">Danh Sách Bài Viết</a>
+                        <a class="active" href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="../order/index.php">Danh Sách Đơn Hàng</a>
+                        <a href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="../account/index.php">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="../logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                         $rs = mysqli_query($conn, $sql);
 
                         while($row = mysqli_fetch_array($rs)){
-                        $create = $row['create_at'];
+                        $create = $row['create'];
 
                         $formatDate = date('d/m/Y',strtotime($create));
                         $formatTime = date('H:i:s',strtotime($create));
@@ -103,16 +103,20 @@
                         <td><?= $row['id']?> </td>
                         <td><?= $row['title']?> </td>
                         <td><?= $row['type']?> </td>
-                        <td><?= $row['content']?> </td>
+                        <td>
+                             <div class="content__post">
+                                <?= $row['content']?>
+                            </div> 
+                        </td>
                         <td><?= $row['fullname']?> </td>
                         <td><?= $formatDate?> </td>
                         <td><?= $formatTime?> </td>
                         <td>
                             <div class="edit">
-                                <a href="./edit.php?this_id=<?=$row['id']?>">
+                                <a href="http://localhost/Exercise/admin/news/edit.php?this_id=<?=$row['id']?>">
                                     <button class="up">Sửa</button>
                                 </a>
-                                <a href="./delete.php?this_id=<?=$row['id']?>">
+                                <a href="http://localhost/Exercise/admin/news/delete.php?this_id=<?=$row['id']?>">
                                     <button class="down">Xóa</button>
                                 </a>
                             </div>
@@ -121,7 +125,7 @@
                     <?php } ?>
                 </table>
                 <div class="button-add">
-                    <a href="./add.php">
+                    <a href="http://localhost/Exercise/admin/news/add.php">
                         <button>Thêm</button>
                     </a>
                 </div>
@@ -130,9 +134,6 @@
     </div>
 </body>
 <style>
-        a.active{
-            pointer-events: none;
-        }
         table{
             white-space: nowrap;
         }
@@ -172,6 +173,12 @@
         }
         #container .content p.success{
             margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
+        }
+        .content__post{
+            height: 150px;
+            width: 340px;
+            white-space: pre-line;
+            overflow-y: scroll;
         }
     </style>
 </html>

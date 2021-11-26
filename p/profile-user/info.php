@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông Tin Cá Nhân - H Store</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/primary.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 
@@ -61,26 +61,28 @@
                     <i class="fas fa-shopping-cart"></i>
                 </button>
             </a>
-            <button type="button" onclick="openSearch()">
+            <button onclick="openSearch()">
                 <i class="fas fa-search"></i>
             </button>
-
-            <div style="display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;" id="modal-search">
-                <form action="../search/search_item.php" method="get" style="display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px ">
-                    <input name="name_search" type="text" style="width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px">
-                    <input type="submit" name="search" value="Tìm kiếm" style="padding: 10px 5px; margin: 0 10px; border-radius: 5px">
+            
+            <div class="search" id="modal-search">
+                <form action="http://localhost/Exercise/p/search/search_item.php" method="get" style="">
+                    <input name="name_search" type="text" style="">
+                    <input type="submit" name="search" value="Tìm kiếm" style="">
                 </form>
             </div>
         </ul>
-
-        <div id="overlay" style="display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;" onclick="closeSearch()"></div>
+        <div id="overlay" style="" onclick="closeSearch()"></div>
     </div>
         
     <div id="main">
         <div class="info-content">
             <h4>Hồ Sơ Của Bạn</h4>
-            <?php if(isset($_GET['error'])){  echo "<p style= 'margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightblue; width: 40%;'>". $_GET['error'] . "</p>"; } ?>
-            <?php if(isset($_GET['success'])){  echo "<p style= 'margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightgreen; width: 40%;'>". $_GET['success'] . "</p>"; } ?>
+            <?php 
+                    if(isset($_GET['error'])){  echo "<p class='error'>". $_GET['error'] . "</p>"; }
+                    
+                    if(isset($_GET['success'])){  echo "<p class='success'>". $_GET['success'] . "</p>"; } 
+                ?>
            <div class="form-content">
                <?php 
                     $mail = $_SESSION['user_mail'];
@@ -201,4 +203,27 @@
       
 </body>
 <script src="http://localhost/Exercise/js/search.js"></script>
+<style>
+     .search{
+            display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;
+        }
+        .search form{
+            display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px;
+        }
+        .search form input[type="text"]{
+            width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        .search form input[type="submit"]{
+            padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        #overlay{
+            display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;
+        }
+        p.error{
+            margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
+        }
+        p.success{
+            margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
+        }  
+</style>
 </html>

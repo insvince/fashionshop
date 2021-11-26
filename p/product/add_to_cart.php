@@ -1,18 +1,19 @@
 <?php
     session_start();
     include_once "../../php/config.php";
-
+    
     $this_id = $_GET['this_id'];
-    $id = $row['id'];
-    $name = $row['name'];
-    $img = $row['img'];
-    $price = $row['price'];
 
     $sql = "SELECT * FROM `tb_product` WHERE `id` = '" . $this_id . "' ";
 
     $rs = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($rs);
-    
+
+    echo $id = $row['id'];
+    echo $name = $row['name'];
+    echo $img = $row['img'];
+    echo $price = $row['price'];
+
     if(isset($_SESSION['user_mail'])){
         if(isset($_SESSION['cart'])){
             
@@ -27,7 +28,6 @@
                     "amount" => 1,
                     "img" => $img,
                 );
-    
                 $_SESSION['cart'][] = $session_array;
                 header("location: product.php?success=Them thanh cong");
             }else{
@@ -39,7 +39,6 @@
                        
                     }
                 }
-
                 $session_array = array(
                     'id' => $id,
                     "name" => $name,

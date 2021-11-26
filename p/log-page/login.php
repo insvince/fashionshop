@@ -13,7 +13,7 @@
         if($row['role'] == "User"){
             $_SESSION['user_mail'] = $mail;
             $_SESSION['id'] = $row['id'];
-            header("location: ../../index.php");
+            header("location: http://localhost/Exercise/");
         }
     }else{
         header("location: log-page.php?error=Sai thông tin hoặc không tồn tại!");

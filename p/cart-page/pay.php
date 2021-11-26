@@ -13,9 +13,9 @@
     //add cart id
     $add_id = "INSERT INTO `tb_cart`(`user_id`, `code_cart`) VALUES ('" . $user_id . "', '" . $code_order . "') ";
 
-    $query_add_id = mysqli_query($conn, $add_id);
-    
-    if($query_add_id){
+     $query_add_id = mysqli_query($conn, $add_id);
+
+     if($query_add_id){
         foreach ($_SESSION['cart'] as $key => $value) {
             if($this_id == $value['id']){
                 unset($_SESSION['cart'][$key]);
@@ -34,9 +34,11 @@
             VALUES('" . $code_order . "', '" . $create . "') ";
 
             $add_billing = mysqli_query($conn, $billing);
+
         }
         unset($_SESSION['cart']);
         header("location: cart-page.php?success=Thanh toán thành công!");
-    }
+    } 
+    
     
 

@@ -2,7 +2,7 @@
 
     session_start();
     include '../../php/config.php';
-    
+
     if(isset($_SESSION['user_mail'])){
         header("location: ../../index.php");
     }
@@ -15,8 +15,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài Khoản - H Store</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../admin/css/admin.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/admin.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -30,10 +30,10 @@
             <h2>Đăng Nhập</h2>
 
             <?php 
-                if(isset($_GET['error'])){  echo "<p class='error' style= ''>". $_GET['error'] . "</p>"; } 
+                if(isset($_GET['error'])){  echo "<p class='error' style= ''>" . $_GET['error'] . "</p>"; } 
             ?>
             <?php 
-                if(isset($_GET['success'])){  echo "<p class='success' style= ''>". $_GET['success'] . "</p>"; } 
+                if(isset($_GET['success'])){  echo "<p class='success' style= ''>" . $_GET['success'] . "</p>"; } 
             ?>
 
             <input class="username" name="umail" type="email" placeholder="Nhập email">
@@ -49,7 +49,7 @@
                 </button>
 
                 <button>
-                    <a href="../../index.html">Quay Lại Trang Chủ</a>
+                    <a href="http://localhost/Exercise/">Quay Lại Trang Chủ</a>
                 </button>
             </div>
         </form>
@@ -73,13 +73,13 @@
                 <button type="submit" name="create">Tạo ngay</button>
                 <button type="button" onclick="openLogin()" >Quay lại đăng nhập</button>
                 <button>
-                    <a href="../../index.html">Quay Lại Trang Chủ</a>
+                    <a href="http://localhost/Exercise/">Quay Lại Trang Chủ</a>
                 </button>
             </div>
         </form>
     </div>
 </body>
-    <script src="../../js/showhide-form.js"></script>
+    <script src="http://localhost/Exercise/js/showhide-form.js"></script>
     <style>
         input{
             margin: 10px 0;

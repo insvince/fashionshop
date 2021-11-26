@@ -1,7 +1,6 @@
 <?php
     session_start();
     include "../../php/config.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -58,17 +57,22 @@
                 </a>
             <?php } ?>
             <a href="http://localhost/Exercise/p/cart-page/cart-page.php">
-                <button>
+                <button type="button">
                     <i class="fas fa-shopping-cart"></i>
                 </button>
             </a>
-            
-            <button><i class="fas fa-search"></i>
-                <div class="modal-search">
-                    
-                </div>
+            <button onclick="openSearch()">
+                <i class="fas fa-search"></i>
             </button>
+            
+            <div class="search" id="modal-search">
+                <form action="http://localhost/Exercise/p/search/search_item.php" method="get" style="">
+                    <input name="name_search" type="text" style="">
+                    <input type="submit" name="search" value="Tìm kiếm" style="">
+                </form>
+            </div>
         </ul>
+        <div id="overlay" style="" onclick="closeSearch()"></div>
     </div>
 
     <div id="slideshow">
@@ -102,13 +106,13 @@
                 ?>
                     <li class="news">
                         <div class="left-news">
-                            <a href="./detail-news/detail-news.php?this_id=<?= $row['id'] ?>">
+                            <a href="http://localhost/Exercise/p/news/detail-news/detail-news.php?this_id=<?= $row['id'] ?>">
                                 <img src="http://localhost/Exercise/img/<?= (( $row['type'] )=="Sale" ? "thumnail-sale.jpg" : "thumnail-trend.jpg") ?>" alt="">
                             </a>
                         </div>
                         <div class="right-news">
                             <h3>
-                                <a href="http://localhost/Exercise/p/product/detail-news/detail-news.php?this_id=<?= $row['id']?>"><?= $row['title'] ?></a>
+                                <a href="http://localhost/Exercise/p/news/detail-news/detail-news.php?this_id=<?= $row['id']?>"><?= $row['title'] ?></a>
                             </h3>
 
                             <div class="short-detail">
@@ -135,11 +139,8 @@
     <div id="footer">
         <div class="footer-content">
             <div class="logo">
-                <img src="http://localhost/Exercise/img/Layer1.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus. 
-                Asperiores, perspiciatis. 
-                Officia debitis provident est quis esse reiciendis voluptatem omnis sed eaque culpa! Modi fugiat maiores quis?</p>
+                <img src="http://localhost/Exercise/img/Layer1.png" alt="logo">
+                <p>H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.</p>
             </div>
     
             <div class="follow">
@@ -163,6 +164,23 @@
         </div>
     </div>
 </body>
-    <script src="http://localhost/Exercise/js/showhide.js"></script>
     <script src="http://localhost/Exercise/js/slideshow.js"></script>
+    <script src="http://localhost/Exercise/js/search.js"></script>
+    <style>
+         .search{
+            display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;
+        }
+        .search form{
+            display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px;
+        }
+        .search form input[type="text"]{
+            width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        .search form input[type="submit"]{
+            padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        #overlay{
+            display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;
+        }
+    </style>
 </html>

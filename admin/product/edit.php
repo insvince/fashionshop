@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Tài Khoản</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
   
 </head>
@@ -49,25 +49,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="../index.php">Thống Kê</a>
+                        <a href="http://localhost/Exercise/admin/">Thống Kê</a>
                     </li>
                     <li>
-                        <a href="../category/index.php" href="">Danh Sách Danh Mục</a>
+                        <a href="http://localhost/Exercise/admin/category/" >Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a class="active" href="./index.php">Danh Sách Sản Phẩm</a>
+                        <a class="active" href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="../news/index.php">Danh Sách Bài Viết</a>
+                        <a href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="../order/index.php">Danh Sách Đơn Hàng</a>
+                        <a href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="../account/index.php">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="../logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                             
                             mysqli_query($conn, $sql_edit);
                             
-                            move_uploaded_file($img_tmp_name, '../../img/'. $img );
+                            move_uploaded_file($img_tmp_name, 'http://localhost/Exercise/img/'. $img );
 
                             header("location: index.php?success=Đã thay đổi thành công!");
                             }
@@ -116,12 +116,12 @@
                         <div class="edit_form" style="">
                             <label for="add_img" style="">Hình Ảnh</label>
                             <input type="file" name="add_img" style="">
-                            <img src="../../img/<?=$row['img']?>" style="width: 70px; height: 90px; margin: 0 10px;">
+                            <img src="http://localhost/Exercise/img/<?=$row['img']?>" style="width: 70px; height: 90px; margin: 0 10px;">
                         </div>
 
                         <div class="edit_form" style="">
                             <label for="add_description" style=";">Mô Tả</label>
-                            <textarea type="date" name=""><?= $row['description'] ?></textarea>
+                            <textarea type="date" name="add_description"><?= $row['description'] ?></textarea>
                         </div>
 
                         <div class="edit_form" style="">

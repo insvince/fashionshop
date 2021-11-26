@@ -55,8 +55,10 @@
                 <?php 
                     if(isset($_SESSION['cart'])){
                         foreach($_SESSION['cart'] as $key => $value){
+                         
                 ?> 
                     <div class="form_number" >
+                        <img src="http://localhost/Exercise/img/<?= $value['img'] ?>" alt="product_cart">
                         <input type="hidden" name="this_id[]" value="<?=$value['id']?>">
                         <input class="iamount" name="amount[]"  type="number" value="<?=$value['amount']?>" min="1" max="10" style="">
                         <p>
