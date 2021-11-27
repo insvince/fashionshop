@@ -87,22 +87,20 @@
                     </h5>
 
                     <div class="bottom">
-                        <p class="price"><?= $row['price'] ?> <u>đ</u></p>
+                        <p class="price">
+                            <?= $row['price'] ?> <u>đ</u>
+                        </p>
+                        <p class="description">
+                            <?=substr($row['description'], 0, 120)."..."; ?>
+                        </p>
                         <p>
                             Phí vận chuyển: 30.000 <u>đ</u>
                         </p>
-                        <p style="padding: 0 5px;"> Kích thước </p>
-                        <select >
-                            <option value="volvo">S</option>
-                            <option value="saab">M</option>
-                            <option value="mercedes">L</option>
-                        </select>
-
+                      
                         <div class="multi-bottom">
-                            <a href="http://localhost/Exercise/p/product/add_to_cart.php?this_id=<?=$row['id']?>">
-                                <button class="add_to_cart">Thêm Vào Giỏ Hàng</button>
-                            </a>
-                        </div>
+                            <button type="submit" class="add_to_cart">Thêm Giỏ Hàng</button>
+                        </div>  
+                       
                     </div>
                 </div>
             </div>
@@ -227,6 +225,12 @@
         }
         #overlay{
             display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;
+        }
+        #main .main-detail .detail-right h5.title{
+            padding: 5px 25px 0 ;
+        }
+        #main .main-detail .detail-right .price{
+            margin-left: 5px;
         }
     </style>
 </html>

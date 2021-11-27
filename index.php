@@ -12,7 +12,6 @@
     <title>Trang Chủ - H Store</title>
     <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
     <link rel="stylesheet" href="http://localhost/Exercise/css/style.css">
-    <!-- <link rel="stylesheet" href="http://localhost/Exercise/css/responsive.css"> -->
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -27,19 +26,6 @@
             </div>
         </ul>
         
-        <!-- responsive bar -->
-        <div class="media_nav">
-            <div class="button">
-                    <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav">
-                <li title="Trang Chủ"><a class="logo" href="./index.php"><i class="fas fa-home"></i></a></li>
-                <li title="Bộ Sưu Tập"><a href="http://localhost/Exercise/p//collection/collection.php"><i class="fas fa-images"></i></a></li>
-                <li title="Sản Phẩm"><a href="http://localhost/Exercise/p/product/product.php"><i class="fas fa-tshirt"></i></a></li>
-                <li title="Tin Tức"><a href="http://localhost/Exercise/p/news/news.php"><i class="fas fa-newspaper"></i></a></li>
-                <li title="Giới Thiệu"><a href="http://localhost/Exercise/p/about/about.php"><i class="fas fa-info-circle"></i></a></li>
-            </ul>
-        </div>
 
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])) { ?>

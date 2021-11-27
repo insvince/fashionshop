@@ -67,7 +67,17 @@
                         <p>
                             <?=number_format($value['price'])?> đ
                         </p>
+                        <select class="size" name="size[]" >
+                            <?php
+                                $sql_size = "SELECT * FROM `tb_size` ORDER BY id ";
+                                $rs_size = mysqli_query($conn, $sql_size);
+                                while($row_size = mysqli_fetch_array($rs_size)){
+                            ?>
+                                <option value="<?= $row_size['id'] ?>" ><?= $row_size['name'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
+                   
                 <?php } ?>
                     <div class="form_pay">
                         <p style="font-size: 24px; ">
@@ -161,6 +171,9 @@
         }
         form .form_pay .pay_button a{
             width: 160px; padding:  10px; background-color: #a7734986;margin: 10px 0;border: 1px solid; text-decoration: none;font-weight: bold;text-align: center;
+        }
+        form select{
+            padding: 10px 20px
         }
     </style>
 </html>

@@ -3,7 +3,7 @@
     include_once "../../php/config.php";
     
     $this_id = $_GET['this_id'];
-
+    
     $sql = "SELECT * FROM `tb_product` WHERE `id` = '" . $this_id . "' ";
 
     $rs = mysqli_query($conn, $sql);
@@ -27,6 +27,7 @@
                     "price" => $price,
                     "amount" => 1,
                     "img" => $img,
+                    "size" => 1,
                 );
                 $_SESSION['cart'][] = $session_array;
                 header("location: product.php?success=Them thanh cong");
@@ -45,6 +46,7 @@
                     "price" => $price,
                     "amount" => $_POST['amount'],
                     "img" => $img,
+                    "size" => 1,
                 );
 
                 $_SESSION['cart'][] = $session_array;
@@ -57,6 +59,7 @@
                 "price" => $price,
                 "amount" => 1,
                 "img" => $img,
+                "size" => 1,
             );
     
             $_SESSION['cart'][] = $session_array;
