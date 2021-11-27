@@ -12,6 +12,7 @@
     <title>Trang Chủ - H Store</title>
     <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
     <link rel="stylesheet" href="http://localhost/Exercise/css/style.css">
+    <!-- <link rel="stylesheet" href="http://localhost/Exercise/css/responsive.css"> -->
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -25,6 +26,20 @@
                 <li title="Giới Thiệu"><a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a></li>
             </div>
         </ul>
+        
+        <!-- responsive bar -->
+        <div class="media_nav">
+            <div class="button">
+                    <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav">
+                <li title="Trang Chủ"><a class="logo" href="./index.php"><i class="fas fa-home"></i></a></li>
+                <li title="Bộ Sưu Tập"><a href="http://localhost/Exercise/p//collection/collection.php"><i class="fas fa-images"></i></a></li>
+                <li title="Sản Phẩm"><a href="http://localhost/Exercise/p/product/product.php"><i class="fas fa-tshirt"></i></a></li>
+                <li title="Tin Tức"><a href="http://localhost/Exercise/p/news/news.php"><i class="fas fa-newspaper"></i></a></li>
+                <li title="Giới Thiệu"><a href="http://localhost/Exercise/p/about/about.php"><i class="fas fa-info-circle"></i></a></li>
+            </ul>
+        </div>
 
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])) { ?>
@@ -71,13 +86,17 @@
         <div class="slideshow-img">
             <img src="https://gotrangtri.vn/wp-content/uploads/2020/06/mau-shop-thoi-trang-dep6.jpg" class="slideshow"
             alt="">
-            <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" class="slideshow" alt="">
-            <img src="https://www.w3schools.com/howto/img_nature_wide.jpg"  class="slideshow" alt="">
+            <img src="https://kimsclub.com.vn/wp-content/uploads/2020/11/Thiet-ke-khong-ten-8-1.jpg" class="slideshow" alt="">
+            <img src="https://gerbersoftware.com/media/2302/sustainability-changing-fashion-industry.jpg?anchor=center&mode=crop&width=1200&height=600&rnd=132247600950000000"  class="slideshow" alt="">
+            
+            <img src="https://www.peerspace.com/resources/wp-content/uploads/fashion-1031469_1280-1200x600.jpg"  class="slideshow" alt="">
         </div>
         <div class="bottom-slideshow">
             <span class="dot" onclick="currentSlide(0)"></span> 
             <span class="dot" onclick="currentSlide(1)"></span> 
             <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span> 
         </div>
     </div>
 

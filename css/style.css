@@ -25,9 +25,10 @@ body{
 }
 #header .menu{
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: center;
+    white-space: nowrap;
 }
 #header .menu .menu-content{
     width: 70%;
