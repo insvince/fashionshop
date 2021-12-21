@@ -159,139 +159,139 @@
         </div>
     </div>
 </body>
-    <style>
-        table{
-            white-space: nowrap;
-        }
-        .content{
-            background-color: whitesmoke;
-            overflow-x: scroll;
-            margin: 50px auto !important;
-            border-radius: 15px;
-            width: 90%;
-        }
-        .button-add{
-            text-align: center;
-        }
-        .button-add button{
-            cursor: pointer;
-            text-align: center;
-        }
-        a{
-            text-decoration: none;
-        }
+<style>
+    table{
+        white-space: nowrap;
+    }
+    .content{
+        background-color: whitesmoke;
+        overflow-x: scroll;
+        margin: 50px auto !important;
+        border-radius: 15px;
+        width: 90%;
+    }
+    .button-add{
+        text-align: center;
+    }
+    .button-add button{
+        cursor: pointer;
+        text-align: center;
+    }
+    a{
+        text-decoration: none;
+    }
+    
+    .up{
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightgreen !important;
+        color: black !important;
+        font-weight: 600;
         
-        .up{
-            border: 1px solid;
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightgreen !important;
-            color: black !important;
-            font-weight: 600;
-            
-        }
-        .down{
-            border: 1px solid;
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightcoral !important;
-            color: black !important;
-            font-weight: 600;
-            
-        }
-        #container td:last-child{
-            height: 50px;
-            max-height: auto;
-        }
-        .nav-bar .bar-content .avatar p{
-            margin: 10px;
-        }
-        #contain .content{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 80%;
-            overflow: hidden;
-        }
-        #contain .content p.error{
-            margin: 10px auto;
-            color: red; 
-            font-weight: 600; 
-            font-size: 16px; 
-            border: 1px solid; 
-            border-radius: 5px; 
-            padding: 10px; 
-            background-color: lightblue; 
-            width: 30%; text-align: center;
-        }
-        #contain .content p.success{
-            margin: 10px auto;
-            color: green; 
-            font-weight: 600; 
-            font-size: 16px; 
-            border: 1px solid; 
-            border-radius: 5px; 
-            padding: 10px; 
-            background-color: lightgreen; 
-            width: 30%; 
-            text-align: center;
-        }
-        .content form.form{
-            min-height: 200px; 
-            width: 50%; 
-            margin: 0 auto ; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center;
-        }
-        .content form.form .form_row{
-            width: 80%; 
-            margin: 0 auto; 
-            display: inline-flex; 
-            align-items: center;
-        }
-        .content form.form .form_row label{
-            width: 120px; 
-            margin: 10px 0;
-        }
-        .form_row input[type="password"], input[type="text"], input[type="email"]{
-            width: 65%; 
-            margin: 10px 0; 
-            padding: 5px 0 5px 10px;
-            border: 1px solid; 
-            border-radius: 5px; 
-            height: 30px;
-        }
-        .form_row input[type="date"]{
-            width: 35%; 
-            margin: 10px 0; 
-            padding: 5px 0 5px 10px;
-            border: 1px solid; 
-            border-radius: 5px; 
-            height: 30px;
-        }
-        .form_row textarea{
-            width: 65%; 
-            margin: 10px 0; 
-            padding: 10px 0 10px 10px;
-            border: 1px solid; 
-            border-radius: 5px; 
-            height: 100px; 
-            resize: none;
-        }
-        .form_row select{
-            margin: 10px 0; 
-            padding: 10px 0 10px 10px;  
-            border: 1px solid; 
-            border-radius: 5px;
-        }
-        p.error{
-            margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
-        }
-        p.success{
-            margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
-        }
-    </style>
+    }
+    .down{
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightcoral !important;
+        color: black !important;
+        font-weight: 600;
+        
+    }
+    #container td:last-child{
+        height: 50px;
+        max-height: auto;
+    }
+    .nav-bar .bar-content .avatar p{
+        margin: 10px;
+    }
+    #contain .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+        overflow: hidden;
+    }
+    #contain .content p.error{
+        margin: 10px auto;
+        color: red; 
+        font-weight: 600; 
+        font-size: 16px; 
+        border: 1px solid; 
+        border-radius: 5px; 
+        padding: 10px; 
+        background-color: lightblue; 
+        width: 30%; text-align: center;
+    }
+    #contain .content p.success{
+        margin: 10px auto;
+        color: green; 
+        font-weight: 600; 
+        font-size: 16px; 
+        border: 1px solid; 
+        border-radius: 5px; 
+        padding: 10px; 
+        background-color: lightgreen; 
+        width: 30%; 
+        text-align: center;
+    }
+    .content form.form{
+        min-height: 200px; 
+        width: 50%; 
+        margin: 0 auto ; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center;
+    }
+    .content form.form .form_row{
+        width: 80%; 
+        margin: 0 auto; 
+        display: inline-flex; 
+        align-items: center;
+    }
+    .content form.form .form_row label{
+        width: 120px; 
+        margin: 10px 0;
+    }
+    .form_row input[type="password"], input[type="text"], input[type="email"]{
+        width: 65%; 
+        margin: 10px 0; 
+        padding: 5px 0 5px 10px;
+        border: 1px solid; 
+        border-radius: 5px; 
+        height: 30px;
+    }
+    .form_row input[type="date"]{
+        width: 35%; 
+        margin: 10px 0; 
+        padding: 5px 0 5px 10px;
+        border: 1px solid; 
+        border-radius: 5px; 
+        height: 30px;
+    }
+    .form_row textarea{
+        width: 65%; 
+        margin: 10px 0; 
+        padding: 10px 0 10px 10px;
+        border: 1px solid; 
+        border-radius: 5px; 
+        height: 100px; 
+        resize: none;
+    }
+    .form_row select{
+        margin: 10px 0; 
+        padding: 10px 0 10px 10px;  
+        border: 1px solid; 
+        border-radius: 5px;
+    }
+    p.error{
+        margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
+    }
+    p.success{
+        margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
+    }
+</style>
 </html>

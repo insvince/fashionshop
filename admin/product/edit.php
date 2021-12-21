@@ -43,7 +43,7 @@
                         $rs = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_array($rs);
                     ?>  
-                    <p style="margin: 10px;">
+                    <p class="fullname">
                         <?=$row['fullname'];?>
                     </p>
                 </div>
@@ -102,36 +102,36 @@
                             }
                         ?>
 
-                        <div class="edit_form" style="">
-                            <label for="add_name" style="">Tên Sản Phẩm</label>
-                            <input type="text" name="add_name" style="" required value="<?=$row['name'];?>">
+                        <div class="edit_form" >
+                            <label for="add_name" >Tên Sản Phẩm</label>
+                            <input type="text" name="add_name"  required value="<?=$row['name'];?>">
                         </div>
 
-                        <div class="edit_form" style="">
-                            <label for="add_stock" style="">Kho</label>
-                            <input class="stock" type="number" name="add_stock" style=""
+                        <div class="edit_form" >
+                            <label for="add_stock" >Kho</label>
+                            <input class="stock" type="number" name="add_stock" 
                             value="<?=$row['stock'];?>">
                         </div>
 
-                        <div class="edit_form" style="">
-                            <label for="add_img" style="">Hình Ảnh</label>
-                            <input type="file" name="add_img" style="">
-                            <img src="http://localhost/Exercise/img/<?=$row['img']?>" style="width: 70px; height: 90px; margin: 0 10px;">
+                        <div class="edit_form" >
+                            <label for="add_img" >Hình Ảnh</label>
+                            <input type="file" name="add_img" >
+                            <img src="http://localhost/Exercise/img/<?=$row['img']?>" >
                         </div>
 
-                        <div class="edit_form" style="">
-                            <label for="add_description" style=";">Mô Tả</label>
+                        <div class="edit_form" >
+                            <label for="add_description" >Mô Tả</label>
                             <textarea type="date" name="add_description"><?= $row['description'] ?></textarea>
                         </div>
 
-                        <div class="edit_form" style="">
-                            <label for="add_price" style=";">Giá</label>
-                            <input class="price" type="number" name="add_price" style="" value="<?=$row['price']?>">
+                        <div class="edit_form" >
+                            <label for="add_price" >Giá</label>
+                            <input class="price" type="number" name="add_price"  value="<?=$row['price']?>">
                         </div>
 
-                        <div class="edit_form" style=";">
-                            <label for="add_category" style=";">Danh Mục</label>
-                            <select name="add_category" id="" style="">
+                        <div class="edit_form" >
+                            <label for="add_category" >Danh Mục</label>
+                            <select name="add_category" id="" >
                             <?php
                                 $sql_category = "SELECT * FROM `tb_category`";
                                 $rs = mysqli_query($conn, $sql_category);
@@ -142,7 +142,7 @@
                             </select>
                         </div>
                          
-                        <div class="button-add" style="text-align: center;" >
+                        <div class="button-add" >
                             <button type="submit" name="editbtn">Sửa</button>
                         </div>
                 </form>
@@ -165,6 +165,7 @@
         }
         .button-add button{
             cursor: pointer;
+            text-align: center;
         }
         a{
             text-decoration: none;
@@ -218,5 +219,11 @@
         #container .content form .edit_form select{
             margin: 10px 0; padding: 10px 0 10px 10px;  border: 1px solid; border-radius: 5px 
         }
-    </style>
+        #container .content form .edit_form img{
+            width: 70px; height: 90px; margin: 0 10px;
+        }
+        .fullname {
+            margin: 10px;
+        }
+</style>
 </html>

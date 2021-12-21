@@ -42,7 +42,7 @@
                         $rs = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_array($rs);
                     ?>  
-                    <p style="margin: 10px;">
+                    <p class="fullname">
                         <?=$row['fullname'];?>
                     </p>
                 </div>
@@ -145,7 +145,7 @@
                         </select>
                     </div>
                         
-                    <div class="button-add" style="text-align: center;" >
+                    <div class="button-add">
                         <button type="submit" name="addbtn">Thêm</button>
                     </div>
                 </form>
@@ -153,76 +153,80 @@
         </div>
     </div>
 </body>
-    <style>
-        table{
-            white-space: nowrap;
-        }
-        .content{
-            background-color: whitesmoke;
-            overflow-x: scroll;
-            margin: 50px auto !important;
-            border-radius: 15px;
-            width: 90%;display: flex; flex-direction: column; justify-content: center; width: 80%; overflow: hidden
-        }
-        .button-add button{
-            cursor: pointer;
-        }
-        a{
-            text-decoration: none;
-        }
-       
-        .up{
-            border: 1px solid;
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightgreen !important;
-            color: black !important;
-            font-weight: 600;
-        }
-        .down{
-            border: 1px solid;
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightcoral !important;
-            color: black !important;
-            font-weight: 600;
-        }
-        #container td:last-child{
-            height: 50px;
-            max-height: auto;
-        }
-        #container .content p.error{
-            margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
-        }
-        #container .content p.success{
-            margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
-        }   
-        #container .content form{
-            min-height: 200px; width: 50%; margin: 0 auto ; display: flex; flex-direction: column; justify-content: center;
-        }
-        #container .content form .add{
-            width: 80%; margin: 0 auto; display: inline-flex; align-items: center
-        }
-        #container .content form .add label{
-            width: 120px; margin: 10px 0
-        }#container .content form .add input[type="text"]{
-            width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;
-        }#container .content form .add input[type="file"]{
-            width: 40%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;
-        }
-        #container .content form .add input[type="number"].stock{
-            width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;
-        }
-        #container .content form .add input[type="number"].price{
-            width: 30%; margin: 10px 0; padding: 5px 0 5px 10px ;border: 1px solid; border-radius: 5px; height: 30px;
-        }
-        #container .content form .add textarea{
-            width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;resize: none; height: 100px;
-        }
-        #container .content form .add select{
-            margin: 10px 0; padding: 10px 0 10px 10px;  border: 1px solid; border-radius: 5px 
-        }
-    </style>
+<style>
+    .fullname{
+        margin: 10px;
+    }
+    table{
+        white-space: nowrap;
+    }
+    .content{
+        background-color: whitesmoke;
+        overflow-x: scroll;
+        margin: 50px auto !important;
+        border-radius: 15px;
+        width: 90%;display: flex; flex-direction: column; justify-content: center; width: 80%; overflow: hidden
+    }
+    .button-add button{
+        cursor: pointer;
+        text-align: center;
+    }
+    a{
+        text-decoration: none;
+    }
+    
+    .up{
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightgreen !important;
+        color: black !important;
+        font-weight: 600;
+    }
+    .down{
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightcoral !important;
+        color: black !important;
+        font-weight: 600;
+    }
+    #container td:last-child{
+        height: 50px;
+        max-height: auto;
+    }
+    #container .content p.error{
+        margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
+    }
+    #container .content p.success{
+        margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
+    }   
+    #container .content form{
+        min-height: 200px; width: 50%; margin: 0 auto ; display: flex; flex-direction: column; justify-content: center;
+    }
+    #container .content form .add{
+        width: 80%; margin: 0 auto; display: inline-flex; align-items: center
+    }
+    #container .content form .add label{
+        width: 120px; margin: 10px 0
+    }#container .content form .add input[type="text"]{
+        width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;
+    }#container .content form .add input[type="file"]{
+        width: 40%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;
+    }
+    #container .content form .add input[type="number"].stock{
+        width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;
+    }
+    #container .content form .add input[type="number"].price{
+        width: 30%; margin: 10px 0; padding: 5px 0 5px 10px ;border: 1px solid; border-radius: 5px; height: 30px;
+    }
+    #container .content form .add textarea{
+        width: 65%; margin: 10px 0; padding: 5px 0 5px 10px;border: 1px solid; border-radius: 5px; height: 30px;resize: none; height: 100px;
+    }
+    #container .content form .add select{
+        margin: 10px 0; padding: 10px 0 10px 10px;  border: 1px solid; border-radius: 5px 
+    }
+</style>
 </html>

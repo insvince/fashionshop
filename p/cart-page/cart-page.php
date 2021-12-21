@@ -41,12 +41,12 @@
     </div>
 
     <div id="main">
-        <div class="main-cart" style="">
+        <div class="main-cart" >
             <h4>Giỏ Hàng Của Bạn</h4>
             <?php 
-                if(isset($_GET['error'])){  echo "<p class='error' style= ''>". $_GET['error']  . "</p>"; }
+                if(isset($_GET['error'])){  echo "<p class='error' >". $_GET['error']  . "</p>"; }
 
-                if(isset($_GET['success'])){  echo "<p class='success' style= ''>". $_GET['success'] . "</p>"; }else{
+                if(isset($_GET['success'])){  echo "<p class='success' >". $_GET['success'] . "</p>"; }else{
                 echo "<p style='color: red'>Thanh toán khi nhận hàng</p>";
             } ?>
             <div class="cart__form">
@@ -60,7 +60,7 @@
                     <div class="form_number" >
                         <img src="http://localhost/Exercise/img/<?= $value['img'] ?>" alt="product_cart">
                         <input type="hidden" name="this_id[]" value="<?=$value['id']?>">
-                        <input class="iamount" name="amount[]"  type="number" value="<?=$value['amount']?>" min="1" max="10" style="">
+                        <input class="iamount" name="amount[]"  type="number" value="<?=$value['amount']?>" min="1" max="10" >
                         <p>
                             <?=$value['name']?>
                         </p>
@@ -80,11 +80,11 @@
                    
                 <?php } ?>
                     <div class="form_pay">
-                        <p style="font-size: 24px; ">
+                        <p >
                             Tổng Cộng: 
                         </p>
-                        <div class="pay_button" style="">
-                            <input type="submit" value="Thanh Toán" style="">
+                        <div class="pay_button" >
+                            <input type="submit" value="Thanh Toán" >
                             <a href="clearall.php?action=clearall">Xóa giỏ hàng</a>
                         </div>
                     </div>
@@ -171,6 +171,9 @@
         }
         form .form_pay .pay_button a{
             width: 160px; padding:  10px; background-color: #a7734986;margin: 10px 0;border: 1px solid; text-decoration: none;font-weight: bold;text-align: center;
+        }
+        form .form_pay p{
+            font-size: 24px; 
         }
         form select{
             padding: 10px 20px

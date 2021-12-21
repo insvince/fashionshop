@@ -115,33 +115,33 @@
         </div>
     </div>
 </body>
-    <style>
-        a.active{
-            pointer-events: none;
-        }
-        .content{
-            background-color: whitesmoke;
-            border-radius: 15px;
-            margin: 50px auto !important;
-            min-height: 500px;
-        }
-        .accept{
-            background-color: lightgreen !important;
-            color: black !important;
-        }
-        .cancel{
-            background-color: lightcoral !important;
-            color: black !important;
-        }
-        button, a{
-            text-decoration: none;
-            cursor: pointer;
-        }
-         p.error{
-            margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
-        }
-         p.success{
-            margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
-        }
-    </style>
+<style>
+    a.active{
+        pointer-events: none;
+    }
+    .content{
+        background-color: whitesmoke;
+        border-radius: 15px;
+        margin: 50px auto !important;
+        min-height: 500px;
+    }
+    .accept{
+        background-color: lightgreen !important;
+        color: black !important;
+    }
+    .cancel{
+        background-color: lightcoral !important;
+        color: black !important;
+    }
+    button, a{
+        text-decoration: none;
+        cursor: pointer;
+    }
+        p.error{
+        margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
+    }
+        p.success{
+        margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
+    }
+</style>
 </html>

@@ -208,5 +208,5 @@
         form .edit select{
             margin: 10px 0; padding: 10px 0 10px 10px;  border: 1px solid; border-radius: 5px 
         }
-    </style>
+</style>
 </html>

@@ -33,7 +33,7 @@
         </div>
         <div id="nav-bar">
             <div class="bar-content">
-                <div class="avatar" style="text-align: center;">
+                <div class="avatar" >
                     <i class="fas fa-user-tie"></i>
                     <?php
                         $session = $_SESSION['a_mail'];
@@ -43,7 +43,7 @@
                         $rs = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_array($rs);
                     ?>  
-                    <p style="margin: 10px;">
+                    <p class="fullname">
                         <?=$row['fullname'];?>
                     </p>
                 </div>
@@ -106,37 +106,43 @@
         </div>
     </div>
 </body>
-    <style>
-        #container{
-            background-color: whitesmoke;
-            height: 400px;
-        }
-        .report-block{
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            width: 100%;
-            margin: 0 auto;
-        }
-        .report-block .report{
-            width: 22%;
-            background-color: #40E0D0;
-            border-radius: 50px 10px 50px 10px;
-            box-shadow: 5px 10px #9CFFD9;
-        }
-        .report-block .report h4{
-            text-align: center;
-            font-size: 1.3rem;
-        }
-        .report-block .report p{
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            font-size: 1.5rem;            
-        }
-        .report-block .report p i{
-            font-size: 2rem;
-            color: #333;
-        }
-    </style>
+<style>
+    .avatar{
+        text-align: center;
+    }
+    .fullname{
+        margin: 10px;
+    }
+    #container{
+        background-color: whitesmoke;
+        height: 400px;
+    }
+    .report-block{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .report-block .report{
+        width: 22%;
+        background-color: #40E0D0;
+        border-radius: 50px 10px 50px 10px;
+        box-shadow: 5px 10px #9CFFD9;
+    }
+    .report-block .report h4{
+        text-align: center;
+        font-size: 1.3rem;
+    }
+    .report-block .report p{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: 1.5rem;            
+    }
+    .report-block .report p i{
+        font-size: 2rem;
+        color: #333;
+    }
+</style>
 </html>

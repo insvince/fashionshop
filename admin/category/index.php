@@ -131,64 +131,64 @@
         </div>
     </div>
 </body>
-    <style>
-        #container{
-            height: 900px;
-        }
-        #container .content{
-            padding: 50px 30px;
-            width: 85%;
-            margin: 20px auto;
-            background-color: whitesmoke;
-            border-radius: 15px;
-            display: flex; 
-            flex-direction: column;
-        }
-        a{
-            text-decoration: none;
-        }
-       
-        .up{
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightgreen !important;
-            color: black !important;
-        }
-        .down{
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightcoral !important;
-            color: black !important;
-        }
-        #container td:last-child{
-            height: 50px;
-            max-height: auto;
-        }
-        th,td  {
-            white-space: nowrap;
-        }
-        #nav-bar .bar-content .avatar p{
-            margin: 10px;
-        }
-        #container .content .add{
-            text-align: center; margin: 10px 0;
-        }
-        .content .add form input[type="text"]{
-            padding: 10px 5px; border-radius: 5px; border: 1px solid;text-align: center;width: 30%
-        }
-        .content .add form button{
-            padding: 10px 5px ; background-color: lightgreen;border: 1px solid; border-radius: 5px;
-        }
-        .content p.error{
-            margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
-        }
-        .content p.success{
-            margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
-        }
-        .content table{
-            max-width: 50%; margin: 0 auto;
-        }
-    </style>
+<style>
+    #container{
+        height: 900px;
+    }
+    #container .content{
+        padding: 50px 30px;
+        width: 85%;
+        margin: 20px auto;
+        background-color: whitesmoke;
+        border-radius: 15px;
+        display: flex; 
+        flex-direction: column;
+    }
+    a{
+        text-decoration: none;
+    }
+    
+    .up{
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightgreen !important;
+        color: black !important;
+    }
+    .down{
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightcoral !important;
+        color: black !important;
+    }
+    #container td:last-child{
+        height: 50px;
+        max-height: auto;
+    }
+    th,td  {
+        white-space: nowrap;
+    }
+    #nav-bar .bar-content .avatar p{
+        margin: 10px;
+    }
+    #container .content .add{
+        text-align: center; margin: 10px 0;
+    }
+    .content .add form input[type="text"]{
+        padding: 10px 5px; border-radius: 5px; border: 1px solid;text-align: center;width: 30%
+    }
+    .content .add form button{
+        padding: 10px 5px ; background-color: lightgreen;border: 1px solid; border-radius: 5px;
+    }
+    .content p.error{
+        margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;
+    }
+    .content p.success{
+        margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;
+    }
+    .content table{
+        max-width: 50%; margin: 0 auto;
+    }
+</style>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
     session_start();
     include '../../php/config.php';
 
@@ -30,10 +29,10 @@
             <h2>Đăng Nhập</h2>
 
             <?php 
-                if(isset($_GET['error'])){  echo "<p class='error' style= ''>" . $_GET['error'] . "</p>"; } 
+                if(isset($_GET['error'])){  echo "<p class='error' >" . $_GET['error'] . "</p>"; } 
             ?>
             <?php 
-                if(isset($_GET['success'])){  echo "<p class='success' style= ''>" . $_GET['success'] . "</p>"; } 
+                if(isset($_GET['success'])){  echo "<p class='success' >" . $_GET['success'] . "</p>"; } 
             ?>
 
             <input class="username" name="umail" type="email" placeholder="Nhập email">
@@ -78,23 +77,23 @@
             </div>
         </form>
     </div>
-</body>
     <script src="http://localhost/Exercise/js/showhide-form.js"></script>
-    <style>
-        input{
-            margin: 10px 0;
-        }
-        input[type="email"]{
-            padding: 10px;
-            width: 80%;
-            border-radius: 10px;
-            border: none;
-        }
-        p.error{
-            color: red; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightblue; width: 70%;
-        }
-        p.success{
-            color: green; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightgreen; width: 70%;
-        }
-    </style>
+</body>
+<style>
+    input{
+        margin: 10px 0;
+    }
+    input[type="email"]{
+        padding: 10px;
+        width: 80%;
+        border-radius: 10px;
+        border: none;
+    }
+    p.error{
+        color: red; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightblue; width: 70%;
+    }
+    p.success{
+        color: green; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightgreen; width: 70%;
+    }
+</style>
 </html>

@@ -108,7 +108,7 @@
                 <h3>Sản phẩm liên quan</h3>
                 <div class="div bottom">
                     <?php
-                        $sql_related = "SELECT * FROM `tb_product` LIMIT 3; ";
+                        $sql_related = "SELECT * FROM `tb_product` ORDER BY RAND() LIMIT 3  ";
 
                         $rs_related = mysqli_query($conn, $sql_related);
 

@@ -52,22 +52,22 @@
         </form>
     </div>
 </body>
-    <style>
-        input[type="email"]{
-            padding: 10px;
-            margin: 5px;
-            border: none;
-            border-radius: 10px;
-            width: 80%;
-        }
-        p.error{
-            color: red; 
-            font-weight: 600; 
-            font-size: 16px; 
-            border: 1px solid; 
-            padding: 5px 10px; 
-            background-color: lightblue; 
-            width: 70%;
-        }
-    </style>
+<style>
+    input[type="email"]{
+        padding: 10px;
+        margin: 5px;
+        border: none;
+        border-radius: 10px;
+        width: 80%;
+    }
+    p.error{
+        color: red; 
+        font-weight: 600; 
+        font-size: 16px; 
+        border: 1px solid; 
+        padding: 5px 10px; 
+        background-color: lightblue; 
+        width: 70%;
+    }
+</style>
 </html>

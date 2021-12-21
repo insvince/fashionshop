@@ -149,82 +149,82 @@
         </div>
     </div>
 </body>
-    <style>
-        table{
-            white-space: nowrap;
-        }
-        .content{
-            background-color: whitesmoke;
-            overflow-x: scroll;
-            margin: 50px auto !important;
-            border-radius: 15px;
-            width: 90%;
-        }
-        .button-add button{
-            cursor: pointer;
-        }
-        a{
-            text-decoration: none;
-        }
-       
-        .up{
-            border: 1px solid;
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightgreen !important;
-            color: black !important;
-            font-weight: 600;cursor: pointer;
-        }
-        .down{
-            border: 1px solid;
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightcoral !important;
-            color: black !important;
-            font-weight: 600;cursor: pointer;
-        }
-        #container td:last-child{
-            height: 50px;
-            max-height: auto;
-        }
-        #nav-bar .bar-content .avatar p{
-            margin: 10px;
-        }
-        #contain .content table{
-            max-width: 50%; 
-            margin: 0 auto;
-        }
-        .content p.error{
-            margin: 10px auto;
-            color: red; 
-            font-weight: 600; 
-            font-size: 16px; 
-            border: 1px solid; 
-            border-radius: 5px; 
-            padding: 10px; 
-            background-color: lightblue; 
-            width: 30%; 
-            text-align: center;
-        }
-        .content p.success{
-            margin: 10px auto;
-            color: green; 
-            font-weight: 600; 
-            font-size: 16px; 
-            border: 1px solid; 
-            border-radius: 5px; 
-            padding: 10px; 
-            background-color: lightgreen; 
-            width: 30%; 
-            text-align: center;
-        }
-        p.error{
-            margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;cursor: pointer;
-        }
-        p.success{
-            margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;cursor: pointer;
-        }
-    </style>
+<style>
+    table{
+        white-space: nowrap;
+    }
+    .content{
+        background-color: whitesmoke;
+        overflow-x: scroll;
+        margin: 50px auto !important;
+        border-radius: 15px;
+        width: 90%;
+    }
+    .button-add button{
+        cursor: pointer;
+    }
+    a{
+        text-decoration: none;
+    }
+    
+    .up{
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightgreen !important;
+        color: black !important;
+        font-weight: 600;cursor: pointer;
+    }
+    .down{
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightcoral !important;
+        color: black !important;
+        font-weight: 600;cursor: pointer;
+    }
+    #container td:last-child{
+        height: 50px;
+        max-height: auto;
+    }
+    #nav-bar .bar-content .avatar p{
+        margin: 10px;
+    }
+    #contain .content table{
+        max-width: 50%; 
+        margin: 0 auto;
+    }
+    .content p.error{
+        margin: 10px auto;
+        color: red; 
+        font-weight: 600; 
+        font-size: 16px; 
+        border: 1px solid; 
+        border-radius: 5px; 
+        padding: 10px; 
+        background-color: lightblue; 
+        width: 30%; 
+        text-align: center;
+    }
+    .content p.success{
+        margin: 10px auto;
+        color: green; 
+        font-weight: 600; 
+        font-size: 16px; 
+        border: 1px solid; 
+        border-radius: 5px; 
+        padding: 10px; 
+        background-color: lightgreen; 
+        width: 30%; 
+        text-align: center;
+    }
+    p.error{
+        margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;cursor: pointer;
+    }
+    p.success{
+        margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightgreen; width: 30%; text-align: center;cursor: pointer;
+    }
+</style>
 </html>

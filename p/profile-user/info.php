@@ -39,7 +39,7 @@
         </ul>
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])){ ?>
-            <a href="http://localhost/Exercise/p//profile-user/info.php">
+            <a href="http://localhost/Exercise/p/profile-user/info.php">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
                 </button>
@@ -66,13 +66,13 @@
             </button>
             
             <div class="search" id="modal-search">
-                <form action="http://localhost/Exercise/p/search/search_item.php" method="get" style="">
-                    <input name="name_search" type="text" style="">
-                    <input type="submit" name="search" value="Tìm kiếm" style="">
+                <form action="http://localhost/Exercise/p/search/search_item.php" method="get" >
+                    <input name="name_search" type="text" >
+                    <input type="submit" name="search" value="Tìm kiếm" >
                 </form>
             </div>
         </ul>
-        <div id="overlay" style="" onclick="closeSearch()"></div>
+        <div id="overlay"  onclick="closeSearch()"></div>
     </div>
         
     <div id="main">
@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="right">
-                        <input type="password"  value="<?= strlen($row['password']) < 8 ? "****************" : "****************" ?>" disabled style="background: none; border: none; font-size: 24px; color: black;">
+                        <input class="password" type="password"  value="<?= strlen($row['password']) < 8 ? "****************" : "****************" ?>" disabled >
                     </div>
                 </div>
 
@@ -204,6 +204,8 @@
 </body>
 <script src="http://localhost/Exercise/js/search.js"></script>
 <style>
+    .password{
+        background: none; border: none; font-size: 24px; color: black;}
      .search{
             display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;
         }

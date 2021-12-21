@@ -19,11 +19,23 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li><a href="http://localhost/Exercise/p/collection/collection.php">Bộ sưu tập</a></li>
-                <li><a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a></li>
-                <li><a class="logo" href="http://localhost/Exercise/index.php"><img src="http://localhost/Exercise/img/Layer1.png" alt=""></a></li>
-                <li><a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a></li>
-                <li><a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a></li>
+                <li>
+                    <a href="http://localhost/Exercise/p/collection/collection.php">Bộ sưu tập</a>
+                </li>
+                <li>
+                    <a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a>
+                </li>
+                <li>
+                    <a class="logo" href="http://localhost/Exercise/index.php">
+                        <img src="http://localhost/Exercise/img/Layer1.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a>
+                </li>
+                <li>
+                    <a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a>
+                </li>
             </div>
         </ul>
     </div>
@@ -75,23 +87,29 @@
                         <th>Tỉnh Thành</th>
                     </tr>
                     <tr>
-                        <td> <span> Quận 5</span> <br> Nguyễn Tri Phương, Q.5
+                        <td> 
+                            <span> Quận 5</span> <br> Nguyễn Tri Phương, Q.5
                         </td>
-                        <td> <span>Vĩnh Long</span> <br> Phường 6, Tp.Vĩnh Long, Vĩnh Long
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> <span>Quận Gò Vấp</span> <br> Nguyễn Oanh, Gò Vấp
-                        </td>
-                        <td> <span>Đồng Tháp</span> <br> Tân Khánh Trung, Lấp Vò, Đồng Tháp
+                        <td> 
+                            <span>Vĩnh Long</span> <br> Phường 6, Tp.Vĩnh Long, Vĩnh Long
                         </td>
                     </tr>
                     <tr>
-                        <td> <span>Quận 1</span> <br> Võ Thị Sáu , Q.1
+                        <td> 
+                            <span>Quận Gò Vấp</span> <br> Nguyễn Oanh, Gò Vấp
+                        </td>
+                        <td>
+                             <span>Đồng Tháp</span> <br> Tân Khánh Trung, Lấp Vò, Đồng Tháp
                         </td>
                     </tr>
                     <tr>
-                        <td> <span>Quận 3</span> <br> Thành Thái, Q.3</td>
+                        <td>
+                             <span>Quận 1</span> <br> Võ Thị Sáu , Q.1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <span>Quận 3</span> <br> Thành Thái, Q.3</td>
                     </tr>
                 </table>
             </div>
@@ -102,19 +120,29 @@
         <div class="footer-content">
             <div class="logo">
                 <img src="../../img/Layer1.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus. 
-                Asperiores, perspiciatis. 
-                Officia debitis provident est quis esse reiciendis voluptatem omnis sed eaque culpa! Modi fugiat maiores quis?</p>
+                <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus. 
+                    Asperiores, perspiciatis. 
+                    Officia debitis provident est quis esse reiciendis voluptatem omnis sed eaque culpa! Modi fugiat maiores quis?
+                </p>
             </div>
     
             <div class="follow">
                 <h4>Theo dõi chúng tôi:</h4>
                 <div class="content">
-                    <a href=""><i class="fab fa-facebook"></i></a>
-                    <a href=""><i class="fab fa-youtube"></i></a>
-                    <a href=""><i class="fab fa-twitter"></i></a>
-                    <a href=""><i class="fas fa-blog"></i></a>
+                    <a href="">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="">
+                        <i class="fas fa-blog"></i>
+                    </a>
                 </div>
             </div>
     

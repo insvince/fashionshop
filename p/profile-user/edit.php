@@ -55,7 +55,7 @@
                             <label for="">Tên</label>
                         </div>
                         <div class="right">
-                            <input name="name" type="text" value="<?=$row['fullname']?>" style=" font-size: 18px;padding: 10px 5px; width: 250px; border-radius: 5px">
+                            <input class="name" name="name" type="text" value="<?=$row['fullname']?>" >
                         </div>
                     </div>
                     <div class="contain">
@@ -63,7 +63,7 @@
                             <label for="">Mật Khẩu</label>
                         </div>
                         <div class="right">
-                            <input name="password"  type="password"  value="<?= $row['password']?>"  style="padding: 10px 5px ;width: 250px; font-size: 18px; border-radius: 5px; ">
+                            <input class="password" name="password"  type="password"  value="<?= $row['password']?>"  >
                         </div>
                     </div>
                     
@@ -72,7 +72,7 @@
                             <label for="address">Địa Chỉ</label>
                         </div>
                         <div class="right">
-                            <textarea name="address"  style="padding: 10px 5px ;width: 150px; resize: none; font-size: 18px; height: 100px; width: 250px; border-radius: 5px"><?=$row['address'] == NULL ? "Chưa nhập" : $row['address'] ?></textarea>
+                            <textarea class="address" name="address"  ><?=$row['address'] == NULL ? "Chưa nhập" : $row['address'] ?></textarea>
                         </div>
                     </div>
                     <div class="contain">
@@ -80,7 +80,7 @@
                             <label for="">Số Điện Thoại</label>
                         </div>
                         <div class="right">
-                            <input name="phone" type="text" value="<?=$row['number_phone']?>"  style="padding: 10px 5px ;width: 150px; font-size: 18px; border-radius: 5px;">
+                            <input class="phone" name="phone" type="text" value="<?=$row['number_phone']?>"  >
                         </div>
                     </div>
                     <div class="contain">
@@ -88,7 +88,7 @@
                             <label for="">Ngày Sinh</label>
                         </div>
                         <div class="right">
-                            <input name="dob" type="date" value="<?=$dob?>"  style="padding: 10px 5px ;width: 200px; font-size: 18px; border-radius: 5px;">
+                            <input class="dob" name="dob" type="date" value="<?=$dob?>"  >
                         </div>
                     </div>
                     <div class="contain">
@@ -131,4 +131,21 @@
         </div>
     </div>
 </body>
+<style>
+    .name{
+        font-size: 18px;padding: 10px 5px; width: 250px; border-radius: 5px
+    }
+    .password{
+        padding: 10px 5px ;width: 250px; font-size: 18px; border-radius: 5px; 
+    }
+    .address{
+        padding: 10px 5px ;width: 150px; resize: none; font-size: 18px; height: 100px; width: 250px; border-radius: 5px
+    }
+    .phone{
+        padding: 10px 5px ;width: 150px; font-size: 18px; border-radius: 5px;
+    }
+    .dob{
+        padding: 10px 5px ;width: 200px; font-size: 18px; border-radius: 5px;
+    }
+</style>
 </html>

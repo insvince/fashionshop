@@ -73,9 +73,9 @@
         </div>
         <div id="container">
             <div class="content">
-                <?php if(isset($_GET['error'])){  echo "<p class='error' style= ''>". $_GET['error'] . "</p>"; } 
-                 if(isset($_GET['success'])){  echo "<p class='success' style= ''>". $_GET['success'] . "</p>"; } ?>
-                <table style= "max-width: 50%; margin: 0 auto">
+                <?php if(isset($_GET['error'])){  echo "<p class='error' >". $_GET['error'] . "</p>"; } 
+                 if(isset($_GET['success'])){  echo "<p class='success' >". $_GET['success'] . "</p>"; } ?>
+                <table>
                 <table>
                     <tr>
                         <th>ID</th>
@@ -136,6 +136,8 @@
 <style>
         table{
             white-space: nowrap;
+            max-width: 50%; 
+            margin: 0 auto;
         }
         #container{
             min-height: 900px;
@@ -180,5 +182,5 @@
             white-space: pre-line;
             overflow-y: scroll;
         }
-    </style>
+</style>
 </html>

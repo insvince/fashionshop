@@ -75,26 +75,50 @@
             </button>
             
             <div class="search" id="modal-search">
-                <form action="http://localhost/Exercise/p/search/search_item.php" method="get" style="">
-                    <input name="name_search" type="text" style="">
-                    <input type="submit" name="search" value="Tìm kiếm" style="">
+                <form action="http://localhost/Exercise/p/search/search_item.php" method="get">
+                    <input name="name_search" type="text">
+                    <input type="submit" name="search" value="Tìm kiếm">
                 </form>
             </div>
         </ul>
-        <div id="overlay" style="" onclick="closeSearch()"></div>
+        <div id="overlay" onclick="closeSearch()"></div>
     </div>
 
     <div id="slideshow">
-        <div class="slideshow-img">
-            <img src="https://gotrangtri.vn/wp-content/uploads/2020/06/mau-shop-thoi-trang-dep6.jpg" class="slideshow"
-            alt="">
-            <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" class="slideshow" alt="">
-            <img src="https://www.w3schools.com/howto/img_nature_wide.jpg"  class="slideshow" alt="">
-        </div>
-        <div class="bottom-slideshow">
-            <span class="dot" onclick="currentSlide(0)"></span> 
-            <span class="dot" onclick="currentSlide(1)"></span> 
-            <span class="dot" onclick="currentSlide(2)"></span> 
+        <div class="slider">
+            <div class="slides">
+                <input type="radio" name="radio-btn" id="btn1" />
+                <input type="radio" name="radio-btn" id="btn2" />
+                <input type="radio" name="radio-btn" id="btn3" />
+                <input type="radio" name="radio-btn" id="btn4" />
+
+                <div class="slide first">
+                    <img src="../../img/slide1.jpg" alt="slide1" />
+                </div>
+                <div class="slide">
+                    <img src="../../img/slide2.jpg" alt="slide2" />
+                </div>
+                <div class="slide">
+                    <img src="../../img/slide3.jpg" alt="slide3" />
+                </div>
+                <div class="slide">
+                    <img src="../../img/slide4.jpg" alt="slide4" />
+                </div>
+
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div>
+            </div>
+
+            <div class="navigation-manual">
+                <label for="btn1" class="manual-btn"></label>
+                <label for="btn2" class="manual-btn"></label>
+                <label for="btn3" class="manual-btn"></label>
+                <label for="btn4" class="manual-btn"></label>
+            </div>
         </div>
     </div>
     
@@ -213,16 +237,26 @@
         <div class="footer-content">
             <div class="logo">
                 <img src="http://localhost/Exercise/img/Layer1.png" alt="">
-                <p>H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.</p>
+                <p>
+                    H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.
+                </p>
             </div>
     
             <div class="follow">
                 <h4>Theo dõi chúng tôi:</h4>
                 <div class="content">
-                    <a href=""><i class="fab fa-facebook"></i></a>
-                    <a href=""><i class="fab fa-youtube"></i></a>
-                    <a href=""><i class="fab fa-twitter"></i></a>
-                    <a href=""><i class="fas fa-blog"></i></a>
+                    <a href="">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="">
+                        <i class="fas fa-blog"></i>
+                    </a>
                 </div>
             </div>
     
@@ -240,7 +274,7 @@
     <script src="http://localhost/Exercise/js/slideshow.js"></script>
     <script src="http://localhost/Exercise/js/search.js"></script>
 </body>
-    <style>
+<style>
         .search{
             display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;
         }
@@ -256,5 +290,5 @@
         #overlay{
             display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;
         }
-    </style>
+</style>
 </html>

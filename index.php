@@ -18,11 +18,23 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li title="Bộ Sưu Tập"><a href="http://localhost/Exercise/p//collection/collection.php">Bộ sưu tập</a></li>
-                <li title="Sản Phẩm"><a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a></li>
-                <li title="Trang Chủ"><a class="logo" href="./index.php"><img src="./img/Layer1.png" alt=""></a></li>
-                <li title="Tin Tức"><a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a></li>
-                <li title="Giới Thiệu"><a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a></li>
+                <li title="Bộ Sưu Tập">
+                    <a href="http://localhost/Exercise/p/collection/collection.php">Bộ sưu tập</a>
+                </li>
+                <li title="Sản Phẩm">
+                    <a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a>
+                </li>
+                <li title="Trang Chủ">
+                    <a class="logo" href="./index.php">
+                        <img src="./img/Layer1.png" alt="logo">
+                    </a>
+                </li>
+                <li title="Tin Tức">
+                    <a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a>
+                </li>
+                <li title="Giới Thiệu">
+                    <a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a>
+                </li>
             </div>
         </ul>
         
@@ -55,34 +67,51 @@
             <button type="button" onclick="openSearch()">
                 <i class="fas fa-search"></i>
             </button>
-            <div style="display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;" id="modal-search">
-                
-                <form action="../search/search_item.php" method="get" style="display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px;">
-                    <input name="name_search" type="text" style="width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px">
-                    <input type="submit" name="search" value="Tìm kiếm" style="padding: 10px 5px; margin: 0 10px; border-radius: 5px">
+             <div class="search" id="modal-search">
+                <form action="http://localhost/Exercise/p/search/search_item.php" method="get">
+                    <input name="name_search" type="text">
+                    <input type="submit" name="search" value="Tìm kiếm">
                 </form>
-
             </div>
-                
         </ul>
-        <div id="overlay" style="display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;" onclick="closeSearch()"></div>
+        <div id="overlay" onclick="closeSearch()"></div>
     </div>
 
     <div id="slideshow">
-        <div class="slideshow-img">
-            <img src="https://gotrangtri.vn/wp-content/uploads/2020/06/mau-shop-thoi-trang-dep6.jpg" class="slideshow"
-            alt="">
-            <img src="https://kimsclub.com.vn/wp-content/uploads/2020/11/Thiet-ke-khong-ten-8-1.jpg" class="slideshow" alt="">
-            <img src="https://gerbersoftware.com/media/2302/sustainability-changing-fashion-industry.jpg?anchor=center&mode=crop&width=1200&height=600&rnd=132247600950000000"  class="slideshow" alt="">
-            
-            <img src="https://www.peerspace.com/resources/wp-content/uploads/fashion-1031469_1280-1200x600.jpg"  class="slideshow" alt="">
-        </div>
-        <div class="bottom-slideshow">
-            <span class="dot" onclick="currentSlide(0)"></span> 
-            <span class="dot" onclick="currentSlide(1)"></span> 
-            <span class="dot" onclick="currentSlide(2)"></span> 
-            <span class="dot" onclick="currentSlide(3)"></span> 
-            <span class="dot" onclick="currentSlide(4)"></span> 
+        <div class="slider">
+            <div class="slides">
+                <input type="radio" name="radio-btn" id="btn1" />
+                <input type="radio" name="radio-btn" id="btn2" />
+                <input type="radio" name="radio-btn" id="btn3" />
+                <input type="radio" name="radio-btn" id="btn4" />
+
+                <div class="slide first">
+                    <img src="./img/slide1.jpg" alt="slide1" />
+                </div>
+                <div class="slide">
+                    <img src="./img/slide2.jpg" alt="slide2" />
+                </div>
+                <div class="slide">
+                    <img src="./img/slide3.jpg" alt="slide3" />
+                </div>
+                <div class="slide">
+                    <img src="./img/slide4.jpg" alt="slide4" />
+                </div>
+
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div>
+            </div>
+
+            <div class="navigation-manual">
+                <label for="btn1" class="manual-btn"></label>
+                <label for="btn2" class="manual-btn"></label>
+                <label for="btn3" class="manual-btn"></label>
+                <label for="btn4" class="manual-btn"></label>
+            </div>
         </div>
     </div>
 
@@ -94,10 +123,10 @@
                 $rs = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($rs)) {
             ?>
-            <div class="product" style="width: 33%; display: inline-flex; justify-content: center; flex-direction: column; text-align: center">
+            <div class="product" >
                 <div class="product-select">
-                    <a href="http://localhost/Exercise/p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>"><img
-                        src="http://localhost/Exercise/img/<?=$row['img']?>" alt="product" style="width: 300px">
+                    <a href="http://localhost/Exercise/p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
+                        <img src="http://localhost/Exercise/img/<?=$row['img']?>" alt="product" style="width: 300px">
                     </a>
                     <div class="button-menu"  >
                         <a href="http://localhost/Exercise/p/product/add_to_cart.php?this_id=<?=$row['id']?>">
@@ -120,14 +149,14 @@
         <h4>Sản Phẩm Mới</h4>
         <div class="new-product" style="max-width: 1200px; margin: 50px auto; min-height: 700px;">
             <?php
-                $sql = "SELECT * FROM `tb_product` ";
+                $sql = "SELECT * FROM `tb_product` ORDER BY RAND () ";
                 $rs = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($rs)) {
             ?>
-            <div class="product" style="width: 33%; display: inline-flex; justify-content: center; flex-direction: column; text-align: center">
+            <div class="product">
                 <div class="product-select">
-                    <a href="http://localhost/Exercise/p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>"><img
-                        src="./img/<?=$row['img']?>" alt="product" style="width: 300px">
+                    <a href="http://localhost/Exercise/p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
+                    <img src="./img/<?=$row['img']?>" alt="product" style="width: 300px">
                     </a>
                     <div  class="button-menu"  >
                         <a href="http://localhost/Exercise/p/product/add_to_cart.php?this_id=<?=$row['id']?>">
@@ -181,4 +210,25 @@
     <script src="http://localhost/Exercise/js/slideshow.js"></script>
     <script src="http://localhost/Exercise/js/search.js"></script>
 </body>
+<style>
+    .product{
+        width: 33%; display: inline-flex; justify-content: center; flex-direction: column; text-align: center
+    }
+    .search{
+            display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;
+        }
+        .search form{
+            display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px;
+        }
+        .search form input[type="text"]{
+            width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        .search form input[type="submit"]{
+            padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        #overlay{
+            display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;
+        }
+        
+</style>
 </html>

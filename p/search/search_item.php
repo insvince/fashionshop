@@ -20,11 +20,23 @@
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li title="Bộ Sưu Tập"><a href="http://localhost/Exercise/p//collection/collection.html">Bộ sưu tập</a></li>
-                <li title="Sản Phẩm"><a href="http://localhost/Exercise/p//product/product.php">Sản Phẩm</a></li>
-                <li title="Trang Chủ"><a class="logo" href="http://localhost/Exercise/"><img src="http://localhost/Exercise/img/Layer1.png" alt=""></a></li>
-                <li title="Tin Tức"><a href="http://localhost/Exercise/p/news/news.html">Tin Tức</a></li>
-                <li title="Giới Thiệu"><a href="http://localhost/Exercise/p/about/about.html">Giới Thiệu</a></li>
+                <li title="Bộ Sưu Tập">
+                    <a href="http://localhost/Exercise/p//collection/collection.html">Bộ sưu tập</a>
+                </li>
+                <li title="Sản Phẩm">
+                    <a href="http://localhost/Exercise/p//product/product.php">Sản Phẩm</a>
+                </li>
+                <li title="Trang Chủ">
+                    <a class="logo" href="http://localhost/Exercise/">
+                        <img src="http://localhost/Exercise/img/Layer1.png" alt="">
+                    </a>
+                </li>
+                <li title="Tin Tức">
+                    <a href="http://localhost/Exercise/p/news/news.html">Tin Tức</a>
+                </li>
+                <li title="Giới Thiệu">
+                    <a href="http://localhost/Exercise/p/about/about.html">Giới Thiệu</a>
+                </li>
             </div>
         </ul>
         <ul class="tool-box">
@@ -53,14 +65,14 @@
             </a>
             
         </ul>
-        <div id="overlay" style="display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;" onclick="closeSearch()"></div>
+        <div id="overlay" onclick="closeSearch()"></div>
     </div>
 
     <div id="main">
         <div class="info-content">
             <h4>Sản phẩm liên quan</h4>
-            <?php if(isset($_GET['error'])){  echo "<p style= 'margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightblue; width: 40%;'>". $_GET['error'] . "</p>"; } ?>
-            <?php if(isset($_GET['success'])){  echo "<p style= 'margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightgreen; width: 40%;'>". $_GET['success'] . "</p>"; } ?>
+            <?php if(isset($_GET['error'])){  echo "<p class='error';>". $_GET['error'] . "</p>"; } ?>
+            <?php if(isset($_GET['success'])){  echo "<p class='success';>". $_GET['success'] . "</p>"; } ?>
            <div class="form-content" >
                <?php 
                     $name = $_GET['name_search'];
@@ -69,9 +81,9 @@
                     $rs = mysqli_query($conn, $sql);
                     while( $row = mysqli_fetch_array($rs)){
                 ?>  
-                <div style="display: flex; justify-content: center; flex-direction: column;text-align: center; margin: 10px 0">
+                <div class="search__item" >
                     <a href="http://localhost/Exercise/p//product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
-                        <img style="width: 250px; height: 300px" src="http://localhost/Exercise/img/<?=$row['img']?>" alt="product">
+                        <img src="http://localhost/Exercise/img/<?=$row['img']?>" alt="product">
                     </a>
                     <p><?=$row['name']?></p>
                     <p><?=$row['price']?></p>
@@ -114,6 +126,23 @@
         </div>
     </div>
       
+    <script src="http://localhost/Exercise/js/search.js"></script>
 </body>
-<script src="http://localhost/Exercise/js/search.js"></script>
+<style>
+    .overlay{
+        display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;
+    }
+    .error{
+        margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightblue; width: 40%;
+    }
+    .success{
+        margin: 10px auto;color: green; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightgreen; width: 40%;
+    }
+    .search__item{
+        display: flex; justify-content: center; flex-direction: column;text-align: center; margin: 10px 0
+    }
+    .search__item img{
+        width: 250px; height: 300px
+    }
+</style>
 </html>

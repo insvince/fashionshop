@@ -124,70 +124,70 @@
         </div>
     </div>
 </body>
-    <style>
-        a.active{
-            pointer-events: none;
-        }
-        #container{
-            height: 900px;
-        }
-        #container .content{
-            padding: 50px 30px;
-            width: 85%;
-            margin: 20px auto;
-            background-color: whitesmoke;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            min-height: 200px;
-        }
-        a{
-            text-decoration: none;
-        }
-       
-        .up{
-            border: 1px solid;
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightgreen !important;
-            color: black !important;
-            font-weight: 600;
-        }
-        .down{
-            border: 1px solid;
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 10px;
-            background-color: lightcoral !important;
-            color: black !important;
-            font-weight: 600;
-        }
-        #container td:last-child{
-            height: 50px;
-            max-height: auto;
-        }
-        #nav-bar .bar-content .avatar{
-            text-align: center;
-        }
-        #nav-bar .bar-content .avatar p{
-            margin: 10px;
-        }
-        .content form{
-            text-align: center;
-        }
-        .content form input[type="text"]{
-            padding: 10px 5px; 
-            border-radius: 5px; 
-            border: 1px solid;
-            text-align: center;
-            width: 30%;
-        }
-        .content form button{
-            padding: 10px 5px ; 
-            background-color: lightgreen;
-            border: 1px solid; 
-            border-radius: 5px;
-        }
-    </style>
+<style>
+    a.active{
+        pointer-events: none;
+    }
+    #container{
+        height: 900px;
+    }
+    #container .content{
+        padding: 50px 30px;
+        width: 85%;
+        margin: 20px auto;
+        background-color: whitesmoke;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+    }
+    a{
+        text-decoration: none;
+    }
+    
+    .up{
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightgreen !important;
+        color: black !important;
+        font-weight: 600;
+    }
+    .down{
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 10px;
+        background-color: lightcoral !important;
+        color: black !important;
+        font-weight: 600;
+    }
+    #container td:last-child{
+        height: 50px;
+        max-height: auto;
+    }
+    #nav-bar .bar-content .avatar{
+        text-align: center;
+    }
+    #nav-bar .bar-content .avatar p{
+        margin: 10px;
+    }
+    .content form{
+        text-align: center;
+    }
+    .content form input[type="text"]{
+        padding: 10px 5px; 
+        border-radius: 5px; 
+        border: 1px solid;
+        text-align: center;
+        width: 30%;
+    }
+    .content form button{
+        padding: 10px 5px ; 
+        background-color: lightgreen;
+        border: 1px solid; 
+        border-radius: 5px;
+    }
+</style>
 </html>
