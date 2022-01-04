@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "../../php/config.php";
+    include "../../php/defined.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bộ Sưu Tập - H Store</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/css/primary.css">        
+    <link rel="shortcut icon" href="http://localhost/Fashion/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Fashion/css/primary.css">        
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -19,36 +20,36 @@
         <ul class="menu">
             <div class="menu-content">
                 <li>
-                    <a href="collection.php">Bộ sưu tập</a>
+                    <a href="<?= URL ?>p/collection">Bộ sưu tập</a>
                 </li>
 
                 <li>
-                    <a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a>
+                    <a href="<?= URL ?>p/product">Sản Phẩm</a>
                 </li>
 
                 <li>
-                    <a class="logo" href="http://localhost/Exercise/"><img src="http://localhost/Exercise/img/Layer1.png" alt=""></a>
+                    <a class="logo" href="<?= URL ?>home"><img src="<?= URL ?>img/Layer1.png" alt="logo"></a>
                 </li>
 
                 <li>
-                    <a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a>
+                    <a href="<?= URL ?>p/news">Tin Tức</a>
                 </li>
 
                 <li>
-                    <a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a>
+                    <a href="<?= URL ?>p/about">Giới Thiệu</a>
                 </li>
             </div>
         </ul>
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])){ ?>
 
-                <a href="http://localhost/Exercise/p/profile-user/info.php">
+                <a href="<?= URL ?>p/info">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
                 </a>
 
-                <a href="http://localhost/Exercise/p/log-page/logout.php">
+                <a href="<?= URL ?>p/logout">
                     <button type="submit" name="dangxuat">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
@@ -56,7 +57,7 @@
 
             <?php }else{ ?>
 
-                <a href="http://localhost/Exercise/p/log-page/log-page.php">
+                <a href="<?= URL ?>p/login">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
@@ -64,7 +65,7 @@
 
             <?php } ?>
 
-            <a href="http://localhost/Exercise/p/cart-page/cart-page.php">
+            <a href="<?= URL ?>p/cart-page">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
                 </button>
@@ -75,7 +76,7 @@
             </button>
             
             <div class="search" id="modal-search">
-                <form action="http://localhost/Exercise/p/search/search_item.php" method="get">
+                <form action="<?= URL ?>p/search/search_item.php" method="get">
                     <input name="name_search" type="text">
                     <input type="submit" name="search" value="Tìm kiếm">
                 </form>
@@ -93,16 +94,16 @@
                 <input type="radio" name="radio-btn" id="btn4" />
 
                 <div class="slide first">
-                    <img src="../../img/slide1.jpg" alt="slide1" />
+                    <img src="<?= URL ?>img/slide1.jpg" alt="slide1" />
                 </div>
                 <div class="slide">
-                    <img src="../../img/slide2.jpg" alt="slide2" />
+                    <img src="<?= URL ?>img/slide2.jpg" alt="slide2" />
                 </div>
                 <div class="slide">
-                    <img src="../../img/slide3.jpg" alt="slide3" />
+                    <img src="<?= URL ?>img/slide3.jpg" alt="slide3" />
                 </div>
                 <div class="slide">
-                    <img src="../../img/slide4.jpg" alt="slide4" />
+                    <img src="<?= URL ?>img/slide4.jpg" alt="slide4" />
                 </div>
 
                 <div class="navigation-auto">
@@ -139,27 +140,11 @@
                 </div>
 
                 <div class="item">
-                    <img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="item-collection">
+                    <img src="<?= URL ?>img/<?= $row['img'] ?>" alt="item-collection">
                 </div>
 
                 <div class="item">
-                    <img src="http://localhost/Exercise/img/<?= $row['img']  ?>" alt="item-collection">
-                </div>
-
-                <div class="item">
-                    <p><?= $row['description'] ?></p>
-                </div>
-
-                <div class="item">
-                    <p><?= $row['description'] ?></p>
-                </div>
-
-                <div class="item">
-                    <img src="http://localhost/Exercise/img/<?= $row['img']  ?>" alt="item-collection">
-                </div>
-
-                <div class="item">
-                    <img src="http://localhost/Exercise/img/<?= $row['img']  ?>" alt="item-collection">
+                    <img src="<?= URL ?>img/<?= $row['img']  ?>" alt="item-collection">
                 </div>
 
                 <div class="item">
@@ -171,7 +156,23 @@
                 </div>
 
                 <div class="item">
-                    <img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="item-collection">
+                    <img src="<?= URL ?>img/<?= $row['img']  ?>" alt="item-collection">
+                </div>
+
+                <div class="item">
+                    <img src="<?= URL ?>img/<?= $row['img']  ?>" alt="item-collection">
+                </div>
+
+                <div class="item">
+                    <p><?= $row['description'] ?></p>
+                </div>
+
+                <div class="item">
+                    <p><?= $row['description'] ?></p>
+                </div>
+
+                <div class="item">
+                    <img src="<?= URL ?>img/<?= $row['img'] ?>" alt="item-collection">
                 </div>
             </div>
 
@@ -180,7 +181,7 @@
             <h4>Bộ Sưu Tập Nữ Nổi Bật</h4>
             <div class="grid-item2">
                 <div class="item2">
-                    <img src="http://localhost/Exercise/img/<?=$row['img'];?>" alt="item-collection">
+                    <img src="<?= URL ?>img/<?=$row['img'];?>" alt="item-collection">
                 </div>
 
                 <div class="item2">
@@ -196,17 +197,11 @@
                 </div>
 
                 <div class="item2">
-                    <img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="item-collection">
+                    <img src="<?= URL ?>img/<?= $row['img'] ?>" alt="item-collection">
                 </div>
 
                 <div class="item2">
-                    <img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="item-collection">
-                </div>
-
-                <div class="item2">
-                    <p>
-                        <?= $row['description'] ?>
-                    </p>
+                    <img src="<?= URL ?>img/<?= $row['img'] ?>" alt="item-collection">
                 </div>
 
                 <div class="item2">
@@ -216,11 +211,17 @@
                 </div>
 
                 <div class="item2">
-                    <img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="item-collection">
+                    <p>
+                        <?= $row['description'] ?>
+                    </p>
                 </div>
 
                 <div class="item2">
-                    <img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="item-collection">
+                    <img src="<?= URL ?>img/<?= $row['img'] ?>" alt="item-collection">
+                </div>
+
+                <div class="item2">
+                    <img src="<?= URL ?>img/<?= $row['img'] ?>" alt="item-collection">
                 </div>
 
                 <div class="item2">
@@ -236,7 +237,7 @@
     <div id="footer">
         <div class="footer-content">
             <div class="logo">
-                <img src="http://localhost/Exercise/img/Layer1.png" alt="">
+                <img src="<?= URL ?>img/Layer1.png" alt="">
                 <p>
                     H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.
                 </p>
@@ -245,18 +246,10 @@
             <div class="follow">
                 <h4>Theo dõi chúng tôi:</h4>
                 <div class="content">
-                    <a href="">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="">
-                        <i class="fas fa-blog"></i>
-                    </a>
+                   <a href="http://www.facebook.com"><i class="fab fa-facebook"></i></a>
+                    <a href="http://www.youtube.com"><i class="fab fa-youtube"></i></a>
+                    <a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.twitter.com"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
     
@@ -270,9 +263,9 @@
             </div>
         </div>
     </div>
-    <script src="http://localhost/Exercise/js/showhide.js"></script>
-    <script src="http://localhost/Exercise/js/slideshow.js"></script>
-    <script src="http://localhost/Exercise/js/search.js"></script>
+    <script src="<?= URL ?>js/showhide.js"></script>
+    <script src="<?= URL ?>js/slideshow.js"></script>
+    <script src="<?= URL ?>js/search.js"></script>
 </body>
 <style>
         .search{

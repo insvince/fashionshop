@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include_once "../../php/config.php";
+    include_once "../../php/defined.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông Tin Cá Nhân - H Store</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/css/primary.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= URL ?>css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -19,19 +20,21 @@
         <ul class="menu">
             <div class="menu-content">
                 <li title="Bộ Sưu Tập">
-                    <a href="http://localhost/Exercise/p/collection/collection.html">Bộ sưu tập</a>
+                    <a href="<?= URL ?>p/collection">Bộ sưu tập</a>
                 </li>
                 <li title="Sản Phẩm">
-                    <a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a>
+                    <a href="<?= URL ?>p/product">Sản Phẩm</a>
                 </li>
                 <li title="Trang Chủ">
-                    <a class="logo" href="http://localhost/Exercise/"><img src="../../img/Layer1.png" alt=""></a>
+                    <a class="logo" href="<?= URL ?>home">
+                        <img src="<?= URL ?>img/Layer1.png" alt="logo">
+                    </a>
                 </li>
                 <li title="Tin Tức">
-                    <a href="http://localhost/Exercise/p/news/news.html">Tin Tức</a>
+                    <a href="<?= URL ?>p/news/news.html">Tin Tức</a>
                 </li>
                 <li title="Giới Thiệu">
-                    <a href="http://localhost/Exercise/p/about/about.html">Giới Thiệu</a>
+                    <a href="<?= URL ?>p/about/about.html">Giới Thiệu</a>
                 </li>
             </div>
         </ul>
@@ -49,7 +52,7 @@
                     $row = mysqli_fetch_array($rs);
                     $dob = date('Y-m-d',strtotime($row['dob']));
                ?>
-                <form action="http://localhost/Exercise/p/profile-user/update.php?account=<?= $row['id'] ?>" method="post">
+                <form action="<?= URL ?>p/profile-user/update.php?account=<?= $row['id'] ?>" method="post">
                     <div class="contain">
                         <div class="left">
                             <label for="">Tên</label>
@@ -102,7 +105,7 @@
     <div id="footer">
         <div class="footer-content">
             <div class="logo">
-                <img src="http://localhost/Exercise/img/Layer1.png" alt="">
+                <img src="<?= URL ?>img/Layer1.png" alt="logo">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus.
                     Asperiores, perspiciatis.

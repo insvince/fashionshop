@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include_once "../../php/config.php";
+    include_once "../../php/defined.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ Hàng - H Store</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/primary.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= URL ?>css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
     
 </head>
@@ -21,22 +22,63 @@
         <ul class="menu">
             <div class="menu-content">
                 <li title="Bộ Sưu Tập">
-                    <a href="../collection/collection.php">Bộ sưu tập</a>
+                    <a href="<?= URL ?>p/collection">Bộ sưu tập</a>
                 </li>
                 <li title="Sản Phẩm">
-                    <a href="../product/product.php">Sản Phẩm</a>
+                    <a href="<?= URL ?>p/product">Sản Phẩm</a>
                 </li>
                 <li title="Trang Chủ">
-                    <a class="logo" href="../../index.php"><img src="../../img/Layer1.png" alt=""></a>
+                    <a class="logo" href="<?= URL ?>home">
+                        <img src="<?= URL ?>img/Layer1.png" alt="logo">
+                    </a>
                 </li>
                 <li title="Tin Tức">
-                    <a href="../news/news.php">Tin Tức</a>
+                    <a href="<?= URL ?>p/news">Tin Tức</a>
                 </li>
                 <li title="Giới Thiệu">
-                    <a href="../about/about.php">Giới Thiệu</a>
+                    <a href="<?= URL ?>p/about">Giới Thiệu</a>
                 </li>
             </div>
         </ul>
+           <ul class="tool-box">
+            <?php if(isset($_SESSION['user_mail'])) { ?>
+                <a href="<?= URL ?>p/info">
+                    <button type="button">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </a>
+                <a href="<?= URL ?>p/logout">
+                    <button type="submit" name="dangxuat">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </a>
+                 <a href="<?= URL ?>p/cart-page">
+                    <button>                    
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </a>
+                 
+            <?php }else{ ?>
+                <a href="<?= URL ?>p/login">
+                    <button type="button">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </a>
+               
+            <?php } ?>
+            <button type="button" onclick="openSearch()">
+                <i class="fas fa-search"></i>
+            </button>
+           
+             <div class="search" id="modal-search">
+                 
+                <form action="<?= URL ?>p/search/" method="post">
+                    <input name="name_search" type="text">
+                    <input type="submit" name="search" value="Tìm Kiếm">
+                </form>
+            </div>
+        </ul>
+        <div id="overlay" onclick="closeSearch()"></div>
 
     </div>
 
@@ -46,21 +88,23 @@
             <?php 
                 if(isset($_GET['error'])){  echo "<p class='error' >". $_GET['error']  . "</p>"; }
 
-                if(isset($_GET['success'])){  echo "<p class='success' >". $_GET['success'] . "</p>"; }else{
-                echo "<p style='color: red'>Thanh toán khi nhận hàng</p>";
-            } ?>
+                if(isset($_GET['success'])){  echo "<p class='success' >". $_GET['success'] . "</p>"; }
+            ?>
+            
             <div class="cart__form">
                
                 <form action="pay.php?action=pay" method="post" enctype="multipart/form-data">
                 <?php 
                     if(isset($_SESSION['cart'])){
+                         echo "<p style='color: red'>Thanh toán khi nhận hàng</p>";
                         foreach($_SESSION['cart'] as $key => $value){
-                         
                 ?> 
                     <div class="form_number" >
-                        <img src="http://localhost/Exercise/img/<?= $value['img'] ?>" alt="product_cart">
+                        <img src="<?= URL ?>/img/<?= $value['img'] ?>" alt="product_cart">
                         <input type="hidden" name="this_id[]" value="<?=$value['id']?>">
-                        <input class="iamount" name="amount[]"  type="number" value="<?=$value['amount']?>" min="1" max="10" >
+                        <input class="iamount" name="amount[]"  type="number" value="<?=$value['amount']?>" min="1" max="10" required onChange="iTotal()">
+                        <input type="hidden" class="price" value="<?= $value['price'] ?>">
+                        <input type="hidden" class="itotal">
                         <p>
                             <?=$value['name']?>
                         </p>
@@ -80,16 +124,18 @@
                    
                 <?php } ?>
                     <div class="form_pay">
-                        <p >
-                            Tổng Cộng: 
-                        </p>
+                        <div class="total">
+                            <p>Tổng Cộng: </p><p id="itotal2"></p>
+                        </div>
                         <div class="pay_button" >
                             <input type="submit" value="Thanh Toán" >
-                            <a href="clearall.php?action=clearall">Xóa giỏ hàng</a>
+                            <a href="<?= URL ?>p/cart-page/clearall">Xóa giỏ hàng</a>
                         </div>
                     </div>
                 </form>
-                <?php } ?>
+                <?php }else{
+                    echo "<p style='font-size: 26px'>Trống</p>";
+                } ?>
             </div>
         </div>
     </div>
@@ -97,12 +143,9 @@
     <div id="footer">
         <div class="footer-content">
             <div class="logo">
-                <img src="../../img/Layer1.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Deserunt optio in magnam, amet id modi error placeat iusto, dicta fugit iure possimus.
-                    Asperiores, perspiciatis.
-                    Officia debitis provident est quis esse reiciendis voluptatem omnis sed eaque culpa! Modi fugiat
-                    maiores quis?
+                <img src="<?= URL ?>img/Layer1.png" alt="logo">
+                 <p>
+                    H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.
                 </p>
             </div>
 
@@ -126,8 +169,14 @@
             </div>
         </div>
     </div>
+    <script src="<?= URL ?>js/search.js"></script>
+    <script src="<?= URL ?>js/total.js"></script>
 </body>
     <style>
+        .total{
+            display: flex;
+            justify-content: center;
+        }
         .bottom button{
             background-color: black !important;
             color: whitesmoke !important;
@@ -178,5 +227,28 @@
         form select{
             padding: 10px 20px
         }
+         .search{
+            display: none;position: fixed;left: 0;top: 150px; width: 100%; padding: 10px 0;z-index: 10;
+        }
+        .search form{
+            display: flex; justify-content: center; width: 100%; background-color: #a77349bd; margin: 0 auto; padding: 20px;
+        }
+        .search form input[type="text"]{
+            width: 400px;font-size: 18px;padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        .search form input[type="submit"]{
+            padding: 10px 5px; margin: 0 10px; border-radius: 5px
+        }
+        #overlay{
+            display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;
+        }
+        p.error{
+            color: red; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightblue; width: 30%;    margin: 10px auto;
+
+        }
+        p.success{
+            color: green; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightgreen; width: 30%;    margin: 10px auto;
+        }
+        
     </style>
 </html>

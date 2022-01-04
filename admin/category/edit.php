@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "../../php/config.php";
+    include "../../php/defined.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Danh Mục</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= ADMIN ?>css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -45,39 +46,39 @@
                         <?=$row['fullname'];?>
                     </p>
                 </div>
-                <div class="list-edit">
+               <div class="list-edit">
                     <li>
-                        <a href="http://localhost/Exercise/admin/">
+                        <a  href="<?= ADMIN ?>">
                             Thống Kê
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/category/">
+                        <a class="active" href="<?= ADMIN ?>cate/">
                             Danh Sách Danh Mục
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/product/">
+                        <a href="<?= ADMIN ?>pro/">
                             Danh Sách Sản Phẩm
                         </a>
-                     </li>
+                    </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/news">
+                        <a href="<?= ADMIN ?>ns/">
                             Danh Sách Bài Viết
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/order">
+                        <a href="<?= ADMIN ?>or/">
                             Danh Sách Đơn Hàng
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/account">
+                        <a href="<?= ADMIN ?>acc/">
                             Danh Sách Tài Khoản
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/logout/logout.php">
+                        <a href="<?= ADMIN ?>out">
                             Đăng Xuất
                         </a>
                     </li>
@@ -105,17 +106,26 @@
                         $rs_2 = mysqli_query($conn, $sql_2);
                         $row_2 = mysqli_num_rows($rs_2);
 
+                        if(empty($_POST['editname'])){
+                            echo "wdqd";
+                        }
+
                         if($row_2 > 0){
-                            header("location: index.php?error=Tên đã tồn tại!");
+                            if($edit == $row['name']){
+                                header("location: " . ADMIN . "c/err-change/" . $this_id);
+                            }else{
+                                header("location: " . ADMIN . "c/n-change");
+                            }
                         }else{
                             mysqli_query($conn, $sql_edit);
-                            header("location: index.php?success=Tên đã thay đổi!");
+                            header("location:" . ADMIN . "c/change");
                         }
                     }
                 ?>
-                <form action="edit.php?this_id=<?=$this_id?>" method="post">
-                    <h3>Chỉnh sửa</h3>
-                    <input type="text" name="editname" value= "<?=$row['name']?>">
+                <form action="<?= ADMIN ?>c/edit/<?=$this_id?>" method="post">
+                    <h2>Chỉnh sửa</h2>
+                    <?php  if(isset($_GET['error'])){  echo "<p class='error'>". $_GET['error'] . "</p>"; }  ?>
+                    <input type="text" name="editname" value= "<?=$row['name']?>" autocomplete="off" required>
                     <button type="submit" name="editbtn" >
                         Sửa
                     </button>
@@ -125,8 +135,25 @@
     </div>
 </body>
 <style>
+    .error{
+        margin: 10px auto;
+        color: red;
+        font-weight: 600;
+        font-size: 16px;
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: lightblue;
+        width: 30%;
+        text-align: center;
+    }
     a.active{
-        pointer-events: none;
+        text-decoration: none;
+        color: whitesmoke;
+        display: block;
+        padding: 15px;
+        border-radius: 10px;
+
     }
     #container{
         height: 900px;
@@ -184,10 +211,7 @@
         width: 30%;
     }
     .content form button{
-        padding: 10px 5px ; 
-        background-color: lightgreen;
-        border: 1px solid; 
-        border-radius: 5px;
+         padding: 10px 5px ; background-color: black;border: 1px solid; border-radius: 5px;color: whitesmoke;font-size: 15px;cursor: pointer;
     }
 </style>
 </html>

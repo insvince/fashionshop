@@ -12,4 +12,4 @@
 
     mysqli_query($conn, $sql);
 
-    header("location: info.php?success=Cập nhật thành công!");
+    header("location: http://localhost/Fashion/p/update/suc");

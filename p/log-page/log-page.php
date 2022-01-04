@@ -1,9 +1,10 @@
 <?php
     session_start();
-    include '../../php/config.php';
+    include_once '../../php/config.php';
+    include_once '../../php/defined.php';
 
     if(isset($_SESSION['user_mail'])){
-        header("location: ../../index.php");
+        header("location: ../../home");
     }
 ?>
 
@@ -14,8 +15,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài Khoản - H Store</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/admin.css">
+    <link rel="shortcut icon" href="http://localhost/Fashion/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Fashion/admin/css/admin.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -25,7 +26,7 @@
         }
     ?>
     <div id="form-user">
-        <form id="form-login" action="log-page.php?" method="post" >
+        <form id="form-login" action="p/login" method="post" >
             <h2>Đăng Nhập</h2>
 
             <?php 
@@ -48,7 +49,7 @@
                 </button>
 
                 <button>
-                    <a href="http://localhost/Exercise/">Quay Lại Trang Chủ</a>
+                    <a href="http://localhost/Fashion/home">Quay Lại Trang Chủ</a>
                 </button>
             </div>
         </form>
@@ -72,12 +73,12 @@
                 <button type="submit" name="create">Tạo ngay</button>
                 <button type="button" onclick="openLogin()" >Quay lại đăng nhập</button>
                 <button>
-                    <a href="http://localhost/Exercise/">Quay Lại Trang Chủ</a>
+                    <a href="http://localhost/Fashion/">Quay Lại Trang Chủ</a>
                 </button>
             </div>
         </form>
     </div>
-    <script src="http://localhost/Exercise/js/showhide-form.js"></script>
+    <script src="http://localhost/Fashion/js/showhide-form.js"></script>
 </body>
 <style>
     input{

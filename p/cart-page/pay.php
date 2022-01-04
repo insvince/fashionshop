@@ -1,6 +1,10 @@
 <?php 
     session_start();
     include_once "../../php/config.php";
+    include_once "../../mail/sendmail.php";
+
+ 
+
 
     date_default_timezone_set("Asia/Ho_Chi_Minh");
     $user_id = $_SESSION['id'];
@@ -21,13 +25,12 @@
     $add_id = "INSERT INTO `tb_cart`(`user_id`, `code_cart`) VALUES ('" . $user_id . "', '" . $code_order . "') ";
 
     $query_add_id = mysqli_query($conn, $add_id);
-    echo $add_id."<br>";
 
     if($query_add_id){
-    foreach ($_SESSION['cart'] as $key => $value) {
-        if($this_id == $value['id']){
-            unset($_SESSION['cart'][$key]);
-        }
+        foreach ($_SESSION['cart'] as $key => $value) {
+            if($this_id == $value['id']){
+                unset($_SESSION['cart'][$key]);
+            }
 
             $quanlity = $amount[$key];
             $id_product = $value['id'];
@@ -37,7 +40,7 @@
             $detail_product = "INSERT INTO `tb_cart_item`(`product_id`, `code_cart`, `amout`, `size_id`) VALUES ('" . $id_product . "', '" . $code_order . "', '" . $quanlity . "', '" . $size . "') ";
 
             $detail = mysqli_query($conn, $detail_product);
-            echo $detail_product."<br>";
+           
 
 
             //add billing
@@ -45,12 +48,19 @@
             VALUES('" . $code_order . "', '" . $create . "') ";
 
             $add_billing = mysqli_query($conn, $billing);
-            echo $billing."<br>";
-
+           
         }
-        unset($_SESSION['cart']);
-        header("location: cart-page.php?success=Thanh toán thành công!");
-    } 
+        $tieude = "Đặt hàng website hstore.store.com thành công";
+        $noidung = "<p>Cám ơn quý khách đã đặt hàng của H Store, mã đơn hàng : " . $code_order . "</p>  ";
+        $maildathang = $_SESSION['user_mail'];
+        $mail = new Mailer();
+        $mail->send_mail($tieude , $noidung, $maildathang);
+        
+    }  
     
+    unset($_SESSION['cart']);
+    header("location: http://localhost/Fashion/p/cart-page/pay-succ");
     
+
+
 

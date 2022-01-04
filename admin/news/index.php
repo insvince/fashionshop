@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once "../../php/config.php";
+    include_once "../../php/defined.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Bài Viết</title>
-    <link rel="shortcut icon" href="../../img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= URL ?>admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
   
 </head>
@@ -48,25 +49,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="http://localhost/Exercise/admin/" >Thống Kê</a>
+                        <a href="<?= ADMIN ?>" >Thống Kê</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/category/">Danh Sách Danh Mục</a>
+                        <a href="<?= ADMIN ?>cate/">Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
+                        <a href="<?= ADMIN ?>pro/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a class="active" href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
+                        <a class="active" href="<?= ADMIN ?>ns/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
+                        <a href="<?= ADMIN ?>or/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
+                        <a href="<?= ADMIN ?>acc/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
+                        <a href="<?= ADMIN ?>out/">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -113,10 +114,10 @@
                         <td><?= $formatTime?> </td>
                         <td>
                             <div class="edit">
-                                <a href="http://localhost/Exercise/admin/news/edit.php?this_id=<?=$row['id']?>">
+                                <a href="<?= URL ?>news/edit.php?this_id=<?=$row['id']?>">
                                     <button class="up">Sửa</button>
                                 </a>
-                                <a href="http://localhost/Exercise/admin/news/delete.php?this_id=<?=$row['id']?>">
+                                <a href="<?= URL ?>news/delete.php?this_id=<?=$row['id']?>">
                                     <button class="down">Xóa</button>
                                 </a>
                             </div>
@@ -125,7 +126,7 @@
                     <?php } ?>
                 </table>
                 <div class="button-add">
-                    <a href="http://localhost/Exercise/admin/news/add.php">
+                    <a href="<?= URL ?>news/add.php">
                         <button>Thêm</button>
                     </a>
                 </div>
@@ -134,6 +135,9 @@
     </div>
 </body>
 <style>
+        .button-add{
+            text-align: left !important;
+        }
         table{
             white-space: nowrap;
             max-width: 50%; 
@@ -145,7 +149,7 @@
         .content{
             overflow-x: scroll;
             background-color: whitesmoke;
-            margin: 50px auto !important;
+               margin: 20px auto !important;
             border-radius: 15px;
             min-height: 650px;
         }

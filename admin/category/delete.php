@@ -7,4 +7,4 @@
 
     mysqli_query($conn, $sql);
 
-    header("location: index.php?success=Đã xóa thành công!");
+    header("location: http://localhost/Fashion/admin/c/error");

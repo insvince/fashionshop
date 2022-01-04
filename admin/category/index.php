@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "../../php/config.php";
+    include "../../php/defined.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Danh Mục</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= ADMIN ?>css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -46,39 +47,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a  href="http://localhost/Exercise/admin/">
-                            Thống Kê
-                        </a>
+                        <a href="<?= ADMIN ?>" >Thống Kê</a>
                     </li>
                     <li>
-                        <a class="active" href="http://localhost/Exercise/admin/category/">
-                            Danh Sách Danh Mục
-                        </a>
+                        <a class="active" href="<?= ADMIN ?>cate/">Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/product/">
-                            Danh Sách Sản Phẩm
-                        </a>
+                        <a href="<?= ADMIN ?>pro/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/news/">
-                            Danh Sách Bài Viết
-                        </a>
+                        <a href="<?= ADMIN ?>ns/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/order/">
-                            Danh Sách Đơn Hàng
-                        </a>
+                        <a href="<?= ADMIN ?>or/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/account/">
-                            Danh Sách Tài Khoản
-                        </a>
+                        <a href="<?= ADMIN ?>acc/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/logout/logout.php">
-                            Đăng Xuất
-                        </a>
+                        <a href="<?= ADMIN ?>out/">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -86,8 +73,8 @@
         <div id="container">
             <div class="content">
                 <div class="add" >
-                    <form action="add.php" method="post">
-                        <input type="text" name="addname" >
+                    <form action="<?= ADMIN ?>c/add" method="post">
+                        <input type="text" name="addname" autocomplete="off">
                         <button type="submit" name="addbtn" >Thêm</button>
                     </form>
                 </div>
@@ -116,10 +103,10 @@
                         <td><?= (($row['name'] == "Bộ Sưu Tập" || $row['name'] == "Mới") ? "Nổi Bật" : "Đang Bán") ?></td>
                         <td>
                             <div class="edit">
-                                <a class="up" href="http://localhost/Exercise/admin/category/edit.php?this_id=<?=$row['id']?>">
+                                <a class="up" href="<?= ADMIN ?>c/edit/<?=$row['id']?>">
                                     Sửa
                                 </a>
-                                <a class="down" href="http://localhost/Exercise/admin/category/delete.php?this_id=<?=$row['id']?>">
+                                <a class="down" href="<?= ADMIN ?>c/remove/<?=$row['id']?>">
                                     Xóa
                                 </a>
                             </div>
@@ -132,11 +119,14 @@
     </div>
 </body>
 <style>
+    .active{
+        pointer-events: all !important;
+    }
     #container{
         height: 900px;
     }
     #container .content{
-        padding: 50px 30px;
+      
         width: 85%;
         margin: 20px auto;
         background-color: whitesmoke;
@@ -147,7 +137,6 @@
     a{
         text-decoration: none;
     }
-    
     .up{
         border-radius: 5px;
         padding: 10px 10px;
@@ -179,7 +168,7 @@
         padding: 10px 5px; border-radius: 5px; border: 1px solid;text-align: center;width: 30%
     }
     .content .add form button{
-        padding: 10px 5px ; background-color: lightgreen;border: 1px solid; border-radius: 5px;
+        padding: 10px 5px ; background-color: black;border: 1px solid; border-radius: 5px;color: whitesmoke;font-size: 15px;cursor: pointer;
     }
     .content p.error{
         margin: 10px auto;color: red; font-weight: 600; font-size: 16px; border: 1px solid; border-radius: 5px; padding: 10px; background-color: lightblue; width: 30%; text-align: center;

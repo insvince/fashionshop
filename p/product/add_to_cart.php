@@ -2,6 +2,8 @@
     session_start();
     include_once "../../php/config.php";
     
+    $page = $_GET['page'];
+    
     $this_id = $_GET['this_id'];
     
     $sql = "SELECT * FROM `tb_product` WHERE `id` = '" . $this_id . "' ";
@@ -30,7 +32,11 @@
                     "size" => 1,
                 );
                 $_SESSION['cart'][] = $session_array;
-                header("location: product.php?success=Them thanh cong");
+                if($page == 'index'){
+                    header("location: http://localhost/Fashion/success");
+                }else{
+                    header("location: http://localhost/Fashion/p/product/p-success");
+                }
             }else{
                 if($session_array_id['id'] = $_GET['this_id']){
                     foreach ($_SESSION['cart'] as $key => $value) {
@@ -50,7 +56,11 @@
                 );
 
                 $_SESSION['cart'][] = $session_array;
-                header("location: product.php?success=Them thanh cong");
+                if($page == 'index'){
+                    header("location: http://localhost/Fashion/warning-cart");
+                }else{
+                    header("location: http://localhost/Fashion/p/product/p-warning-cart");
+                }
             }
         }else{
             $session_array = array(
@@ -63,8 +73,16 @@
             );
     
             $_SESSION['cart'][] = $session_array;
-            header("location: product.php?this_id=". $this_id );
+            if($page == 'index'){
+                header("location: http://localhost/Fashion/success");
+            }else{
+                header("location: http://localhost/Fashion/p/product/p-success");
+            }
         }   
     }else{
-        header("location: product.php?error?error=chua dang nhap");
+        if($page == 'index'){
+            header("location: http://localhost/Fashion/failure");
+        }else{
+            header("location: http://localhost/Fashion/p/product/p-failure");
+        }
     }

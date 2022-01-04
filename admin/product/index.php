@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include_once "../../php/config.php";
+    include_once "../../php/defined.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Sản Phẩm</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= ADMIN ?>css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
    
 </head>
@@ -35,27 +36,27 @@
                     <i class="fas fa-user-tie"></i>
                     <p>Admin</p>
                 </div>
-                <div class="list-edit">
+                 <div class="list-edit">
                     <li>
-                        <a href="http://localhost/Exercise/admin/">Thống Kê</a>
+                        <a href="<?= ADMIN ?>" >Thống Kê</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/category" >Danh Sách Danh Mục</a>
+                        <a href="<?= ADMIN ?>cate/">Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                    <a class="active" href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
+                        <a class="active" href="<?= ADMIN ?>pro/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
+                        <a href="<?= ADMIN ?>ns/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
+                        <a href="<?= ADMIN ?>or/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
+                        <a href="<?= ADMIN ?>acc/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
+                        <a href="<?= ADMIN ?>out/">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -84,16 +85,16 @@
                         <td><?= $row['id'] ?></td>
                         <td><?= $row['name'] ?></td>
                         <td><?= $row['stock'] ?></td>
-                        <td><img src="http://localhost/Exercise/img/<?= $row['img'] ?>" alt="product"></td>
-                        <td><?= $row['description'] ?></td>
+                        <td><img src="<?= URL ?>img/<?= $row['img'] ?>" alt="product"></td>
+                        <td><p class="content__product"><?= $row['description'] ?></p></td>
                         <td><?= $row['price'] ?></td>
                         <td><?= $row['category_id'] ?></td>
                         <td>
                             <div class="edit">
-                                <a href="http://localhost/Exercise/admin/product/edit.php?this_id=<?=$row['id']; ?>">
+                                <a href="<?= ADMIN ?>product/edit.php?this_id=<?=$row['id']; ?>">
                                     <button class="up">Sửa</button>
                                 </a>
-                                <a href="http://localhost/Exercise/admin/product/delete.php?this_id=<?=$row['id']; ?>">
+                                <a href="<?= ADMIN ?>product/delete.php?this_id=<?=$row['id']; ?>">
                                     <button class="down">Xóa</button>
                                 </a>
                             </div>
@@ -102,7 +103,7 @@
                     <?php } ?>
                 </table>
                 <div class="button-add">
-                    <a href="http://localhost/Exercise/admin/product/add.php">
+                    <a href="<?= ADMIN ?>product/add.php">
                         <button>Thêm</button>
                     </a>
                 </div>
@@ -111,8 +112,19 @@
     </div>
 </body>
     <style>
+        .content__product{
+            height: 80px;
+            width: 340px;
+            white-space: pre-line;
+            overflow-y: scroll;
+            text-align: left;
+        }
         a.active{
-            pointer-events: none;
+            text-decoration: none;
+            color: whitesmoke;
+            display: block;
+            padding: 15px;
+            border-radius: 10px;
         }
         img{
             width: 70px;
@@ -123,7 +135,7 @@
         }
         .content{
             border-radius: 15px;
-            margin: 50px auto !important;
+                margin: 20px auto !important;
             min-height: 600px;
             background-color: whitesmoke;
             overflow-x: scroll;
@@ -131,6 +143,7 @@
         .button-add {
             width: 90%;
             margin: 0 auto;
+            text-align: left !important;
         }
         .button-add button{
             cursor: pointer;

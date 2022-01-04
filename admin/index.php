@@ -1,8 +1,9 @@
 <?php 
     session_start();
     include_once "../php/config.php";
+    include_once "../php/defined.php";
     if(!isset($_SESSION['a_mail'])){
-        header("location: http://localhost/Exercise/admin/login/login.php");
+        header("location: http://localhost/Fashion/admin/login/login.php");
     }
 ?>
 <!DOCTYPE html>
@@ -12,15 +13,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thống Kê</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= ADMIN ?>css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="main">
         <div id="header">
             <div class="header-content">
-                <h2>Fashion Admin</h2>
+                <h2>Admin</h2>
                 <div class="header-tool">
                     <button>
                         <i class="fas fa-envelope"></i>
@@ -48,26 +49,26 @@
                     </p>
                 </div>
                 <div class="list-edit">
-                    <li>
-                        <a href="" class="active">Thống Kê</a>
+                      <li>
+                        <a class="active" href="<?= ADMIN ?>" >Thống Kê</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/category">Danh Sách Danh Mục</a>
+                        <a href="<?= ADMIN ?>cate/">Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/product">Danh Sách Sản Phẩm</a>
+                        <a href="<?= ADMIN ?>pro/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/news">Danh Sách Bài Viết</a>
+                        <a href="<?= ADMIN ?>ns/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/order">Danh Sách Đơn Hàng</a>
+                        <a href="<?= ADMIN ?>or/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/account">Danh Sách Tài Khoản</a>
+                        <a href="<?= ADMIN ?>acc/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
+                        <a href="<?= ADMIN ?>out">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -78,26 +79,54 @@
                 <h2>Doanh Thu</h2>
                 <div class="report-block">
                     <div class="report">
-                        <h4>Tổng Số Đã Bán</h4>
-                        <p>80
+                        <h4>Tổng số đã nhận</h4>
+                        <p>
+                            <?php 
+                                $sql = "SELECT * FROM `tb_billing` WHERE `status` = 'Nhận' ";
+                                $rs = mysqli_query($conn, $sql);
+                                
+                                $row = mysqli_num_rows($rs);
+                                echo $row;
+                            ?>
                             <i class="fas fa-chart-line"></i>
                         </p>
                     </div>
                     <div class="report">
                         <h4>Tổng sản phẩm còn lại</h4>
-                        <p>80
+                        <p>
+                            <?php 
+                                $sql = "SELECT `stock` FROM `tb_product` ";
+                                $rs = mysqli_query($conn, $sql);
+
+                                $row = mysqli_num_rows($rs);
+                                echo $row;
+                            ?>
                             <i class="fas fa-chart-line"></i>
                         </p>
                     </div>
                     <div class="report">
                         <h4>Số lượng đơn hàng</h4>
-                        <p>80
+                        <p>
+                            <?php 
+                                $sql = "SELECT * FROM `tb_billing` ";
+                                $rs = mysqli_query($conn, $sql);
+                                
+                                $row = mysqli_num_rows($rs);
+                                echo $row;
+                            ?>
                             <i class="fas fa-chart-line"></i>
                         </p>
                     </div>
                     <div class="report">
                         <h4>Người dùng</h4>
-                        <p>80
+                        <p>
+                            <?php 
+                                $sql = "SELECT * FROM `tb_users` WHERE `role` = 'User' ";
+                                $rs = mysqli_query($conn, $sql);
+                                
+                                $row = mysqli_num_rows($rs);
+                                echo $row;
+                            ?>
                             <i class="fas fa-chart-line"></i>
                         </p>
                     </div>

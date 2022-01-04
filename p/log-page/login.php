@@ -10,11 +10,14 @@
     $row = mysqli_fetch_array($rs);
 
     if($row > 0){
+        if($row['role'] =="Admin"){
+            header("location: http://localhost/Fashion/p/login/error-role");
+        }
         if($row['role'] == "User"){
             $_SESSION['user_mail'] = $mail;
             $_SESSION['id'] = $row['id'];
-            header("location: http://localhost/Exercise/");
+            header("location: http://localhost/Fashion/home");
         }
     }else{
-        header("location: log-page.php?error=Sai thông tin hoặc không tồn tại!");
+        header("location: http://localhost/Fashion/p/login/error-account");
     }   

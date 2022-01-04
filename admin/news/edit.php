@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Tài Khoản</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/admin//css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Fashion/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Fashion/admin//css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -48,25 +48,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a  href="http://localhost/Exercise/admin/">Thống Kê</a>
+                        <a  href="http://localhost/Fashion/admin/">Thống Kê</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/category/" >Danh Sách Danh Mục</a>
+                        <a href="http://localhost/Fashion/admin/category/" >Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
+                        <a href="http://localhost/Fashion/admin/product/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a class="active" href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
+                        <a class="active" href="http://localhost/Fashion/admin/news/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
+                        <a href="http://localhost/Fashion/admin/order/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/Fashion/admin/account/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/Fashion/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -102,6 +102,7 @@
                 ?>
                <form action="edit.php?this_id=<?= $this_id; ?>" method="post" enctype="multipart/form-data">
 
+               <h2 class="title">Chỉnh Sửa</h2>
                         <div class="edit" >
                             <label for="add_title" >
                                 Tiêu Đề
@@ -136,13 +137,16 @@
     </div>
 </body>
 <style>
+    .title{
+        text-align: center;
+    }
         table{
             white-space: nowrap;
         }
         .content{
             background-color: whitesmoke;
             overflow-x: scroll;
-            margin: 50px auto !important;
+                margin: 20px auto !important;
             border-radius: 15px;
             width: 90%;
             display: flex; flex-direction: column; justify-content: center; width: 80%; overflow: hidden;

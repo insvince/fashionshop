@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Tài Khoản</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
+    <link rel="shortcut icon" href="http://localhost/Fashion/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/Fashion/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -47,36 +47,36 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="http://localhost/Exercise/admin/">
+                        <a href="http://localhost/Fashion/admin/">
                             Thống Kê</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/category/" >
+                        <a href="http://localhost/Fashion/admin/category/" >
                             Danh Sách Danh Mục
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/product/">
+                        <a href="http://localhost/Fashion/admin/product/">
                             Danh Sách Sản Phẩm
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/news/">
+                        <a href="http://localhost/Fashion/admin/news/">
                             Danh Sách Bài Viết
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/order/">
+                        <a href="http://localhost/Fashion/admin/order/">
                             Danh Sách Đơn Hàng
                         </a>
                     </li>
                     <li>
-                        <a class="active" href="http://localhost/Exercise/admin/account/">
+                        <a class="active" href="http://localhost/Fashion/admin/account/">
                             Danh Sách Tài Khoản
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/logout/logout.php">
+                        <a href="http://localhost/Fashion/admin/logout/logout.php">
                             Đăng Xuất
                         </a>
                     </li>
@@ -101,21 +101,21 @@
                         <label for="add_fname">
                             Họ Tên
                         </label>
-                        <input type="text" name="add_fname" >
+                        <input type="text" name="add_fname" required>
                     </div>
 
                     <div class="form_row">
                         <label for="add_mail">
                             Email
                         </label>
-                        <input type="email" name="add_mail" >
+                        <input type="email" name="add_mail" required>
                     </div>
 
                     <div class="form_row">
                         <label for="add_password">
                             Mật Khẩu
                         </label>
-                        <input type="password" name="add_password">
+                        <input type="password" name="add_password" required>
                     </div>
 
                     <div class="form_row" >
@@ -143,16 +143,14 @@
                         <label for="add_role" >
                             Quyền Hạn
                         </label>
-                        <select name="add_role" >
+                        <select name="add_role" require>
                             <option value="Admin">Admin</option>
                             <option value="User">User</option>
                         </select>
                     </div>
 
                     <div class="button-add"  >
-                        <button type="submit" name="addbtn">
-                            Thêm
-                        </button>
+                        <button type="submit" name="addbtn" >Thêm</button>
                     </div>
                 </form>
             </div>
@@ -166,14 +164,14 @@
     .content{
         background-color: whitesmoke;
         overflow-x: scroll;
-        margin: 50px auto !important;
+        margin: 20px auto !important;
         border-radius: 15px;
         width: 90%;
     }
     .button-add{
         text-align: center;
     }
-    .button-add button{
+    .button-add input{
         cursor: pointer;
         text-align: center;
     }

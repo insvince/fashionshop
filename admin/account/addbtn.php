@@ -17,7 +17,7 @@
     $sql_check = "SELECT `email` FROM `tb_users` WHERE `email` = '" . $mail . "' ";
     $rs_2 = mysqli_query($conn, $sql_check);
     $row_2 = mysqli_num_rows($rs_2);
-    
+
     if($row_2 > 0 ){
         header("location: add.php?error=" . $mail . " đã tồn tại!");
     }else{

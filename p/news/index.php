@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "../../php/config.php";
+    include "../../php/defined.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tin Tức - H Store</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/css/primary.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= URL ?>css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -19,46 +20,46 @@
         <ul class="menu">
             <div class="menu-content">
                 <li>
-                    <a href="http://localhost/Exercise/p/collection/collection.php">Bộ sưu tập</a>
+                    <a href="<?= URL ?>p/collection">Bộ sưu tập</a>
                 </li>
                 <li>
-                    <a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a>
+                    <a href="<?= URL ?>p/product">Sản Phẩm</a>
                 </li>
                 <li>
-                    <a class="logo" href="http://localhost/Exercise/">
-                        <img src="http://localhost/Exercise/img/Layer1.png" alt="">
+                    <a class="logo" href="<?= URL ?>home">
+                        <img src="<?= URL ?>img/Layer1.png" alt="logo">
                     </a>
                 </li>
                 <li>
-                    <a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a>
+                    <a href="<?= URL ?>p/news">Tin Tức</a>
                 </li>
                 <li>
-                    <a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a>
+                    <a href="<?= URL ?>p/about">Giới Thiệu</a>
                 </li>
             </div>
         </ul>
         <ul class="tool-box">
 
             <?php if(isset($_SESSION['user_mail'])){ ?>
-                <a href="http://localhost/Exercise/p/profile-user/info.php">
+                <a href="<?= URL ?>p/info">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
                 </a>
 
-                <a href="http://localhost/Exercise/p/log-page/logout.php">
+                <a href="<?= URL ?>p/logout">
                     <button type="submit" name="dangxuat">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </a>
             <?php }else{ ?>
-                <a href="http://localhost/Exercise/p/log-page/log-page.php">
+                <a href="<?= URL ?>p/login">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
                 </a>
             <?php } ?>
-            <a href="http://localhost/Exercise/p/cart-page/cart-page.php">
+            <a href="<?= URL ?>p/cart-page">
                 <button type="button">
                     <i class="fas fa-shopping-cart"></i>
                 </button>
@@ -68,9 +69,9 @@
             </button>
             
             <div class="search" id="modal-search">
-                <form action="http://localhost/Exercise/p/search/search_item.php" method="get" >
-                    <input name="name_search" type="text" >
-                    <input type="submit" name="search" value="Tìm kiếm" >
+               <form action="<?= URL ?>p/search/" method="post">
+                    <input name="name_search" type="text">
+                    <input type="submit" name="search" value="Tìm Kiếm">
                 </form>
             </div>
         </ul>
@@ -86,16 +87,16 @@
                 <input type="radio" name="radio-btn" id="btn4" />
 
                 <div class="slide first">
-                    <img src="./img/slide1.jpg" alt="slide1" />
+                    <img src="<?= URL ?>img/slide1.jpg" alt="slide1" />
                 </div>
                 <div class="slide">
-                    <img src="./img/slide2.jpg" alt="slide2" />
+                    <img src="<?= URL ?>img/slide2.jpg" alt="slide2" />
                 </div>
                 <div class="slide">
-                    <img src="./img/slide3.jpg" alt="slide3" />
+                    <img src="<?= URL ?>img/slide3.jpg" alt="slide3" />
                 </div>
                 <div class="slide">
-                    <img src="./img/slide4.jpg" alt="slide4" />
+                    <img src="<?= URL ?>img/slide4.jpg" alt="slide4" />
                 </div>
 
                 <div class="navigation-auto">
@@ -132,13 +133,13 @@
                 ?>
                     <li class="news">
                         <div class="left-news">
-                            <a href="http://localhost/Exercise/p/news/detail-news/detail-news.php?this_id=<?= $row['id'] ?>">
-                                <img src="http://localhost/Exercise/img/<?= (( $row['type'] )=="Sale" ? "thumnail-sale.jpg" : "thumnail-trend.jpg") ?>" alt="">
+                            <a href="<?= URL ?>p/news/detail/<?= $row['id'] ?>">
+                                <img src="<?= URL ?>img/<?= (( $row['type'] )=="Sale" ? "thumnail-sale.jpg" : "thumnail-trend.jpg") ?>" alt="">
                             </a>
                         </div>
                         <div class="right-news">
                             <h3>
-                                <a href="http://localhost/Exercise/p/news/detail-news/detail-news.php?this_id=<?= $row['id']?>"><?= $row['title'] ?></a>
+                                <a href="<?= URL ?>p/news/detail/<?= $row['id']?>"><?= $row['title'] ?></a>
                             </h3>
 
                             <div class="short-detail">
@@ -165,17 +166,17 @@
     <div id="footer">
         <div class="footer-content">
             <div class="logo">
-                <img src="http://localhost/Exercise/img/Layer1.png" alt="logo">
+                <img src="<?= URL ?>img/Layer1.png" alt="logo">
                 <p>H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.</p>
             </div>
     
             <div class="follow">
                 <h4>Theo dõi chúng tôi:</h4>
                 <div class="content">
-                    <a href=""><i class="fab fa-facebook"></i></a>
-                    <a href=""><i class="fab fa-youtube"></i></a>
-                    <a href=""><i class="fab fa-twitter"></i></a>
-                    <a href=""><i class="fas fa-blog"></i></a>
+                    <a href="http://www.facebook.com"><i class="fab fa-facebook"></i></a>
+                    <a href="http://www.youtube.com"><i class="fab fa-youtube"></i></a>
+                    <a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.twitter.com"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
     
@@ -189,8 +190,8 @@
             </div>
         </div>
     </div>
-    <script src="http://localhost/Exercise/js/slideshow.js"></script>
-    <script src="http://localhost/Exercise/js/search.js"></script>
+    <script src="<?= URL ?>js/slideshow.js"></script>
+    <script src="<?= URL ?>js/search.js"></script>
 </body>
     <style>
          .search{

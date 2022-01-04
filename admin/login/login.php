@@ -1,8 +1,9 @@
 <?php 
     session_start();
     include "../../php/config.php";
+    include "../../php/defined.php";
     if(isset($_SESSION['a_mail'])){
-        header("location: http://localhost/Exercise/admin/");
+        header("location: " . ADMIN);
     }
 ?>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập Quyền Quản Trị</title>
-    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/admin.css">
+    <link rel="stylesheet" href="<?= ADMIN ?>css/admin.css">
 </head>
 <body>
     <div id="form-admin">
@@ -28,17 +29,23 @@
                 $rs = mysqli_query($conn, $sql);
                 $row = mysqli_num_rows($rs);
                 $row2 = mysqli_fetch_array($rs);
-            
-                if($row > 0){
-                    if($row2['role'] == "Admin"){
 
+               
+
+                if($row > 0){
+                     if($row2['role'] == "User"){
+                        header("location: ". ADMIN . "error-role");
+                        echo "fail";
+                    }
+                    if($row2['role'] == "Admin"){
+                        echo "true";
                         $_SESSION['a_mail'] = $a_mail;
                         $_SESSION['a_fullname'] = $row2['fullname'];
 
-                        header("location: http://localhost/Exercise/admin/");
+                        header("location: " . ADMIN);
                     }
-                }else{
-                    header("location: login.php?error=Tài khoản không tồn tại!");
+                }  else{
+                    header("location: " . ADMIN . "error-account");
                 }   
             }?>
             <?php 

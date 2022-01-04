@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include_once "../../php/config.php";
+    include_once "../../php/defined.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Đơn Hàng</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/admin/css/style.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= ADMIN ?>css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
   
 </head>
@@ -47,25 +48,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="http://localhost/Exercise/admin/" >Thống Kê</a>
+                        <a href="<?= ADMIN ?>" >Thống Kê</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/category/" >Danh Sách Danh Mục</a>
+                        <a href="<?= ADMIN ?>cate/">Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/product/">Danh Sách Sản Phẩm</a>
+                        <a href="<?= ADMIN ?>pro/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/news/">Danh Sách Bài Viết</a>
+                        <a href="<?= ADMIN ?>ns/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a class="active" href="http://localhost/Exercise/admin/order/">Danh Sách Đơn Hàng</a>
+                        <a class="active" href="<?= ADMIN ?>or/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/account/">Danh Sách Tài Khoản</a>
+                        <a href="<?= ADMIN ?>acc/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Exercise/admin/logout/logout.php">Đăng Xuất</a>
+                        <a href="<?= ADMIN ?>out/">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -116,13 +117,10 @@
     </div>
 </body>
 <style>
-    a.active{
-        pointer-events: none;
-    }
     .content{
         background-color: whitesmoke;
         border-radius: 15px;
-        margin: 50px auto !important;
+        margin: 20px auto !important;
         min-height: 500px;
     }
     .accept{

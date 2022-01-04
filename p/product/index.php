@@ -1,50 +1,56 @@
 <?php
     session_start();
     include_once "../../php/config.php";
+    include_once "../../php/defined.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<?= URL ?>">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sản Phẩm - H Store</title>
-    <link rel="shortcut icon" href="http://localhost/Exercise/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Exercise/css/primary.css">
+    <link rel="shortcut icon" href="<?= URL ?>img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= URL ?>css/primary.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="header">
         <ul class="menu">
             <div class="menu-content">
-                <li><a href="http://localhost/Exercise/p/collection/collection.php">Bộ sưu tập</a></li>
-                <li><a href="http://localhost/Exercise/p/product/product.php">Sản Phẩm</a></li>
-                <li><a class="logo" href="http://localhost/Exercise/"><img src="http://localhost/Exercise/img/Layer1.png" alt=""></a></li>
-                <li><a href="http://localhost/Exercise/p/news/news.php">Tin Tức</a></li>
-                <li><a href="http://localhost/Exercise/p/about/about.php">Giới Thiệu</a></li>
+                <li><a href="<?= URL ?>p/collection">Bộ sưu tập</a></li>
+                <li><a href="<?= URL ?>p/product">Sản Phẩm</a></li>
+                <li>
+                    <a class="logo" href="<?= URL ?>home">
+                        <img src="<?= URL ?>img/Layer1.png" alt="logo">
+                    </a>
+                </li>
+                <li><a href="<?= URL ?>p/news">Tin Tức</a></li>
+                <li><a href="<?= URL ?>p/about">Giới Thiệu</a></li>
             </div>
         </ul>
         <ul class="tool-box">
             <?php if(isset($_SESSION['user_mail'])){ ?>
-                <a href="http://localhost/Exercise/p/profile-user/info.php">
+                <a href="<?= URL ?>p/info">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
                 </a>
-                <a href="http://localhost/Exercise/p/log-page/logout.php">
+                <a href="<?= URL ?>p/logout">
                     <button type="submit" name="dangxuat">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </a>
             <?php }else{ ?>
-                <a href="http://localhost/Exercise/p/log-page/log-page.php">
+                <a href="<?= URL ?>p/login">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>
                 </a>
             <?php } ?>
-            <a href="http://localhost/Exercise/p/cart-page/cart-page.php">
+            <a href="<?= URL ?>p/cart-page">
                 <button>
                     <i class="fas fa-shopping-cart"></i>
                 </button>
@@ -55,7 +61,7 @@
             </button>
             
             <div class="search"  id="modal-search">
-                <form action="http://localhost/Exercise/p/search/search_item.php" method="get" >
+                <form action="<?= URL ?>p/search/" method="post" >
                     <input name="name_search" type="text" >
                     <input type="submit" name="search" value="Tìm kiếm" >
                 </form>
@@ -73,16 +79,16 @@
                 <input type="radio" name="radio-btn" id="btn4" />
 
                 <div class="slide first">
-                    <img src="../../img/slide1.jpg" alt="slide1" />
+                    <img src="<?= URL ?>img/slide1.jpg" alt="slide1" />
                 </div>
                 <div class="slide">
-                    <img src="../../img/slide2.jpg" alt="slide2" />
+                    <img src="<?= URL ?>img/slide2.jpg" alt="slide2" />
                 </div>
                 <div class="slide">
-                    <img src="../../img/slide3.jpg" alt="slide3" />
+                    <img src="<?= URL ?>img/slide3.jpg" alt="slide3" />
                 </div>
                 <div class="slide">
-                    <img src="../../img/slide4.jpg" alt="slide4" />
+                    <img src="<?= URL ?>img/slide4.jpg" alt="slide4" />
                 </div>
 
                 <div class="navigation-auto">
@@ -104,35 +110,43 @@
     
     <div id="main">
         <div class="main-product">
-            <h4>Đồ Nam</h4>
+            <h4>Sản Phẩm</h4>
             <div class="tab-content" id="nam">
-              
-                    <?php
-                        $sql = "SELECT * FROM `tb_product` ";
-                        $rs = mysqli_query($conn, $sql);
-        
-                        while ($row = mysqli_fetch_array($rs)) {
-                            $price = number_format($row['price'],'0', ',', '.');
-                    ?>
-                    <div class="item-div">
-                        <div class="product">
-                            <div class="product-select">
-                                <a href="http://localhost/Exercise/p/product/detail-product/detail-product.php?this_id=<?=$row['id']?>">
-                                    <img src="http://localhost/Exercise/img/<?=$row['img']?>" alt="product">
+                <?php 
+                    if(isset($_GET['error'])){  echo "<p class='error' >" . $_GET['error'] . "</p>"; } 
+                ?>
+                <?php 
+                    if(isset($_GET['success'])){  echo "<p class='success' >" . $_GET['success'] . "</p>"; } 
+                ?>
+                <?php
+                    $sql = "SELECT * FROM `tb_product` ";
+                    $rs = mysqli_query($conn, $sql);
+    
+                    while ($row = mysqli_fetch_array($rs)) {
+                        $price = number_format($row['price'],'0', ',', '.');
+                ?>
+                <div class="item-div">
+                    <div class="product" >
+                        <div class="product-select">
+                            <a href="<?= URL ?>p/product/detail/<?=$row['id']?>">
+                                <img src="<?= URL ?>img/<?=$row['img']?>" alt="product" style="width: 300px">
+                            </a>
+                            <div class="button-menu"  >
+                                <a href="<?= URL ?>p/product/add-to-cart/<?=$row['id']?>">
+                                    <button>
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
                                 </a>
-                                    
-                                <div  class="button-menu"  >
-                                    <a href="http://localhost/Exercise/p/product/add_to_cart.php?this_id=<?=$row['id']?>">
-                                        <button type="button" name="add_to_cart" value="Add To Cart">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </button>
-                                    </a>
-                                </div>
                             </div>
-                            <h5><?=$row['name']?></h5>
-                            <p><?=$row['price']?> <u>đ</u></p> 
                         </div>
+                        <h5>
+                            <?=$row['name']?>
+                        </h5>
+                        <p>
+                            <?=$row['price']?> <b>đ</b>
+                        </p>
                     </div>
+                </div>
                 <?php } ?>
             </div>
         </div>
@@ -145,7 +159,7 @@
 
         <div class="footer-content">
             <div class="logo">
-                <img src="http://localhost/Exercise/img/Layer1.png" alt="logo">
+                <img src="<?= URL ?>img/Layer1.png" alt="logo">
                 <p>
                     H Store rất vinh hạnh khi được phục vụ quý khách. Niềm vui của quý khách tạo nên giá trị của chúng tôi, mang đến cơ hội phát triển của chúng tôi. Cám ơn bạn đã ghé thăm xin cảm ơn.
                 </p>
@@ -154,10 +168,10 @@
             <div class="follow">
                 <h4>Theo dõi chúng tôi:</h4>
                 <div class="content">
-                    <a href=""><i class="fab fa-facebook"></i></a>
-                    <a href=""><i class="fab fa-youtube"></i></a>
-                    <a href=""><i class="fab fa-twitter"></i></a>
-                    <a href=""><i class="fas fa-blog"></i></a>
+                     <a href="http://www.facebook.com"><i class="fab fa-facebook"></i></a>
+                    <a href="http://www.youtube.com"><i class="fab fa-youtube"></i></a>
+                    <a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.twitter.com"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
     
@@ -171,9 +185,9 @@
             </div>
         </div>
     </div>
-    <script src="http://localhost/Exercise/js/showhide.js"></script>
-    <script src="http://localhost/Exercise/js/slideshow.js"></script>
-    <script src="http://localhost/Exercise/js/search.js"></script>
+    <script src="<?= URL ?>js/showhide.js"></script>
+    <script src="<?= URL ?>js/slideshow.js"></script>
+    <script src="<?= URL ?>js/search.js"></script>
 </body>
     <style>
         .search{
@@ -190,6 +204,13 @@
         }
         #overlay{
             display:none; position: fixed; background-color: black;opacity: .7; width: 100%; height: 100%; top: 0;pointer-events: all;
+        }
+         p.error{
+            color: red; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightblue; width: 30%;    margin: 10px auto;
+
+        }
+        p.success{
+            color: green; font-weight: 600; font-size: 16px; border: 1px solid; padding: 5px 10px; background-color: lightgreen; width: 30%;    margin: 10px auto;
         }
     </style>
 </html>
