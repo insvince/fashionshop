@@ -59,7 +59,7 @@
     }  
     
     unset($_SESSION['cart']);
-    header("location: http://localhost/Fashion/p/cart-page/pay-succ");
+    header("location: http://localhost/fashionshop/p/cart-page/pay-succ");
     
 
 

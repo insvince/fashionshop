@@ -3,7 +3,7 @@
     include_once "../php/config.php";
     include_once "../php/defined.php";
     if(!isset($_SESSION['a_mail'])){
-        header("location: http://localhost/Fashion/admin/login/login.php");
+        header("location: http://localhost/fashionshop/admin/login/login.php");
     }
 ?>
 <!DOCTYPE html>

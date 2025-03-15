@@ -7,10 +7,10 @@
         $sql = "INSERT INTO `tb_category`( `name`) VALUES ('" . $name . "') ";
 
         if(empty($name)){
-            header("location: http://localhost/Fashion/admin/c/err-input/");
+            header("location: http://localhost/fashionshop/admin/c/err-input/");
         }else{
             mysqli_query($conn, $sql);
-            header("location: http://localhost/Fashion/admin/c/success");
+            header("location: http://localhost/fashionshop/admin/c/success");
         }
     }
     

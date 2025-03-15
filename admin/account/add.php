@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Tài Khoản</title>
-    <link rel="shortcut icon" href="http://localhost/Fashion/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Fashion/admin/css/style.css">
+    <link rel="shortcut icon" href="http://localhost/fashionshop/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/fashionshop/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -47,36 +47,36 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="http://localhost/Fashion/admin/">
+                        <a href="http://localhost/fashionshop/admin/">
                             Thống Kê</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/category/" >
+                        <a href="http://localhost/fashionshop/admin/category/" >
                             Danh Sách Danh Mục
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/product/">
+                        <a href="http://localhost/fashionshop/admin/product/">
                             Danh Sách Sản Phẩm
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/news/">
+                        <a href="http://localhost/fashionshop/admin/news/">
                             Danh Sách Bài Viết
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/order/">
+                        <a href="http://localhost/fashionshop/admin/order/">
                             Danh Sách Đơn Hàng
                         </a>
                     </li>
                     <li>
-                        <a class="active" href="http://localhost/Fashion/admin/account/">
+                        <a class="active" href="http://localhost/fashionshop/admin/account/">
                             Danh Sách Tài Khoản
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/logout/logout.php">
+                        <a href="http://localhost/fashionshop/admin/logout/logout.php">
                             Đăng Xuất
                         </a>
                     </li>

@@ -1,6 +1,6 @@
 <?php
 	//Khai báo địa chỉ đường dẫn đến trang web
-    define("URL", "http://localhost/Fashion/");
+    define("URL", "http://localhost/fashionshop/");
 	define("CSS", URL . "css/");
 	define("JS", URL . "js/");
 	define("IMG", URL . "img/");

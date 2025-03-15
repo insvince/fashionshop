@@ -14,8 +14,8 @@
     $row = mysqli_num_rows($check);
 
     if($row > 1){
-        header("location: log-page.php?error=Tài khoản đã tồn tại!");
+        header("location: p/log-page/log-page.php?error=Tài khoản đã tồn tại!");
     }else{
         mysqli_query($conn, $sql);
-        header("location: log-page.php?success=Đăng ký thành công!");
+        header("location: p/log-page/log-page.php?success=Đăng ký thành công!");
     }

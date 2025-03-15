@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="http://localhost/Fashion/">
+    <base href="http://localhost/fashionshop/">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,7 +60,7 @@
                 </a>
                  
             <?php }else{ ?>
-                <a href="<?= URL ?>p/login">
+                <a href="<?= URL ?>p/log-page/log-page.php">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>

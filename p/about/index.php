@@ -54,7 +54,7 @@
                     </button>
                 </a>
             <?php }else{ ?>
-                <a href="<?= URL ?>p/login">
+                <a href="<?= URL ?>p/log-page/log-page.php">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>

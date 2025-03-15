@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Tài Khoản</title>
-    <link rel="shortcut icon" href="http://localhost/Fashion/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Fashion/admin/css/style.css">
+    <link rel="shortcut icon" href="http://localhost/fashionshop/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/fashionshop/admin/css/style.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
   
 </head>
@@ -49,25 +49,25 @@
                 </div>
                 <div class="list-edit">
                     <li>
-                        <a href="http://localhost/Fashion/admin/">Thống Kê</a>
+                        <a href="http://localhost/fashionshop/admin/">Thống Kê</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/category/" >Danh Sách Danh Mục</a>
+                        <a href="http://localhost/fashionshop/admin/category/" >Danh Sách Danh Mục</a>
                     </li>
                     <li>
-                        <a class="active" href="http://localhost/Fashion/admin/product/">Danh Sách Sản Phẩm</a>
+                        <a class="active" href="http://localhost/fashionshop/admin/product/">Danh Sách Sản Phẩm</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/news/">Danh Sách Bài Viết</a>
+                        <a href="http://localhost/fashionshop/admin/news/">Danh Sách Bài Viết</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/order/">Danh Sách Đơn Hàng</a>
+                        <a href="http://localhost/fashionshop/admin/order/">Danh Sách Đơn Hàng</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/account/">Danh Sách Tài Khoản</a>
+                        <a href="http://localhost/fashionshop/admin/account/">Danh Sách Tài Khoản</a>
                     </li>
                     <li>
-                        <a href="http://localhost/Fashion/admin/logout/logout.php">Đăng Xuất</a>
+                        <a href="http://localhost/fashionshop/admin/logout/logout.php">Đăng Xuất</a>
                     </li>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                             
                             mysqli_query($conn, $sql_edit);
                             
-                            move_uploaded_file($img_tmp_name, 'http://localhost/Fashion/img/'. $img );
+                            move_uploaded_file($img_tmp_name, 'http://localhost/fashionshop/img/'. $img );
 
                             header("location: index.php?success=Đã thay đổi thành công!");
                             }
@@ -116,7 +116,7 @@
                         <div class="edit_form" >
                             <label for="add_img" >Hình Ảnh</label>
                             <input type="file" name="add_img" >
-                            <img src="http://localhost/Fashion/img/<?=$row['img']?>" >
+                            <img src="http://localhost/fashionshop/img/<?=$row['img']?>" >
                         </div>
 
                         <div class="edit_form" >

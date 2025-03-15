@@ -1,43 +1,43 @@
-<IfModule "mod_rewrite.c">
+# <IfModule "mod_rewrite.c">
 
-Options -Indexes
-RewriteEngine On
+# Options -Indexes
+# RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php !-f
-RewriteCond %{REQUEST_FILENAME} !-l
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.php !-f
+# RewriteCond %{REQUEST_FILENAME} !-l
 
-# ? URL home
-RewriteRule "home" "index.php"
+# # ? URL home
+# RewriteRule "home" "index.php"
 
-# ? URL detail
-RewriteRule "product/detail/([0-9]+)$" "p/product/detail-product/detail-product.php?this_id=$1"
-RewriteRule "product/add-to-cart/index-([0-9]+)$" "p/product/add_to_cart.php?this_id=$1&page=index"
-RewriteRule "product/add-to-cart/([0-9]+)$" "p/product/add_to_cart.php?this_id=$1"
+# # ? URL detail
+# RewriteRule "product/detail/([0-9]+)$" "p/product/detail-product/detail-product.php?this_id=$1"
+# RewriteRule "product/add-to-cart/index-([0-9]+)$" "p/product/add_to_cart.php?this_id=$1&page=index"
+# RewriteRule "product/add-to-cart/([0-9]+)$" "p/product/add_to_cart.php?this_id=$1"
 
-# ? URL log account page
-RewriteRule "success" "index.php?success=Thêm Thành Công"
-RewriteRule "failure" "index.php?error=Chưa Đăng Nhập"
-RewriteRule "warning-cart" "index.php?success=Đã Có Trong Giỏ Hàng"
+# # ? URL log account page
+# RewriteRule "success" "index.php?success=Thêm Thành Công"
+# RewriteRule "failure" "index.php?error=Chưa Đăng Nhập"
+# RewriteRule "warning-cart" "index.php?success=Đã Có Trong Giỏ Hàng"
 
-# ? URL error log page
-RewriteRule "error-account" "p/login/log-page.php?error=Sai thông tin hoặc không tồn tại!"
-RewriteRule "error-role" "p/login/log-page.php?error=Chỉ đăng nhập tài khoản quyền hạn người dùng!"
+# # ? URL error log page
+# RewriteRule "error-account" "p/log-page/log-page.php/p/log-page/log-page.php?error=Sai thông tin hoặc không tồn tại!"
+# RewriteRule "error-role" "p/log-page/log-page.php/p/log-page/log-page.php?error=Chỉ đăng nhập tài khoản quyền hạn người dùng!"
 
-# ? Tool-Box URL new 
-RewriteRule "p/info" "p/profile-user/"
-RewriteRule "p/logout" "p/log-page/logout.php"
-RewriteRule "p/login" "p/log-page/log-page.php"
+# # ? Tool-Box URL new 
+# RewriteRule "p/info" "p/profile-user/"
+# RewriteRule "p/logout" "p/log-page/log-page.php/logout.php"
+# RewriteRule "p/log-page/log-page.php" "p/log-page/log-page.php/p/log-page/log-page.php"
 
-# ? Page News
-RewriteRule "news/detail/([0-9]+)$" "p/news/detail-news/detail-news.php?this_id=$1"
-RewriteRule "clearall" "p/cart-page/clearall.php?action=clearall"
-RewriteRule "product/add-success" "p/product/index.php?success=Đã có trong giỏ hàng"
-RewriteRule "p/user/edit" "p/profile-user/edit.php?action"
-RewriteRule "update/suc" "p/profile-user/index.php?success=Cập nhật thành công!"
+# # ? Page News
+# RewriteRule "news/detail/([0-9]+)$" "p/news/detail-news/detail-news.php?this_id=$1"
+# RewriteRule "clearall" "p/cart-page/clearall.php?action=clearall"
+# RewriteRule "product/add-success" "p/product/index.php?success=Đã có trong giỏ hàng"
+# RewriteRule "p/user/edit" "p/profile-user/edit.php?action"
+# RewriteRule "update/suc" "p/profile-user/index.php?success=Cập nhật thành công!"
 
-RewriteRule "pay-succ" "p/cart-page/index.php?success=Thanh toán thành công!"
+# RewriteRule "pay-succ" "p/cart-page/index.php?success=Thanh toán thành công!"
 
-</IfModule>
+# </IfModule>
 
 

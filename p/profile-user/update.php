@@ -12,4 +12,4 @@
 
     mysqli_query($conn, $sql);
 
-    header("location: http://localhost/Fashion/p/update/suc");
+    header("location: http://localhost/fashionshop/p/update/suc");

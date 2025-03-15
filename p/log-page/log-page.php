@@ -15,8 +15,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài Khoản - H Store</title>
-    <link rel="shortcut icon" href="http://localhost/Fashion/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Fashion/admin/css/admin.css">
+    <link rel="shortcut icon" href="http://localhost/fashionshop/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/fashionshop/admin/css/admin.css">
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -26,7 +26,7 @@
         }
     ?>
     <div id="form-user">
-        <form id="form-login" action="p/login" method="post" >
+        <form id="form-login" action="p/log-page/log-page.php" method="post" >
             <h2>Đăng Nhập</h2>
 
             <?php 
@@ -49,7 +49,7 @@
                 </button>
 
                 <button>
-                    <a href="http://localhost/Fashion/home">Quay Lại Trang Chủ</a>
+                    <a href="http://localhost/fashionshop/home">Quay Lại Trang Chủ</a>
                 </button>
             </div>
         </form>
@@ -60,7 +60,7 @@
             }
         ?>
 
-        <form id="form-register" action="log-page.php?register" method="post">
+        <form id="form-register" action="p/log-page/log-page.php?register" method="post">
             <h2>Đăng Ký</h2>
 
             <input class="name" name="urname" type="text" placeholder="Nhập họ tên">
@@ -73,12 +73,12 @@
                 <button type="submit" name="create">Tạo ngay</button>
                 <button type="button" onclick="openLogin()" >Quay lại đăng nhập</button>
                 <button>
-                    <a href="http://localhost/Fashion/">Quay Lại Trang Chủ</a>
+                    <a href="http://localhost/fashionshop/">Quay Lại Trang Chủ</a>
                 </button>
             </div>
         </form>
     </div>
-    <script src="http://localhost/Fashion/js/showhide-form.js"></script>
+    <script src="http://localhost/fashionshop/js/showhide-form.js"></script>
 </body>
 <style>
     input{

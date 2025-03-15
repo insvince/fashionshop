@@ -53,7 +53,7 @@
                 </button>
             </a>
             <?php }else{ ?>
-            <a href="<?= URL ?>p/login">
+            <a href="<?= URL ?>p/log-page/log-page.php">
                 <button type="button">
                     <i class="fas fa-user-circle"></i>
                 </button>
@@ -104,7 +104,7 @@
                     </div>
                     <?php }}else{
                         echo "<p style='text-align: center;'>Không tìm thấy sản phẩm với từ khóa đã nhập </p>";
-                    }}else{ echo "<p style='text-align: center;'>Lỗi, quay về trang chủ <a style='color:white' href='http://localhost/Fashion/'>ngay</a></p>"; }?>
+                    }}else{ echo "<p style='text-align: center;'>Lỗi, quay về trang chủ <a style='color:white' href='http://localhost/fashionshop/'>ngay</a></p>"; }?>
             </div>
         </div>
     </div>

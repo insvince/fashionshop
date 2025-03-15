@@ -33,9 +33,9 @@
                 );
                 $_SESSION['cart'][] = $session_array;
                 if($page == 'index'){
-                    header("location: http://localhost/Fashion/success");
+                    header("location: http://localhost/fashionshop/success");
                 }else{
-                    header("location: http://localhost/Fashion/p/product/p-success");
+                    header("location: http://localhost/fashionshop/p/product/p-success");
                 }
             }else{
                 if($session_array_id['id'] = $_GET['this_id']){
@@ -57,9 +57,9 @@
 
                 $_SESSION['cart'][] = $session_array;
                 if($page == 'index'){
-                    header("location: http://localhost/Fashion/warning-cart");
+                    header("location: http://localhost/fashionshop/warning-cart");
                 }else{
-                    header("location: http://localhost/Fashion/p/product/p-warning-cart");
+                    header("location: http://localhost/fashionshop/p/product/p-warning-cart");
                 }
             }
         }else{
@@ -74,15 +74,15 @@
     
             $_SESSION['cart'][] = $session_array;
             if($page == 'index'){
-                header("location: http://localhost/Fashion/success");
+                header("location: http://localhost/fashionshop/success");
             }else{
-                header("location: http://localhost/Fashion/p/product/p-success");
+                header("location: http://localhost/fashionshop/p/product/p-success");
             }
         }   
     }else{
         if($page == 'index'){
-            header("location: http://localhost/Fashion/failure");
+            header("location: http://localhost/fashionshop/failure");
         }else{
-            header("location: http://localhost/Fashion/p/product/p-failure");
+            header("location: http://localhost/fashionshop/p/product/p-failure");
         }
     }

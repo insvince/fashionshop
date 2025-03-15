@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bộ Sưu Tập - H Store</title>
-    <link rel="shortcut icon" href="http://localhost/Fashion/img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://localhost/Fashion/css/primary.css">        
+    <link rel="shortcut icon" href="http://localhost/fashionshop/img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost/fashionshop/css/primary.css">        
     <script src="https://kit.fontawesome.com/b1f83b8c89.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -57,7 +57,7 @@
 
             <?php }else{ ?>
 
-                <a href="<?= URL ?>p/login">
+                <a href="<?= URL ?>p/log-page/log-page.php">
                     <button type="button">
                         <i class="fas fa-user-circle"></i>
                     </button>

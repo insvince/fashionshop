@@ -1,37 +1,37 @@
-<IfModule "mod_rewrite.c">
+# <IfModule "mod_rewrite.c">
 
-Options -Indexes
-RewriteEngine On
+# Options -Indexes
+# RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php !-f
-RewriteCond %{REQUEST_FILENAME} !-l
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.php !-f
+# RewriteCond %{REQUEST_FILENAME} !-l
 
 
-# product
-RewriteRule "pro/" "product/index.php"
-RewriteRule "or/" "order/index.php"
-RewriteRule "ns/" "news/index.php"
-RewriteRule "cate/" "category/index.php"
-RewriteRule "acc/" "account/index.php"
+# # product
+# RewriteRule "pro/" "product/index.php"
+# RewriteRule "or/" "order/index.php"
+# RewriteRule "ns/" "news/index.php"
+# RewriteRule "cate/" "category/index.php"
+# RewriteRule "acc/" "account/index.php"
 
-#manager
-RewriteRule "c/success" "category/index.php?success=Đã thêm thành công!"
-RewriteRule "c/change" "category/index.php?success=Tên đã thay đổi!"
-RewriteRule "c/err-change/([0-9]+)$" "category/edit.php?this_id=$1&error=Không có sự thay đổi!"
-RewriteRule "c/err-input" "category/index.php?error=Nhập tên cần thêm đi nào!"
-RewriteRule "c/n-change" "category/index.php?error=Tên đã được sử dụng!"
+# #manager
+# RewriteRule "c/success" "category/index.php?success=Đã thêm thành công!"
+# RewriteRule "c/change" "category/index.php?success=Tên đã thay đổi!"
+# RewriteRule "c/err-change/([0-9]+)$" "category/edit.php?this_id=$1&error=Không có sự thay đổi!"
+# RewriteRule "c/err-input" "category/index.php?error=Nhập tên cần thêm đi nào!"
+# RewriteRule "c/n-change" "category/index.php?error=Tên đã được sử dụng!"
 
-#manager
-RewriteRule "c/add" "category/add.php"
-RewriteRule "c/edit/([0-9]+)$" "category/edit.php?this_id=$1"
-RewriteRule "c/remove/([0-9]+)$" "category/delete.php?this_id=$1"
-RewriteRule "c/error" "category/index.php?error=Đã xóa thành công!"
+# #manager
+# RewriteRule "c/add" "category/add.php"
+# RewriteRule "c/edit/([0-9]+)$" "category/edit.php?this_id=$1"
+# RewriteRule "c/remove/([0-9]+)$" "category/delete.php?this_id=$1"
+# RewriteRule "c/error" "category/index.php?error=Đã xóa thành công!"
 
-#logout
-RewriteRule "out" "logout/logout.php"
-RewriteRule "login" "login/login.php"
-RewriteRule "error-account" "login/login.php?error=Sai thông tin hoặc không tồn tại!"
-RewriteRule "error-role" "login.php?error=Tài khoản hoặc mật khẩu không chính xác!"
+# #logout
+# RewriteRule "out" "logout/logout.php"
+# RewriteRule "login" "login/login.php"
+# RewriteRule "error-account" "login/login.php?error=Sai thông tin hoặc không tồn tại!"
+# RewriteRule "error-role" "login.php?error=Tài khoản hoặc mật khẩu không chính xác!"
 
-</IfModule>
+# </IfModule>

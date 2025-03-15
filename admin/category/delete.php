@@ -7,4 +7,4 @@
 
     mysqli_query($conn, $sql);
 
-    header("location: http://localhost/Fashion/admin/c/error");
+    header("location: http://localhost/fashionshop/admin/c/error");

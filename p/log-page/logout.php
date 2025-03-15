@@ -3,5 +3,5 @@
     
     if(isset($_SESSION['user_mail'])){
         unset($_SESSION['user_mail']);
-        header("location: http://localhost/Fashion/");
+        header("location: http://localhost/fashionshop/");
     }
